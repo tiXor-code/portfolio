@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teodor Lutoiu | Digital Engineer & Creative Technologist</title>
+    <meta name="description" content="Teodor Lutoiu - Digital Engineer specializing in immersive web experiences, 3D web technologies, and modern frameworks">
+    <meta name="keywords" content="Teodor Lutoiu, web developer, 3D web, WebGL, Three.js, GSAP, portfolio">
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Initializing Journey...</p>
+        </div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress">
+        <div class="progress-fill"></div>
+    </div>
+
+    <!-- Main Universe Container -->
+    <div class="universe-container">
+        <div class="viewport" id="mainViewport">
+            
+            <!-- Stage 1-2: Workspace Interior -->
+            <div class="interior-scene">
+                <!-- Monitor Assembly -->
+                <div class="monitor-assembly">
+                    <div class="monitor-bezel">
+                        <div class="monitor-screen">
+                            <div class="scan-lines"></div>
+                            <div class="terminal-content">
+                                <p class="terminal-line" data-delay="0">&gt; Initializing system...</p>
+                                <p class="terminal-line" data-delay="500">&gt; Loading portfolio.exe</p>
+                                <p class="terminal-line" data-delay="1000">&gt; Welcome to Teodor Lutoiu's digital space</p>
+                                <p class="terminal-line" data-delay="1500">&gt; Prepare for launch sequence...</p>
+                                <p class="terminal-line cursor" data-delay="2000">&gt; _</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desk Environment -->
+                <div class="desk-environment">
+                    <div class="desk-surface"></div>
+                    <div class="keyboard"></div>
+                    <div class="mouse"></div>
+                    <div class="notebook"></div>
+                </div>
+                
+                <!-- Wall Background -->
+                <div class="wall-layer"></div>
+            </div>
+            
+            <!-- Stage 3: Porthole Frame -->
+            <div class="porthole-assembly">
+                <div class="porthole-frame">
+                    <!-- 8 bolts around the frame -->
+                    <div class="porthole-bolt" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                    <div class="porthole-bolt" style="top: 14.6%; right: 14.6%; transform: rotate(45deg);"></div>
+                    <div class="porthole-bolt" style="top: 50%; right: 0; transform: translateY(-50%);"></div>
+                    <div class="porthole-bolt" style="bottom: 14.6%; right: 14.6%; transform: rotate(-45deg);"></div>
+                    <div class="porthole-bolt" style="bottom: 0; left: 50%; transform: translateX(-50%);"></div>
+                    <div class="porthole-bolt" style="bottom: 14.6%; left: 14.6%; transform: rotate(45deg);"></div>
+                    <div class="porthole-bolt" style="top: 50%; left: 0; transform: translateY(-50%);"></div>
+                    <div class="porthole-bolt" style="top: 14.6%; left: 14.6%; transform: rotate(-45deg);"></div>
+                </div>
+                <div class="porthole-glass"></div>
+            </div>
+            
+            <!-- Stage 4-6: Rocket Assembly -->
+            <div class="rocket-assembly">
+                <div class="rocket-hull">
+                    <!-- Hull Details -->
+                    <div class="hull-section upper">
+                        <div class="weld-seam"></div>
+                        <div class="weld-seam"></div>
+                        <div class="weld-seam"></div>
+                    </div>
+                    <div class="hull-section middle">
+                        <div class="weld-seam"></div>
+                        <div class="weld-seam"></div>
+                        <div class="weld-seam"></div>
+                    </div>
+                    <div class="hull-section lower">
+                        <div class="weld-seam"></div>
+                        <div class="weld-seam"></div>
+                    </div>
+                    
+                    <!-- Grid Fins (Retracted) -->
+                    <div class="grid-fin left"></div>
+                    <div class="grid-fin right"></div>
+                    
+                    <!-- RCS Thrusters -->
+                    <div class="rcs-thruster top-left"></div>
+                    <div class="rcs-thruster top-right"></div>
+                    <div class="rcs-thruster bottom-left"></div>
+                    <div class="rcs-thruster bottom-right"></div>
+                </div>
+                
+                <!-- Engine Cluster -->
+                <div class="engine-cluster">
+                    <!-- Central Engine -->
+                    <div class="engine central">
+                        <div class="engine-bell"></div>
+                        <div class="engine-core"></div>
+                        <div class="engine-preburner"></div>
+                    </div>
+                    
+                    <!-- Outer Engines (5) -->
+                    <div class="engine outer" style="--engine-angle: 0deg;">
+                        <div class="engine-bell"></div>
+                        <div class="engine-core"></div>
+                        <div class="engine-preburner"></div>
+                    </div>
+                    <div class="engine outer" style="--engine-angle: 72deg;">
+                        <div class="engine-bell"></div>
+                        <div class="engine-core"></div>
+                        <div class="engine-preburner"></div>
+                    </div>
+                    <div class="engine outer" style="--engine-angle: 144deg;">
+                        <div class="engine-bell"></div>
+                        <div class="engine-core"></div>
+                        <div class="engine-preburner"></div>
+                    </div>
+                    <div class="engine outer" style="--engine-angle: 216deg;">
+                        <div class="engine-bell"></div>
+                        <div class="engine-core"></div>
+                        <div class="engine-preburner"></div>
+                    </div>
+                    <div class="engine outer" style="--engine-angle: 288deg;">
+                        <div class="engine-bell"></div>
+                        <div class="engine-core"></div>
+                        <div class="engine-preburner"></div>
+                    </div>
+                    
+                    <!-- Exhaust Plumes Container -->
+                    <div class="exhaust-container"></div>
+                </div>
+            </div>
+            
+            <!-- Launch Effects Container -->
+            <div class="launch-effects">
+                <div class="launch-smoke-container"></div>
+                <div class="launch-flash"></div>
+            </div>
+            
+            <!-- Stage 7: Space Environment -->
+            <div class="space-environment">
+                <!-- Multi-layer parallax backgrounds -->
+                <div class="space-layer nebula"></div>
+                <div class="space-layer stars-far"></div>
+                <div class="space-layer stars-near"></div>
+                <div class="earth-glow"></div>
+            </div>
+            
+            <!-- Portfolio Content -->
+            <div class="portfolio-space">
+                <!-- Navigation -->
+                <nav class="space-nav">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- About Section -->
+                <section id="about" class="portfolio-section">
+                    <div class="section-content floating">
+                        <h1 class="glitch-text" data-text="TEODOR LUTOIU">TEODOR LUTOIU</h1>
+                        <h2 class="subtitle">Digital Engineer & Creative Technologist</h2>
+                        <p class="bio">
+                            Specializing in immersive web experiences that push the boundaries of what's possible in the browser. 
+                            Expert in 3D web technologies, real-time graphics, and creating memorable digital journeys.
+                        </p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">8+</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">Creativity</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Projects Section -->
+                <section id="projects" class="portfolio-section">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="projects-grid">
+                        <!-- Project 1 -->
+                        <div class="project-card" data-tilt>
+                            <div class="project-inner">
+                                <div class="project-front">
+                                    <div class="project-icon">⚛️</div>
+                                    <h3>Quantum Interface</h3>
+                                    <p>Three.js/WebGL particle simulation</p>
+                                </div>
+                                <div class="project-back">
+                                    <p>Interactive quantum mechanics visualization with real-time particle physics simulation. Features millions of particles rendered at 60fps.</p>
+                                    <div class="tech-stack">
+                                        <span>Three.js</span>
+                                        <span>WebGL</span>
+                                        <span>GLSL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="project-card" data-tilt>
+                            <div class="project-inner">
+                                <div class="project-front">
+                                    <div class="project-icon">🧠</div>
+                                    <h3>Neural Network Studio</h3>
+                                    <p>Interactive ML visualization platform</p>
+                                </div>
+                                <div class="project-back">
+                                    <p>Real-time neural network training visualization. Watch AI learn and evolve through stunning 3D representations.</p>
+                                    <div class="tech-stack">
+                                        <span>TensorFlow.js</span>
+                                        <span>D3.js</span>
+                                        <span>React</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="project-card" data-tilt>
+                            <div class="project-inner">
+                                <div class="project-front">
+                                    <div class="project-icon">🎭</div>
+                                    <h3>Holographic Portfolio</h3>
+                                    <p>Award-winning 3D portfolio site</p>
+                                </div>
+                                <div class="project-back">
+                                    <p>Pioneering holographic web experience using cutting-edge CSS transforms and WebGL shaders. Won Awwwards SOTD.</p>
+                                    <div class="tech-stack">
+                                        <span>GSAP</span>
+                                        <span>Shaders</span>
+                                        <span>CSS3D</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 4 -->
+                        <div class="project-card" data-tilt>
+                            <div class="project-inner">
+                                <div class="project-front">
+                                    <div class="project-icon">🛸</div>
+                                    <h3>Space Commerce</h3>
+                                    <p>E-commerce with 3D visualization</p>
+                                </div>
+                                <div class="project-back">
+                                    <p>Revolutionary e-commerce platform featuring real-time 3D product customization and AR try-on capabilities.</p>
+                                    <div class="tech-stack">
+                                        <span>Babylon.js</span>
+                                        <span>AR.js</span>
+                                        <span>Node.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Skills Section -->
+                <section id="skills" class="portfolio-section">
+                    <h2 class="section-title">Technical Arsenal</h2>
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h3>Frontend</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">React</div>
+                                <div class="skill-item">Vue.js</div>
+                                <div class="skill-item">Three.js</div>
+                                <div class="skill-item">WebGL</div>
+                                <div class="skill-item">GSAP</div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Backend</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">Node.js</div>
+                                <div class="skill-item">Python</div>
+                                <div class="skill-item">GraphQL</div>
+                                <div class="skill-item">PostgreSQL</div>
+                                <div class="skill-item">Redis</div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>3D/Creative</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">Blender</div>
+                                <div class="skill-item">After Effects</div>
+                                <div class="skill-item">Cinema 4D</div>
+                                <div class="skill-item">Houdini</div>
+                                <div class="skill-item">Substance</div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Cloud/DevOps</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">AWS</div>
+                                <div class="skill-item">Docker</div>
+                                <div class="skill-item">Kubernetes</div>
+                                <div class="skill-item">CI/CD</div>
+                                <div class="skill-item">Terraform</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Contact Section -->
+                <section id="contact" class="portfolio-section">
+                    <h2 class="section-title">Establish Contact</h2>
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <a href="mailto:teodor.lutoiu@example.com">teodor.lutoiu@example.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">💼</span>
+                                <a href="https://linkedin.com/in/teodor-lutoiu" target="_blank">LinkedIn</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">🚀</span>
+                                <a href="https://github.com/tiXor-code" target="_blank">GitHub</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <span>Romania</span>
+                            </div>
+                        </div>
+                        <div class="contact-message">
+                            <p>Ready to create something extraordinary?</p>
+                            <button class="contact-cta">Launch Collaboration</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/effects.js"></script>
+    <script src="js/scroll-controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

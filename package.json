@@ -1,0 +1,20 @@
+{
+  "name": "cinematic-portfolio",
+  "version": "1.0.0",
+  "description": "A cinematic scroll-driven portfolio website for Teodor Lutoiu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "cinematic",
+    "scroll",
+    "animation",
+    "gsap",
+    "3d"
+  ],
+  "author": "Teodor Lutoiu",
+  "license": "All rights reserved"
+}
