@@ -74,13 +74,16 @@ const Navigation = () => {
             </motion.a>
           ))}
           
-          <motion.button
+          <motion.a
+            href="https://drive.google.com/file/d/1PRUAyB4xNXOS6iGj_1fRA_jF08JEozNR/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-4 px-4 py-2 bg-apple-blue text-white text-sm font-medium rounded-full hover:bg-apple-blue-hover transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Download CV
-          </motion.button>
+          </motion.a>
         </div>
       </nav>
     </motion.header>

@@ -20,8 +20,8 @@ const Contact = () => {
     {
       icon: "📧",
       label: "Email",
-      value: "contact@teodorlutoiu.com",
-      link: "mailto:contact@teodorlutoiu.com",
+      value: "teodorlutoiu@gmail.com",
+      link: "mailto:teodorlutoiu@gmail.com",
       action: "Send Message"
     },
     {
@@ -152,7 +152,7 @@ const Contact = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="mailto:contact@teodorlutoiu.com"
+                href="mailto:teodorlutoiu@gmail.com"
                 className="px-8 py-4 bg-apple-blue text-white font-medium rounded-full hover:bg-apple-blue-hover transition-colors duration-300 button-glow"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
