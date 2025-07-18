@@ -23,9 +23,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Debug show built index.html
-        run: head -n 20 dist/index.html
-
       - name: Start SSH agent
         uses: webfactory/ssh-agent@v0.5.4
         with:
@@ -42,9 +39,3 @@ jobs:
             -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
             dist/ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:public_html/
-
-      - name: Debug
-        run: |
-         ssh -p ${{ secrets.HOSTINGER_PORT }} \
-           ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
-           'head -n 20 public_html/index.html'
