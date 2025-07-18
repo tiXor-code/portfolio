@@ -1,4 +1,4 @@
-name: Deploy to Hostinger via FTP
+name: Deploy to Hostinger via SSH
 
 on:
   push:
@@ -8,25 +8,36 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.5.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist
+          # This is the private key you stored in GitHub Secrets
+          ssh-private-key: ${{ secrets.HOSTINGER_KEY }}
+
+      - name: Add Hostinger to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ secrets.HOSTINGER_PORT }} ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
+            dist/ \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:public_html/
