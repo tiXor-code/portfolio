@@ -39,3 +39,9 @@ jobs:
             -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
             dist/ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:public_html/
+
+      - name: Debug remote home & dirs
+        run: |
+          ssh -p ${{ secrets.HOSTINGER_PORT }} \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
+            'echo "HOME=$(pwd)"; ls -la; echo ""; echo "Check domains folder:"; ls -la domains'
