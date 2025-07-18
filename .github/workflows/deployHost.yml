@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -27,7 +26,6 @@ jobs:
       - name: Start SSH agent
         uses: webfactory/ssh-agent@v0.5.4
         with:
-          # This is the private key you stored in GitHub Secrets
           ssh-private-key: ${{ secrets.HOSTINGER_KEY }}
 
       - name: Add Hostinger to known_hosts
@@ -42,7 +40,7 @@ jobs:
             dist/ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:public_html/
 
-      - name: Debug: list remote files
+      - name: Debug
         run: |
           ssh -p ${{ secrets.HOSTINGER_PORT }} \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
