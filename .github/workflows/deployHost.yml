@@ -41,3 +41,9 @@ jobs:
             -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
             dist/ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:public_html/
+
+      - name: Debug: list remote files
+        run: |
+          ssh -p ${{ secrets.HOSTINGER_PORT }} \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
+            'ls -R public_html'
