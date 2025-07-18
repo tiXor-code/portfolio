@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "title": "EA FC 25 Ultimate Team",
+    "company": "Electronic Arts",
+    "description": "Revolutionized content strategy and player engagement for one of gaming's largest live services.",
+    "impact": "Significantly enhanced player retention through data-driven content optimization",
+    "image": "/images/ea-fc.jpg",
+    "tags": ["Content Strategy", "Data Analytics", "Live Service", "Player Psychology"],
+    "link": "#",
+    "featured": true,
+    "domain": "Gaming & Analytics",
+    "details": "Detailed information about EA FC 25 Ultimate Team. This could include challenges, solutions, and outcomes."
+  },
+  {
+    "id": 2,
+    "title": "Vote It! Democracy Game",
+    "company": "ARDEN - Play for Democracy",
+    "description": "Led a talented team of 7 to launch a mobile game promoting democratic engagement.",
+    "impact": "30% reduction in development time through Agile implementation",
+    "image": "/images/vote-it.jpg",
+    "tags": ["Leadership", "Social Impact", "Mobile Development", "Project Management"],
+    "link": "#",
+    "featured": true,
+    "domain": "Leadership & Social Impact",
+    "details": "Detailed information about Vote It! This could include challenges, solutions, and outcomes."
+  },
+  {
+    "id": 3,
+    "title": "AI Marketing Automation Suite",
+    "company": "Personal Innovation",
+    "description": "Built comprehensive automation workflows integrating ChatGPT, Gemini, and n8n for marketing optimization.",
+    "impact": "Automated 70% of repetitive tasks, enabling focus on strategic initiatives",
+    "image": "/images/ai-automation.jpg",
+    "tags": ["AI Integration", "n8n", "ChatGPT", "Process Automation"],
+    "link": "#",
+    "domain": "AI & Innovation",
+    "details": "Detailed information about the AI Marketing Automation Suite. This could include challenges, solutions, and outcomes."
+  },
+  {
+    "id": 4,
+    "title": "Cross-Platform Game Development",
+    "company": "University & Freelance",
+    "description": "Developed multiple games using Unity and Unreal Engine, from concept to market release.",
+    "impact": "Successfully shipped 2 titles, mastering full development lifecycle",
+    "image": "/images/game-dev.jpg",
+    "tags": ["Unity", "Unreal Engine", "C#", "Game Design"],
+    "link": "#",
+    "domain": "Technical Development",
+    "details": "Detailed information about Cross-Platform Game Development. This could include challenges, solutions, and outcomes."
+  },
+  {
+    "id": 5,
+    "title": "Creative Content Production",
+    "company": "Multiple Clients",
+    "description": "Produced high-quality video content, leveraging Adobe Suite and drone technology.",
+    "impact": "Delivered engaging multimedia experiences across various industries",
+    "image": "/images/content-production.jpg",
+    "tags": ["Adobe Premiere", "After Effects", "Drone Operations", "Video Production"],
+    "link": "#",
+    "domain": "Creative Production",
+    "details": "Detailed information about Creative Content Production. This could include challenges, solutions, and outcomes."
+  },
+  {
+    "id": 6,
+    "title": "Quality Assurance Excellence",
+    "company": "Ubisoft",
+    "description": "Ensured product quality for AAA gaming titles through comprehensive testing methodologies.",
+    "impact": "Contributed to successful launches with zero critical post-release issues",
+    "image": "/images/qa-testing.jpg",
+    "tags": ["Game Testing", "Quality Assurance", "Bug Tracking", "Team Collaboration"],
+    "link": "#",
+    "domain": "Quality & Process",
+    "details": "Detailed information about Quality Assurance Excellence. This could include challenges, solutions, and outcomes."
+  }
+]

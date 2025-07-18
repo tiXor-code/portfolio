@@ -1,7 +1,9 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import clsx from 'clsx'
+import Modal from './Modal' // Import the Modal component
+import projectsData from '../../content/projects.json' // Import projects data
 
 interface Project {
   id: number
@@ -14,87 +16,24 @@ interface Project {
   link: string
   featured?: boolean
   domain: string
+  details: string // Add details field
 }
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "EA FC 25 Ultimate Team",
-    company: "Electronic Arts",
-    description: "Revolutionized content strategy and player engagement for one of gaming's largest live services.",
-    impact: "Significantly enhanced player retention through data-driven content optimization",
-    image: "/images/ea-fc.jpg",
-    tags: ["Content Strategy", "Data Analytics", "Live Service", "Player Psychology"],
-    link: "#",
-    featured: true,
-    domain: "Gaming & Analytics"
-  },
-  {
-    id: 2,
-    title: "Vote It! Democracy Game",
-    company: "ARDEN - Play for Democracy",
-    description: "Led a talented team of 7 to launch a mobile game promoting democratic engagement.",
-    impact: "30% reduction in development time through Agile implementation",
-    image: "/images/vote-it.jpg",
-    tags: ["Leadership", "Social Impact", "Mobile Development", "Project Management"],
-    link: "#",
-    featured: true,
-    domain: "Leadership & Social Impact"
-  },
-  {
-    id: 3,
-    title: "AI Marketing Automation Suite",
-    company: "Personal Innovation",
-    description: "Built comprehensive automation workflows integrating ChatGPT, Gemini, and n8n for marketing optimization.",
-    impact: "Automated 70% of repetitive tasks, enabling focus on strategic initiatives",
-    image: "/images/ai-automation.jpg",
-    tags: ["AI Integration", "n8n", "ChatGPT", "Process Automation"],
-    link: "#",
-    domain: "AI & Innovation"
-  },
-  {
-    id: 4,
-    title: "Cross-Platform Game Development",
-    company: "University & Freelance",
-    description: "Developed multiple games using Unity and Unreal Engine, from concept to market release.",
-    impact: "Successfully shipped 2 titles, mastering full development lifecycle",
-    image: "/images/game-dev.jpg",
-    tags: ["Unity", "Unreal Engine", "C#", "Game Design"],
-    link: "#",
-    domain: "Technical Development"
-  },
-  {
-    id: 5,
-    title: "Creative Content Production",
-    company: "Multiple Clients",
-    description: "Produced high-quality video content, leveraging Adobe Suite and drone technology.",
-    impact: "Delivered engaging multimedia experiences across various industries",
-    image: "/images/content-production.jpg",
-    tags: ["Adobe Premiere", "After Effects", "Drone Operations", "Video Production"],
-    link: "#",
-    domain: "Creative Production"
-  },
-  {
-    id: 6,
-    title: "Quality Assurance Excellence",
-    company: "Ubisoft",
-    description: "Ensured product quality for AAA gaming titles through comprehensive testing methodologies.",
-    impact: "Contributed to successful launches with zero critical post-release issues",
-    image: "/images/qa-testing.jpg",
-    tags: ["Game Testing", "Quality Assurance", "Bug Tracking", "Team Collaboration"],
-    link: "#",
-    domain: "Quality & Process"
-  }
-]
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null)
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const [selectedDomain, setSelectedDomain] = useState<string | null>(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [projects, setProjects] = useState<Project[]>([])
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  useEffect(() => {
+    setProjects(projectsData)
+  }, [])
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -107,6 +46,16 @@ const Projects = () => {
   const filteredProjects = selectedDomain 
     ? projects.filter(p => p.domain === selectedDomain)
     : projects
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
+  }
   
   return (
     <section
@@ -241,9 +190,9 @@ const Projects = () => {
                       ))}
                     </div>
                     
-                    {/* View Project Link */}
-                    <motion.a
-                      href={project.link}
+                    {/* View Project Button */}
+                    <motion.button
+                      onClick={() => openModal(project)}
                       className="inline-flex items-center text-apple-blue hover:text-apple-blue-hover transition-colors duration-300"
                       whileHover={{ x: 5 }}
                     >
@@ -251,7 +200,7 @@ const Projects = () => {
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </motion.a>
+                    </motion.button>
                   </div>
                 </motion.div>
               </motion.div>
@@ -259,6 +208,16 @@ const Projects = () => {
           </div>
         </motion.div>
       </div>
+      
+      {selectedProject && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title={selectedProject.title}
+        >
+          <p>{selectedProject.details}</p>
+        </Modal>
+      )}
     </section>
   )
 }
