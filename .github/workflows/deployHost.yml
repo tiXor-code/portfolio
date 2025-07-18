@@ -38,7 +38,7 @@ jobs:
           rsync -avz --delete \
             -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
             dist/ \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:public_html/
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:/home/${{ secrets.HOSTINGER_USER }}/domains/teodorlutoiu.com/public_html/
 
       - name: Debug remote home & dirs
         run: |
