@@ -1,1 +1,6 @@
-feat: Personalize portfolio with user data and add CV link
+feat: Implement project details modal and analytics
+
+- Add Google Analytics and Iubenda consent scripts to index.html.
+- Implement a modal window to display detailed project information when clicking the "Explore Details" button.
+- Refactor the projects section to fetch data from a dedicated `projects.json` file.
+- Configure the deployment workflow to use a CI/CD pipeline, and update the .gitignore to exclude the `dist` folder.

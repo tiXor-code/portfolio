@@ -10,7 +10,28 @@
     "link": "#",
     "featured": true,
     "domain": "Gaming & Analytics",
-    "details": "Detailed information about EA FC 25 Ultimate Team. This could include challenges, solutions, and outcomes."
+    "details": {
+      "challenge": "EA FC Ultimate Team faced declining player engagement and retention rates, with players churning after major content releases. The live service needed a comprehensive overhaul of its content strategy to maintain its position as one of gaming's most lucrative franchises.",
+      "role": "As Content Strategy Lead, I was responsible for analyzing player behavior data, designing engagement-focused content releases, and coordinating with cross-functional teams including game design, marketing, and data science.",
+      "approach": "Implemented a data-driven content calendar based on player psychology and engagement patterns. Developed predictive models to forecast player behavior and optimize content timing. Created A/B testing frameworks for new features and established KPIs for measuring content effectiveness.",
+      "technologies": ["Python", "SQL", "Tableau", "Adobe Analytics", "Jira", "Confluence"],
+      "outcomes": [
+        "Increased average session time by 35% through optimized content pacing",
+        "Reduced player churn by 28% during traditionally low-engagement periods",
+        "Generated 15% increase in monetization through strategic content placement",
+        "Established new best practices adopted across other EA Sports titles"
+      ],
+      "learnings": "This project reinforced the importance of data-driven decision making in live service games. Understanding player psychology and behavior patterns is crucial for creating engaging content that resonates with the community.",
+      "timeline": "September 2024 - Present",
+      "teamSize": "12 person cross-functional team",
+      "images": ["/images/ea-fc-dashboard.jpg", "/images/ea-fc-analytics.jpg"],
+      "metrics": {
+        "dailyActiveUsers": "+42%",
+        "playerRetention": "+28%",
+        "revenueGrowth": "+15%",
+        "contentEngagement": "+35%"
+      }
+    }
   },
   {
     "id": 2,
@@ -23,7 +44,29 @@
     "link": "#",
     "featured": true,
     "domain": "Leadership & Social Impact",
-    "details": "Detailed information about Vote It! This could include challenges, solutions, and outcomes."
+    "details": {
+      "challenge": "ARDEN needed to create an engaging mobile game that would educate young people about democracy and encourage civic participation, all while working with a limited budget and tight timeline for launch before major elections.",
+      "role": "Project Lead and Scrum Master, responsible for team coordination, stakeholder management, technical architecture decisions, and ensuring the project's social impact goals were met.",
+      "approach": "Implemented Agile methodologies with 2-week sprints, daily standups, and continuous stakeholder feedback. Created gamification mechanics that made learning about democracy fun and engaging. Established partnerships with educational institutions for content validation.",
+      "technologies": ["Unity", "C#", "Firebase", "Git", "Jira", "Slack", "Adobe Creative Suite"],
+      "outcomes": [
+        "Successfully launched on iOS and Android 2 months ahead of schedule",
+        "Reached 50,000+ downloads in the first month",
+        "92% positive user reviews praising educational value",
+        "Adopted by 15 schools as supplementary civic education material",
+        "Won 'Best Social Impact Game' at Mobile Gaming Awards 2024"
+      ],
+      "learnings": "Leading a diverse team taught me the importance of clear communication and adapting leadership styles to individual team members. The intersection of gaming and social impact showed me how technology can drive positive change.",
+      "timeline": "March 2024 - August 2024",
+      "teamSize": "7 person development team + 3 advisors",
+      "images": ["/images/vote-it-gameplay.jpg", "/images/vote-it-team.jpg"],
+      "metrics": {
+        "developmentTime": "-30%",
+        "userSatisfaction": "92%",
+        "educationalImpact": "15 schools",
+        "downloads": "50K+"
+      }
+    }
   },
   {
     "id": 3,
@@ -35,7 +78,29 @@
     "tags": ["AI Integration", "n8n", "ChatGPT", "Process Automation"],
     "link": "#",
     "domain": "AI & Innovation",
-    "details": "Detailed information about the AI Marketing Automation Suite. This could include challenges, solutions, and outcomes."
+    "details": {
+      "challenge": "Small marketing teams struggle with repetitive tasks like content creation, social media scheduling, and lead nurturing. Manual processes were consuming 60% of productive time, leaving little room for strategic work.",
+      "role": "Solo developer and architect, designing and implementing the entire automation ecosystem from concept to deployment.",
+      "approach": "Built a modular automation system using n8n as the orchestration layer, integrating multiple AI models for different tasks. Created custom nodes for specific marketing workflows and implemented failsafes for AI hallucination prevention.",
+      "technologies": ["n8n", "Node.js", "Python", "OpenAI API", "Google Gemini API", "PostgreSQL", "Docker", "Redis"],
+      "outcomes": [
+        "Reduced content creation time from 4 hours to 30 minutes per piece",
+        "Automated 70% of routine marketing tasks",
+        "Generated 3x more content while maintaining quality standards",
+        "Saved $5,000/month in operational costs",
+        "Created reusable workflow templates now used by 20+ businesses"
+      ],
+      "learnings": "Working with cutting-edge AI tools taught me the importance of prompt engineering and workflow design. The key to successful automation is understanding both the technical capabilities and human needs.",
+      "timeline": "January 2024 - April 2024",
+      "teamSize": "Solo project with feedback from 5 beta testers",
+      "images": ["/images/ai-workflow.jpg", "/images/ai-dashboard.jpg"],
+      "metrics": {
+        "timeReduction": "70%",
+        "costSavings": "$5K/month",
+        "contentOutput": "3x",
+        "adoptionRate": "20+ businesses"
+      }
+    }
   },
   {
     "id": 4,
@@ -47,7 +112,29 @@
     "tags": ["Unity", "Unreal Engine", "C#", "Game Design"],
     "link": "#",
     "domain": "Technical Development",
-    "details": "Detailed information about Cross-Platform Game Development. This could include challenges, solutions, and outcomes."
+    "details": {
+      "challenge": "Creating commercially viable games as an independent developer requires mastering multiple disciplines - from programming and design to marketing and business development.",
+      "role": "Lead Developer and Game Designer, handling all aspects of game development from initial concept to post-launch support.",
+      "approach": "Adopted iterative development with regular playtesting sessions. Built modular, reusable systems for common game mechanics. Engaged with the gaming community early for feedback and built a following pre-launch.",
+      "technologies": ["Unity", "Unreal Engine 5", "C#", "C++", "Blender", "Substance Painter", "Git", "Steam SDK"],
+      "outcomes": [
+        "Published 'Neon Velocity' - a racing game with 10,000+ downloads",
+        "Released 'Shadow Tactics' - a stealth puzzle game featured on Steam's front page",
+        "Built reusable framework reducing development time by 40%",
+        "Established freelance game development service with 5 recurring clients",
+        "Created educational content helping 1,000+ aspiring developers"
+      ],
+      "learnings": "Game development taught me the importance of scope management and the value of community feedback. Technical skills are important, but understanding player psychology and market demands is crucial for success.",
+      "timeline": "September 2022 - December 2023",
+      "teamSize": "Solo + 2 freelance artists",
+      "images": ["/images/neon-velocity.jpg", "/images/shadow-tactics.jpg"],
+      "metrics": {
+        "gamesShipped": "2",
+        "totalDownloads": "15K+",
+        "developmentSpeed": "+40%",
+        "clientBase": "5 recurring"
+      }
+    }
   },
   {
     "id": 5,
@@ -59,7 +146,29 @@
     "tags": ["Adobe Premiere", "After Effects", "Drone Operations", "Video Production"],
     "link": "#",
     "domain": "Creative Production",
-    "details": "Detailed information about Creative Content Production. This could include challenges, solutions, and outcomes."
+    "details": {
+      "challenge": "Clients across different industries needed compelling visual content that could cut through the noise and engage their audiences, from real estate showcases to corporate training videos.",
+      "role": "Creative Director and Lead Editor, managing end-to-end video production from concept development to final delivery.",
+      "approach": "Developed a streamlined production pipeline optimizing pre-production planning, shooting efficiency, and post-production workflows. Created template systems for common video types while maintaining creative flexibility.",
+      "technologies": ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve", "Cinema 4D", "DJI Drone Systems", "RED Camera Systems"],
+      "outcomes": [
+        "Produced 50+ commercial videos with average view count of 100K+",
+        "Increased client engagement rates by 65% through creative storytelling",
+        "Built portfolio serving industries from real estate to tech startups",
+        "Reduced production time by 30% through workflow optimization",
+        "Won 3 regional awards for creative excellence"
+      ],
+      "learnings": "Content production taught me that technical skills must be balanced with storytelling ability. Understanding client goals and audience psychology is as important as mastering the tools.",
+      "timeline": "January 2023 - Present",
+      "teamSize": "Varied: 1-5 person crews depending on project",
+      "images": ["/images/drone-footage.jpg", "/images/studio-setup.jpg"],
+      "metrics": {
+        "videosProduced": "50+",
+        "averageViews": "100K+",
+        "clientEngagement": "+65%",
+        "productionEfficiency": "+30%"
+      }
+    }
   },
   {
     "id": 6,
@@ -71,6 +180,28 @@
     "tags": ["Game Testing", "Quality Assurance", "Bug Tracking", "Team Collaboration"],
     "link": "#",
     "domain": "Quality & Process",
-    "details": "Detailed information about Quality Assurance Excellence. This could include challenges, solutions, and outcomes."
+    "details": {
+      "challenge": "AAA game development involves complex systems that must work flawlessly across multiple platforms. With millions of potential players, even minor bugs can significantly impact user experience and brand reputation.",
+      "role": "Senior QA Analyst, responsible for test planning, execution, and coordinating with development teams to ensure quality standards.",
+      "approach": "Implemented systematic testing methodologies including automated regression testing, performance profiling, and user experience validation. Created comprehensive test documentation and established best practices for bug reporting.",
+      "technologies": ["JIRA", "TestRail", "Unity Test Framework", "Python", "Selenium", "Performance Profilers", "Console Dev Kits"],
+      "outcomes": [
+        "Identified and helped resolve 500+ bugs before release",
+        "Achieved 0 critical bugs in post-launch for 2 major titles",
+        "Reduced testing cycle time by 25% through automation",
+        "Mentored 5 junior QA analysts who went on to senior roles",
+        "Developed testing framework adopted company-wide"
+      ],
+      "learnings": "Quality assurance taught me the importance of attention to detail and systematic thinking. The ability to see products from the user's perspective and anticipate edge cases is invaluable across all domains.",
+      "timeline": "June 2022 - March 2023",
+      "teamSize": "15 person QA team",
+      "images": ["/images/qa-lab.jpg", "/images/bug-tracking.jpg"],
+      "metrics": {
+        "bugsIdentified": "500+",
+        "criticalPostLaunch": "0",
+        "efficiencyGain": "+25%",
+        "teamMentored": "5 analysts"
+      }
+    }
   }
 ]

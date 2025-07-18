@@ -1,23 +1,11 @@
 import { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import clsx from 'clsx'
 import Modal from './Modal' // Import the Modal component
 import projectsData from '../../content/projects.json' // Import projects data
-
-interface Project {
-  id: number
-  title: string
-  company: string
-  description: string
-  impact: string
-  image: string
-  tags: string[]
-  link: string
-  featured?: boolean
-  domain: string
-  details: string // Add details field
-}
+import type { Project } from '../types/projects'
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null)
@@ -32,7 +20,7 @@ const Projects = () => {
   })
 
   useEffect(() => {
-    setProjects(projectsData)
+    setProjects(projectsData as unknown as Project[])
   }, [])
   
   const { scrollYProgress } = useScroll({
@@ -191,16 +179,29 @@ const Projects = () => {
                     </div>
                     
                     {/* View Project Button */}
-                    <motion.button
-                      onClick={() => openModal(project)}
-                      className="inline-flex items-center text-apple-blue hover:text-apple-blue-hover transition-colors duration-300"
-                      whileHover={{ x: 5 }}
-                    >
-                      <span className="mr-2">Explore Details</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </motion.button>
+                    <div className="flex items-center gap-3">
+                      <motion.button
+                        onClick={() => openModal(project)}
+                        className="inline-flex items-center text-apple-blue hover:text-apple-blue-hover transition-colors duration-300"
+                        whileHover={{ x: 5 }}
+                      >
+                        <span className="mr-2">Quick View</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                      </motion.button>
+                      
+                      <Link
+                        to={`/project/${project.id}`}
+                        className="inline-flex items-center text-apple-gray-400 hover:text-white transition-colors duration-300"
+                      >
+                        <span className="mr-2">Full Details</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -214,9 +215,11 @@ const Projects = () => {
           isOpen={isModalOpen}
           onClose={closeModal}
           title={selectedProject.title}
-        >
-          <p>{selectedProject.details}</p>
-        </Modal>
+          company={selectedProject.company}
+          details={selectedProject.details}
+          tags={selectedProject.tags}
+          domain={selectedProject.domain}
+        />
       )}
     </section>
   )
