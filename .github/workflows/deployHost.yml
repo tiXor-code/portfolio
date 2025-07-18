@@ -42,6 +42,6 @@ jobs:
 
       - name: Debug
         run: |
-          ssh -p ${{ secrets.HOSTINGER_PORT }} \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
-            'ls -R public_html'
+         ssh -p ${{ secrets.HOSTINGER_PORT }} \
+           ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
+           'head -n 20 public_html/index.html'
