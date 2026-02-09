@@ -24,6 +24,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   body {
@@ -31,22 +33,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Custom scrollbar - minimal and elegant */
+  /* Hide scrollbar completely for scroll-snap */
   ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-text-secondary/30 rounded-full;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-text-secondary/50;
+    display: none;
   }
 
   /* Selection styling */

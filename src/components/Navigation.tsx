@@ -1,32 +1,33 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const navigation = [
-  { name: 'About', href: '#about' },
-  { name: 'Journey', href: '#journey' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Tech Stack', href: '#tech' },
-  { name: 'Contact', href: '#contact' },
+interface NavigationProps {
+  screens: Array<{ id: string; label: string }>
+  scrollToScreen: (index: number) => void
+  currentScreen: number
+}
+
+const keyScreens = [
+  { name: 'About', screenId: 'about' },
+  { name: 'Journey', screenId: 'play-for-democracy' },
+  { name: 'Projects', screenId: 'projects' },
+  { name: 'Tech Stack', screenId: 'tech-stack' },
+  { name: 'Contact', screenId: 'contact' },
 ]
 
-export default function Navigation() {
+export default function Navigation({ screens, scrollToScreen, currentScreen }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    setIsScrolled(currentScreen > 0)
+  }, [currentScreen])
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (screenId: string) => {
     setIsMobileMenuOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    const screenIndex = screens.findIndex(screen => screen.id === screenId)
+    if (screenIndex !== -1) {
+      scrollToScreen(screenIndex)
     }
   }
 
@@ -45,7 +46,7 @@ export default function Navigation() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => handleNavClick('#hero')}
+            onClick={() => handleNavClick('hero')}
             className="text-xl font-bold text-text-primary hover:text-accent-blue transition-colors duration-300"
           >
             TCL
@@ -53,13 +54,13 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item, index) => (
+            {keyScreens.map((item, index) => (
               <motion.button
                 key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                onClick={() => handleNavClick(item.href)}
+                onClick={() => handleNavClick(item.screenId)}
                 className="text-text-secondary hover:text-text-primary transition-colors duration-300 animated-underline"
               >
                 {item.name}
@@ -108,13 +109,13 @@ export default function Navigation() {
             className="md:hidden glass border-t border-border-subtle"
           >
             <div className="container-content py-6">
-              {navigation.map((item, index) => (
+              {keyScreens.map((item, index) => (
                 <motion.button
                   key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={() => handleNavClick(item.screenId)}
                   className="block w-full text-left py-3 text-text-secondary hover:text-text-primary transition-colors duration-300"
                 >
                   {item.name}

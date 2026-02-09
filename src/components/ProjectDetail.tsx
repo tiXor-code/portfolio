@@ -1,7 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import Navigation from './Navigation'
+// import Navigation from './Navigation'
 import projectsData from '../../content/projects.json'
 import type { Project } from '../types/projects'
 
@@ -43,7 +43,7 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-apple-black">
-      <Navigation />
+      {/* <Navigation /> */}
       
       {/* Hero Section */}
       <motion.section 
