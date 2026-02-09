@@ -9,6 +9,15 @@ export default defineConfig({
     host: 'localhost'
   },
   build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'animations': ['framer-motion'],
+          'router': ['react-router-dom']
+        }
+      }
+    },
     chunkSizeWarningLimit: 700
   }
 })

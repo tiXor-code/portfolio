@@ -57,10 +57,16 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <nav className={clsx(
-        'mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between transition-all duration-500',
-        scrolled && 'glass-effect-dark rounded-full py-3 px-6'
-      )}>
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-apple-blue focus:text-white focus:rounded-lg">
+        Skip to main content
+      </a>
+      <nav 
+        aria-label="Main navigation"
+        className={clsx(
+          'mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between transition-all duration-500',
+          scrolled && 'glass-effect-dark rounded-full py-3 px-6'
+        )}
+      >
         {isProjectPage ? (
           <Link
             to="/"
@@ -85,6 +91,7 @@ const Navigation = () => {
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
+              aria-current={!isProjectPage && activeSection === item.href.slice(1) ? 'page' : undefined}
               className={clsx(
                 'text-sm font-medium transition-colors duration-300',
                 !isProjectPage && activeSection === item.href.slice(1)

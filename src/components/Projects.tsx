@@ -65,12 +65,11 @@ const Projects = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-4">
-            Cross-Domain <span className="text-gradient">Impact</span>
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-4 text-apple-white">
+            Recent <span className="text-gradient">Work</span>
           </h2>
-          <p className="text-lg text-apple-gray-300 text-center mb-12 max-w-3xl mx-auto">
-            Real achievements across industries, showcasing adaptability and consistent excellence. 
-            Each project represents a unique challenge conquered through versatile expertise.
+          <p className="text-lg text-apple-gray-200 text-center mb-12 max-w-3xl mx-auto">
+            Things I've built, shipped, or significantly contributed to. Each with actual results you can verify.
           </p>
           
           {/* Domain Filter */}
@@ -81,7 +80,7 @@ const Projects = () => {
                 "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 !selectedDomain 
                   ? "bg-apple-blue text-white" 
-                  : "glass-effect text-apple-gray-300 hover:bg-white/10"
+                  : "glass-effect text-apple-gray-200 hover:bg-white/10"
               )}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -96,7 +95,7 @@ const Projects = () => {
                   "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                   selectedDomain === domain 
                     ? "bg-apple-blue text-white" 
-                    : "glass-effect text-apple-gray-300 hover:bg-white/10"
+                    : "glass-effect text-apple-gray-200 hover:bg-white/10"
                 )}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -159,7 +158,7 @@ const Projects = () => {
                   <div className="p-6">
                     <div className="text-sm text-apple-blue mb-2">{project.company}</div>
                     <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-apple-gray-300 mb-3 line-clamp-2">{project.description}</p>
+                    <p className="text-apple-gray-200 mb-3 line-clamp-2">{project.description}</p>
                     
                     {/* Impact Metric */}
                     <div className="mb-4 p-3 bg-apple-blue/10 rounded-lg">
@@ -171,7 +170,7 @@ const Projects = () => {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 text-xs font-medium bg-apple-gray-800/50 text-apple-gray-300 rounded-full"
+                          className="px-3 py-1 text-xs font-medium bg-apple-gray-800/50 text-apple-gray-200 rounded-full"
                         >
                           {tag}
                         </span>
@@ -194,7 +193,7 @@ const Projects = () => {
                       
                       <Link
                         to={`/project/${project.id}`}
-                        className="inline-flex items-center text-apple-gray-400 hover:text-white transition-colors duration-300"
+                        className="inline-flex items-center text-apple-gray-300 hover:text-white transition-colors duration-300"
                       >
                         <span className="mr-2">Full Details</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
