@@ -4,7 +4,7 @@ import './styles/globals.css'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import About from './components/About'
-import Experience from './components/Experience'
+import Journey from './components/Journey'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Contact from './components/Contact'
@@ -21,7 +21,7 @@ function HomePage() {
       <main className="relative z-10">
         <Hero />
         <About />
-        <Experience />
+        <Journey />
         <Projects />
         <TechStack />
         <Contact />
