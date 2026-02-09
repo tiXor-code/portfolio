@@ -1,110 +1,133 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
-const About = () => {
-  const sectionRef = useRef<HTMLElement>(null)
+const stats = [
+  {
+    value: '5+',
+    label: 'Years Experience',
+    description: 'Building games & digital experiences'
+  },
+  {
+    value: '10M+',
+    label: 'Players Reached',
+    description: 'Through EA FC Ultimate Team'
+  },
+  {
+    value: '6+',
+    label: 'Projects Shipped',
+    description: 'From mobile games to AAA titles'
+  },
+  {
+    value: '2+',
+    label: 'Platforms',
+    description: 'iOS, Android, PC, Console'
+  }
+]
+
+export default function About() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2
   })
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  })
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
-  
-  const toolsAndTech = [
-    {
-      category: "Development",
-      tools: ["React", "Next.js", "TypeScript", "Tailwind", "Vite"]
-    },
-    {
-      category: "Design",
-      tools: ["Figma", "Adobe Premiere", "After Effects"]
-    },
-    {
-      category: "Tools",
-      tools: ["n8n", "SQL", "Jira", "Git", "Confluence"]
-    },
-    {
-      category: "Game Dev",
-      tools: ["Unity", "Unreal Engine", "C#"]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
     }
-  ]
-  
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
+  }
+
   return (
-    <section
-      ref={sectionRef}
-      id="about"
-      className="relative py-32 px-6"
-    >
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="about" className="section-padding bg-bg-primary">
+      <div className="container-content">
         <motion.div
           ref={ref}
-          style={{ y }}
-          className="space-y-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="max-w-4xl mx-auto"
         >
-          {/* Section Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-apple-white">About</h2>
+          {/* Section header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-display font-bold text-text-primary mb-4">
+              About Me
+            </h2>
+            <div className="w-12 h-1 bg-accent-blue mx-auto rounded-full" />
           </motion.div>
 
           {/* Bio */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="max-w-4xl mx-auto"
-          >
-            <p className="text-lg text-apple-gray-200 leading-relaxed text-center">
-              I got into tech because of games. Started at Ubisoft in QA, moved to EA where I work on FC Ultimate Team as an Assistant Content Producer. On the side, I produced Vote It! - a mobile democracy game that shipped on iOS and Android with 2K+ downloads and got me invited to Brussels by the European Commission.
+          <motion.div variants={itemVariants} className="text-center mb-20">
+            <p className="text-body text-text-secondary leading-relaxed text-balance max-w-3xl mx-auto">
+              I'm a game producer and developer with a passion for creating experiences that matter. Currently at Electronic Arts working on FC Ultimate Team, I analyze player behavior to help shape content strategy for millions of players worldwide. My journey spans from indie game development to AAA production, with a focus on using data and creativity to build better games.
             </p>
-            <p className="text-lg text-apple-gray-200 leading-relaxed text-center mt-6">
-              I build things with React, Next.js, and Figma. I automate boring tasks with n8n. I'm based in Bucharest and I'm always looking for interesting problems to solve.
+            <p className="text-body text-text-secondary leading-relaxed text-balance max-w-3xl mx-auto mt-6">
+              When I'm not diving into player analytics, you'll find me exploring AI automation tools, prototyping new game ideas, or collaborating with teams to bring interactive experiences to life.
             </p>
           </motion.div>
 
-          {/* Tools & Tech Grid */}
+          {/* Stats grid */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="max-w-5xl mx-auto"
+            variants={itemVariants}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            <h3 className="text-2xl font-semibold text-center mb-8">Tools & Tech</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {toolsAndTech.map((group, groupIndex) => (
-                <motion.div
-                  key={group.category}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + groupIndex * 0.1 }}
-                  className="text-center"
-                >
-                  <h4 className="text-lg font-medium text-apple-gray-200 mb-4">{group.category}</h4>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {group.tools.map((tool, toolIndex) => (
-                      <motion.span
-                        key={tool}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.3, delay: 0.4 + groupIndex * 0.1 + toolIndex * 0.05 }}
-                        whileHover={{ scale: 1.05 }}
-                        className="px-3 py-1 bg-apple-gray-800/50 text-apple-gray-300 rounded-full text-sm border border-apple-gray-700/50 hover:border-apple-blue/50 hover:bg-apple-blue/10 transition-all cursor-default"
-                      >
-                        {tool}
-                      </motion.span>
-                    ))}
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                className="text-center group cursor-default"
+              >
+                <div className="glass p-6 rounded-xl transition-all duration-300 group-hover:border-accent-blue/50">
+                  <div className="text-display font-bold text-accent-blue mb-2">
+                    {stat.value}
                   </div>
-                </motion.div>
+                  <div className="text-text-primary font-medium mb-1">
+                    {stat.label}
+                  </div>
+                  <div className="text-small text-text-secondary">
+                    {stat.description}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Skills highlight */}
+          <motion.div variants={itemVariants} className="mt-16 text-center">
+            <p className="text-small text-text-secondary mb-4">
+              Specializing in
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                'Game Production',
+                'Data Analytics',
+                'Team Leadership',
+                'React Development',
+                'AI Automation',
+                'Unity Engine'
+              ].map((skill, index) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                  className="glass px-4 py-2 text-small text-text-primary rounded-full"
+                >
+                  {skill}
+                </motion.span>
               ))}
             </div>
           </motion.div>
@@ -113,5 +136,3 @@ const About = () => {
     </section>
   )
 }
-
-export default About

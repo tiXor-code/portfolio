@@ -1,105 +1,125 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
-const Hero = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  })
-  
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+export default function Hero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  const scrollToAbout = () => {
+    const element = document.querySelector('#about')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
-    <section
-      ref={sectionRef}
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      <motion.div
-        style={{ y, opacity }}
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Subtle gradient background with mouse parallax */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, #0066FF 0%, transparent 50%)`,
+        }}
+      />
+      
+      <div className="container-content text-center z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          {/* Name */}
+          <motion.h1 
+            className="hero-text mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            Teodor-Cristian
+            <br />
+            <span className="text-gradient">Lutoiu</span>
+          </motion.h1>
+
+          {/* One-liner subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-title text-text-secondary max-w-3xl mx-auto text-balance mb-16"
+          >
+            Game Producer & Developer at EA, crafting experiences that connect millions of players worldwide
+          </motion.p>
+
+          {/* Current role badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="inline-flex items-center glass px-6 py-3 rounded-full text-small"
+          >
+            <div className="w-2 h-2 bg-accent-blue rounded-full mr-3 animate-pulse" />
+            <span className="text-text-secondary">Currently at</span>
+            <span className="ml-2 text-text-primary font-medium">Electronic Arts</span>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.button
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+        transition={{ duration: 0.8, delay: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={scrollToAbout}
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-text-secondary hover:text-text-primary transition-colors duration-300 group"
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-white"
-        >
-          Teodor-Cristian Lutoiu
-        </motion.h1>
-        
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-2xl md:text-3xl text-blue-300 font-medium mb-6"
-        >
-          Game Producer & Developer
-        </motion.h2>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-        >
-          Currently at EA. Previously shipped mobile games, built AI automation workflows, and broke things at Ubisoft.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
-        >
-          <motion.a
-            href="#projects"
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-colors duration-300 shadow-lg hover:shadow-blue-500/25"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            See my work
-          </motion.a>
-          
-          <motion.a
-            href="#contact"
-            className="px-8 py-4 border-2 border-gray-400 hover:border-white text-gray-300 hover:text-white font-semibold rounded-full transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get in touch
-          </motion.a>
-        </motion.div>
-      </motion.div>
-      
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center cursor-pointer"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-        >
+        <div className="flex flex-col items-center">
+          <span className="text-small mb-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+            Scroll to explore
+          </span>
           <motion.div
-            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-      </motion.div>
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-current rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0], opacity: [0, 1, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1 h-3 bg-current rounded-full mt-2"
+            />
+          </motion.div>
+        </div>
+      </motion.button>
+
+      {/* Subtle parallax elements */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-blue/10 to-transparent rounded-full blur-3xl"
+        animate={{ 
+          x: mousePosition.x * 0.1, 
+          y: mousePosition.y * 0.1 
+        }}
+        transition={{ type: 'spring', stiffness: 100 }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/5 to-transparent rounded-full blur-3xl"
+        animate={{ 
+          x: -mousePosition.x * 0.05, 
+          y: -mousePosition.y * 0.05 
+        }}
+        transition={{ type: 'spring', stiffness: 50 }}
+      />
     </section>
   )
 }
-
-export default Hero

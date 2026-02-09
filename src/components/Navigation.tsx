@@ -1,124 +1,129 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import clsx from 'clsx'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const Navigation = () => {
-  const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
-  const location = useLocation()
-  const isProjectPage = location.pathname.startsWith('/project/')
+const navigation = [
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Tech Stack', href: '#tech' },
+  { name: 'Contact', href: '#contact' },
+]
+
+export default function Navigation() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-      
-      // Update active section based on scroll position (only on home page)
-      if (!isProjectPage) {
-        const sections = ['hero', 'about', 'projects', 'contact']
-        for (const section of sections) {
-          const element = document.getElementById(section)
-          if (element) {
-            const rect = element.getBoundingClientRect()
-            if (rect.top <= 100 && rect.bottom >= 100) {
-              setActiveSection(section)
-              break
-            }
-          }
-        }
-      }
+      setIsScrolled(window.scrollY > 50)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isProjectPage])
-  
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ]
+  }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (isProjectPage) {
-      // If on project page, navigate to home page with hash
-      e.preventDefault()
-      window.location.href = '/' + href
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false)
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   return (
     <motion.header
-      className={clsx(
-        'fixed top-0 w-full z-50 transition-all duration-500',
-        scrolled ? 'py-4' : 'py-6'
-      )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-600 ${
+        isScrolled ? 'glass backdrop-blur-subtle' : ''
+      }`}
     >
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-apple-blue focus:text-white focus:rounded-lg">
-        Skip to main content
-      </a>
-      <nav 
-        aria-label="Main navigation"
-        className={clsx(
-          'mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between transition-all duration-500',
-          scrolled && 'glass-effect-dark rounded-full py-3 px-6'
-        )}
-      >
-        {isProjectPage ? (
-          <Link
-            to="/"
-            className="text-xl font-bold tracking-tight hover:text-apple-blue transition-colors"
-          >
-            TCL
-          </Link>
-        ) : (
-          <motion.a
-            href="#hero"
-            className="text-xl font-bold tracking-tight"
+      <nav className="container-content">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => handleNavClick('#hero')}
+            className="text-xl font-bold text-text-primary hover:text-accent-blue transition-colors duration-300"
           >
             TCL
-          </motion.a>
-        )}
-        
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <motion.a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              aria-current={!isProjectPage && activeSection === item.href.slice(1) ? 'page' : undefined}
-              className={clsx(
-                'text-sm font-medium transition-colors duration-300',
-                !isProjectPage && activeSection === item.href.slice(1)
-                  ? 'text-apple-blue'
-                  : 'text-apple-gray-300 hover:text-apple-white'
-              )}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-            >
-              {item.name}
-            </motion.a>
-          ))}
-          
-          <motion.a
-            href="https://drive.google.com/file/d/1PRUAyB4xNXOS6iGj_1fRA_jF08JEozNR/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-4 px-4 py-2 bg-apple-blue text-white text-sm font-medium rounded-full hover:bg-apple-blue-hover transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
+          </motion.button>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navigation.map((item, index) => (
+              <motion.button
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onClick={() => handleNavClick(item.href)}
+                className="text-text-secondary hover:text-text-primary transition-colors duration-300 animated-underline"
+              >
+                {item.name}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
             whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 relative"
           >
-            Download CV
-          </motion.a>
+            <motion.span
+              animate={{
+                rotate: isMobileMenuOpen ? 45 : 0,
+                y: isMobileMenuOpen ? 0 : -4,
+              }}
+              className="w-6 h-0.5 bg-text-primary transform transition-all duration-300"
+            />
+            <motion.span
+              animate={{
+                opacity: isMobileMenuOpen ? 0 : 1,
+              }}
+              className="w-6 h-0.5 bg-text-primary my-1 transition-all duration-300"
+            />
+            <motion.span
+              animate={{
+                rotate: isMobileMenuOpen ? -45 : 0,
+                y: isMobileMenuOpen ? -2 : 4,
+              }}
+              className="w-6 h-0.5 bg-text-primary transform transition-all duration-300"
+            />
+          </motion.button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden glass border-t border-border-subtle"
+          >
+            <div className="container-content py-6">
+              {navigation.map((item, index) => (
+                <motion.button
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  onClick={() => handleNavClick(item.href)}
+                  className="block w-full text-left py-3 text-text-secondary hover:text-text-primary transition-colors duration-300"
+                >
+                  {item.name}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }
-
-export default Navigation
