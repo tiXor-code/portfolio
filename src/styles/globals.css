@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.journey-slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 @layer base {
   :root {
     --font-size-base: 18px;
