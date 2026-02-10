@@ -8,6 +8,7 @@ interface JourneyChapter {
   description: string
   image?: string
   imagePosition?: string
+  video?: string
   gradient: string
 }
 
@@ -18,6 +19,7 @@ const journeyChapters: JourneyChapter[] = [
     subtitle: "BSc in Computer Games, Design and Development",
     description: "Where the interest in games became a career path.",
     image: "university-worcester.jpg",
+    video: "university-bg.mp4",
     gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
@@ -43,6 +45,7 @@ const journeyChapters: JourneyChapter[] = [
     subtitle: "QA Tester, Rainbow Six Siege",
     description: "Started by breaking games professionally.",
     image: "rainbow-six-siege.jpg",
+    video: "ubisoft-bg.mp4",
     gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
@@ -59,6 +62,7 @@ const journeyChapters: JourneyChapter[] = [
     subtitle: "Assistant Content Producer, EA FC",
     description: "Now I ship to millions. Ultimate Team.",
     image: "ea-fc.jpg",
+    video: "ea-bg.mp4",
     gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
@@ -67,13 +71,24 @@ const journeyChapters: JourneyChapter[] = [
     subtitle: "AI & Beyond",
     description: "Building things that didn't exist yesterday.",
     image: "ai-future.jpg",
+    video: "ai-bg.mp4",
     gradient: "from-black/70 via-black/50 to-black/70"
   }
 ]
 
 function ChapterSlide({ chapter, index }: { chapter: JourneyChapter; index: number }) {
   const ref = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const isInView = useInView(ref, { amount: 0.5 })
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    if (isInView) {
+      videoRef.current.play().catch(() => {})
+    } else {
+      videoRef.current.pause()
+    }
+  }, [isInView])
 
   return (
     <div
@@ -81,7 +96,22 @@ function ChapterSlide({ chapter, index }: { chapter: JourneyChapter; index: numb
       className="journey-slide relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background */}
-      {chapter.image ? (
+      {chapter.video ? (
+        <div className="absolute inset-0">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={chapter.image ? `${import.meta.env.BASE_URL}images/journey/${chapter.image}` : undefined}
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={`${import.meta.env.BASE_URL}images/journey/${chapter.video}`} type="video/mp4" />
+          </video>
+          <div className={`absolute inset-0 bg-gradient-to-br ${chapter.gradient}`} />
+        </div>
+      ) : chapter.image ? (
         <div className="absolute inset-0">
           <motion.div
             className="absolute inset-0 bg-cover"
