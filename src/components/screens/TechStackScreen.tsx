@@ -1,11 +1,22 @@
+import { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 export default function TechStackScreen() {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   })
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    if (inView) {
+      videoRef.current.play().catch(() => {})
+    } else {
+      videoRef.current.pause()
+    }
+  }, [inView])
 
   const techCategories = [
     {
@@ -51,16 +62,18 @@ export default function TechStackScreen() {
 
   return (
     <div ref={ref} className="relative screen-content px-8">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <div
-          className="w-full h-full animate-gradient-shift"
-          style={{
-            background: 'linear-gradient(-45deg, #0a0a2e, #1a0a3e, #0a1a3e, #0a0a1e)',
-            backgroundSize: '400% 400%',
-          }}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          src="/images/journey/techstack-bg.mp4"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}

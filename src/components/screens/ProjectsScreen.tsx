@@ -1,26 +1,39 @@
+import { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import projectsData from '../../data/projects.json'
 
 export default function ProjectsScreen() {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   })
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    if (inView) {
+      videoRef.current.play().catch(() => {})
+    } else {
+      videoRef.current.pause()
+    }
+  }, [inView])
 
   // Get featured projects and limit to 6 for one screen
   const featuredProjects = projectsData.filter(project => project.featured).slice(0, 6)
 
   return (
     <div ref={ref} className="relative screen-content px-8">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <div
-          className="w-full h-full animate-gradient-shift-slow"
-          style={{
-            background: 'linear-gradient(-45deg, #0d1117, #161b22, #0d1b2a, #1b2838)',
-            backgroundSize: '400% 400%',
-          }}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          src="/images/journey/projects-bg.mp4"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
       </div>
