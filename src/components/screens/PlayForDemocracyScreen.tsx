@@ -14,7 +14,7 @@ export default function PlayForDemocracyScreen() {
         <div
           className="w-full h-full bg-cover ken-burns"
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/play-for-democracy-banner.jpg)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/play-for-democracy-banner.jpg?v=2)`,
             backgroundPosition: 'center 20%',
           }}
         />
