@@ -99,22 +99,6 @@ export default function WhatsNextScreen() {
         </motion.div>
 
         {/* Animated Arrow */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={inView ? { 
-            opacity: 1, 
-            x: 0,
-            rotate: [0, 5, -5, 0]
-          } : { opacity: 0, x: -20 }}
-          transition={{ 
-            duration: 0.8, 
-            delay: 1,
-            rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="mt-12 flex justify-center"
-        >
-          <div className="text-4xl">→</div>
-        </motion.div>
       </motion.div>
     </div>
   )
