@@ -66,6 +66,19 @@ export default function Navigation({ screens, scrollToScreen, currentScreen }: N
                 {item.name}
               </motion.button>
             ))}
+            <motion.a
+              href="https://drive.google.com/file/d/1PRUAyB4xNXOS6iGj_1fRA_jF08JEozNR/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: keyScreens.length * 0.1 }}
+              className="ml-4 px-4 py-2 bg-accent-blue text-white text-sm font-medium rounded-full hover:opacity-90 transition-opacity duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Download CV
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
