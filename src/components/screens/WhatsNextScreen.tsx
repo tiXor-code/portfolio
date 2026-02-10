@@ -1,19 +1,45 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useRef, useEffect } from 'react'
 
 export default function WhatsNextScreen() {
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.3,
   })
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (!videoRef.current) return
+    if (inView) {
+      videoRef.current.play().catch(() => {})
+    } else {
+      videoRef.current.pause()
+    }
+  }, [inView])
 
   return (
-    <div ref={ref} className="screen-content gradient-forward">
+    <div ref={ref} className="relative screen-content">
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src={`${import.meta.env.BASE_URL}images/journey/ai-bg.mp4`} type="video/mp4" />
+        </video>
+        <div className="bg-overlay" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-center max-w-4xl"
+        className="screen-content text-center max-w-4xl"
       >
         {/* Title */}
         <motion.h2
