@@ -7,6 +7,7 @@ interface JourneyChapter {
   subtitle: string
   description: string
   image?: string
+  imagePosition?: string
   gradient: string
 }
 
@@ -16,7 +17,8 @@ const journeyChapters: JourneyChapter[] = [
     title: "University",
     subtitle: "BSc in Computer Games, Design and Development",
     description: "Where the interest in games became a career path.",
-    gradient: "from-slate-900 via-blue-900/50 to-slate-900"
+    image: "university-worcester.jpg",
+    gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
     id: 2,
@@ -24,6 +26,7 @@ const journeyChapters: JourneyChapter[] = [
     subtitle: "Producer & Game Designer",
     description: "Producer on a game built to get Gen Z to vote. Team of 8, backed by the EU.",
     image: "play-for-democracy-banner.jpg",
+    imagePosition: "center 70%",
     gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
@@ -39,7 +42,8 @@ const journeyChapters: JourneyChapter[] = [
     title: "Ubisoft",
     subtitle: "QA Tester, Rainbow Six Siege",
     description: "Started by breaking games professionally.",
-    gradient: "from-gray-900 via-slate-800/50 to-gray-900"
+    image: "rainbow-six-siege.jpg",
+    gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
     id: 5,
@@ -54,14 +58,16 @@ const journeyChapters: JourneyChapter[] = [
     title: "EA",
     subtitle: "Assistant Content Producer, EA FC",
     description: "Now I ship to millions. Ultimate Team.",
-    gradient: "from-slate-900 via-blue-800/30 to-slate-900"
+    image: "ea-fc.jpg",
+    gradient: "from-black/70 via-black/50 to-black/70"
   },
   {
     id: 7,
     title: "What's Next",
     subtitle: "AI & Beyond",
     description: "Building things that didn't exist yesterday.",
-    gradient: "from-indigo-900 via-purple-900/50 to-black"
+    image: "ai-future.jpg",
+    gradient: "from-black/70 via-black/50 to-black/70"
   }
 ]
 
@@ -78,9 +84,10 @@ function ChapterSlide({ chapter, index }: { chapter: JourneyChapter; index: numb
       {chapter.image ? (
         <div className="absolute inset-0">
           <motion.div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover"
             style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/${chapter.image})`
+              backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/${chapter.image})`,
+              backgroundPosition: chapter.imagePosition || 'center'
             }}
             animate={{
               scale: isInView ? 1.08 : 1
