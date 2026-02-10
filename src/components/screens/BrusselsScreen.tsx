@@ -15,7 +15,7 @@ export default function BrusselsScreen() {
           className="w-full h-full bg-cover ken-burns"
           style={{
             backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/eu-parliament-group.jpg)`,
-            backgroundPosition: 'center 60%',
+            backgroundPosition: 'center 35%',
           }}
         />
         <div className="bg-overlay" />

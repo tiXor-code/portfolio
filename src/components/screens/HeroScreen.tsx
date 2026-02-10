@@ -12,7 +12,8 @@ export default function HeroScreen() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <div
-          className="w-full h-full bg-cover bg-center"
+          className="w-full h-full bg-cover"
+          style={{ backgroundPosition: 'center 30%' }}
           style={{
             backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/brussels-street.jpg)`,
           }}
