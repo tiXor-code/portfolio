@@ -18,7 +18,7 @@ export default function ProjectsScreen() {
         <div
           className="w-full h-full bg-cover bg-center"
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/projects-bg.jpg)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/earth-bg.jpg)`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />

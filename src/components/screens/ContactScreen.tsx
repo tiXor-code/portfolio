@@ -29,12 +29,22 @@ export default function ContactScreen() {
   ]
 
   return (
-    <div ref={ref} className="screen-content gradient-dark">
+    <div ref={ref} className="relative screen-content">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <div
+          className="w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/nebula-bg.jpg)`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black/90" />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-center max-w-2xl"
+        className="relative z-10 text-center max-w-2xl"
       >
         {/* Title */}
         <motion.h2

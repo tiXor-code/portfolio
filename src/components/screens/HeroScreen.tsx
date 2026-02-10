@@ -8,12 +8,23 @@ export default function HeroScreen() {
   })
 
   return (
-    <div ref={ref} className="screen-content gradient-dark">
+    <div ref={ref} className="relative screen-content">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <div
+          className="w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/brussels-street.jpg)`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-center"
+        className="relative z-10 text-center"
       >
         {/* Current Position Badge */}
         <motion.div

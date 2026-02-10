@@ -10,32 +10,32 @@ export default function TechStackScreen() {
   const techCategories = [
     {
       title: "Analytics & Data",
-      tools: ["Excel", "SQL", "Tableau", "Python"],
+      tools: ["Excel", "SQL", "Tableau", "Python", "Google Analytics", "Power BI", "BigQuery"],
       color: "blue"
     },
     {
       title: "Game Development",
-      tools: ["Unity", "Unreal Engine", "C#", "C++"],
+      tools: ["Unity", "Unreal Engine", "C#", "C++", "Perforce", "Game Design Docs"],
       color: "purple"
     },
     {
       title: "Production Tools", 
-      tools: ["Jira", "Confluence", "Slack", "Notion"],
+      tools: ["Jira", "Confluence", "Slack", "Notion", "Monday.com", "Trello", "Google Workspace"],
       color: "green"
     },
     {
       title: "Design & Content",
-      tools: ["Figma", "Adobe Suite", "Miro", "Canva"],
+      tools: ["Figma", "Adobe Suite", "Miro", "Canva", "Photoshop", "Premiere Pro", "WordPress"],
       color: "orange"
     },
     {
       title: "Web & Frontend",
-      tools: ["React", "TypeScript", "Tailwind", "Next.js"],
+      tools: ["React", "TypeScript", "Tailwind", "Next.js", "HTML/CSS", "JavaScript", "Vite", "Vercel", "Supabase"],
       color: "cyan"
     },
     {
       title: "AI & Automation",
-      tools: ["ChatGPT API", "n8n", "Zapier", "Claude"],
+      tools: ["ChatGPT API", "n8n", "Zapier", "Claude", "OpenAI API", "Midjourney", "Stable Diffusion"],
       color: "pink"
     }
   ]
@@ -50,12 +50,22 @@ export default function TechStackScreen() {
   }
 
   return (
-    <div ref={ref} className="screen-content gradient-dark px-8">
+    <div ref={ref} className="relative screen-content px-8">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <div
+          className="w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/nebula-bg.jpg)`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85" />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-center max-w-6xl w-full"
+        className="relative z-10 text-center max-w-6xl w-full"
       >
         {/* Title */}
         <motion.h2
