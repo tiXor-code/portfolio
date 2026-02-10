@@ -16,9 +16,10 @@ export default function ProjectsScreen() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <div
-          className="w-full h-full bg-cover bg-center"
+          className="w-full h-full animate-gradient-shift-slow"
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}images/earth-bg.jpg)`,
+            background: 'linear-gradient(-45deg, #0d1117, #161b22, #0d1b2a, #1b2838)',
+            backgroundSize: '400% 400%',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />

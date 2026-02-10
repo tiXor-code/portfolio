@@ -54,9 +54,10 @@ export default function TechStackScreen() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <div
-          className="w-full h-full bg-cover bg-center"
+          className="w-full h-full animate-gradient-shift"
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}images/nebula-bg.jpg)`,
+            background: 'linear-gradient(-45deg, #0a0a2e, #1a0a3e, #0a1a3e, #0a0a1e)',
+            backgroundSize: '400% 400%',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85" />

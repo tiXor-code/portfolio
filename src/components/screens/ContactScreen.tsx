@@ -33,12 +33,13 @@ export default function ContactScreen() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <div
-          className="w-full h-full bg-cover bg-center"
+          className="w-full h-full bg-cover"
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/brussels-street.jpg)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/contact-bg.jpg)`,
+            backgroundPosition: 'center 30%',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
