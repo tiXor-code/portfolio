@@ -41,18 +41,6 @@ export default function EAScreen() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className="screen-content text-center max-w-4xl"
       >
-        {/* EA Logo Placeholder */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
-        >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-lg">
-            <span className="text-2xl font-bold text-white">EA</span>
-          </div>
-        </motion.div>
-
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
