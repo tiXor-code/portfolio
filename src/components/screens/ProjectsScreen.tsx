@@ -12,12 +12,23 @@ export default function ProjectsScreen() {
   const featuredProjects = projectsData.filter(project => project.featured).slice(0, 6)
 
   return (
-    <div ref={ref} className="screen-content gradient-dark px-8">
+    <div ref={ref} className="relative screen-content px-8">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <div
+          className="w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/projects-bg.jpg)`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-center max-w-6xl w-full"
+        className="relative z-10 text-center max-w-6xl w-full"
       >
         {/* Title */}
         <motion.h2
@@ -58,7 +69,7 @@ export default function ProjectsScreen() {
               <p className="text-sm text-blue-300 mb-2">{project.company}</p>
 
               {/* Description */}
-              <p className="text-sm text-gray-300 mb-3 line-clamp-2">
+              <p className="text-sm text-gray-300 mb-3">
                 {project.description}
               </p>
 
@@ -67,7 +78,7 @@ export default function ProjectsScreen() {
                 {project.impact}
               </p>
 
-              {/* Tags (show only first 2 on small cards) */}
+              {/* Tags */}
               <div className="mt-3 flex flex-wrap gap-1">
                 {project.tags.slice(0, 2).map(tag => (
                   <span 
