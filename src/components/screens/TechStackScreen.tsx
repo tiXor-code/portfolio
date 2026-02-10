@@ -71,7 +71,7 @@ export default function TechStackScreen() {
           loop
           playsInline
           className="w-full h-full object-cover"
-          src="/images/journey/techstack-bg.mp4"
+          src={`${import.meta.env.BASE_URL}images/journey/techstack-bg.mp4`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
       </div>
