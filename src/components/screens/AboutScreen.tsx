@@ -1,11 +1,20 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useRef, useEffect } from 'react'
 
 export default function AboutScreen() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   })
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const { ref: viewRef, inView: isVisible } = useInView({ threshold: 0.2 })
+
+  useEffect(() => {
+    if (videoRef.current) {
+      isVisible ? videoRef.current.play().catch(() => {}) : videoRef.current.pause()
+    }
+  }, [isVisible])
 
   const stats = [
     { value: '3+', label: 'Years Experience' },
@@ -15,12 +24,26 @@ export default function AboutScreen() {
   ]
 
   return (
-    <div ref={ref} className="screen-content gradient-dark">
+    <div ref={(el) => { ref(el); viewRef(el) }} className="relative screen-content">
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          src={`${import.meta.env.BASE_URL}images/journey/about-bg.mp4`}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-center max-w-4xl"
+        className="relative z-10 text-center max-w-4xl"
       >
         {/* Title */}
         <motion.h2
