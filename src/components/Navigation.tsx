@@ -77,7 +77,7 @@ export default function Navigation({ screens, scrollToScreen, currentScreen }: N
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Download CV
+              View CV
             </motion.a>
           </div>
 
