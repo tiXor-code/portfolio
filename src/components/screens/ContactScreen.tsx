@@ -35,7 +35,7 @@ export default function ContactScreen() {
         <div
           className="w-full h-full bg-cover bg-center"
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}images/nebula-bg.jpg)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/brussels-street.jpg)`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black/90" />

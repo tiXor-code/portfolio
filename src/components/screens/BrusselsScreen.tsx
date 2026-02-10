@@ -13,9 +13,9 @@ export default function BrusselsScreen() {
       <div className="absolute inset-0">
         <div
           className="w-full h-full bg-cover ken-burns"
-          style={{ backgroundPosition: 'center 60%' }}
           style={{
             backgroundImage: `url(${import.meta.env.BASE_URL}images/journey/eu-parliament-group.jpg)`,
+            backgroundPosition: 'center 60%',
           }}
         />
         <div className="bg-overlay" />
