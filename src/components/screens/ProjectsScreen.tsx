@@ -33,7 +33,7 @@ export default function ProjectsScreen() {
           loop
           playsInline
           className="w-full h-full object-cover"
-          src={`${import.meta.env.BASE_URL}images/journey/projects-bg.mp4?v=2`}
+          src={`${import.meta.env.BASE_URL}images/journey/projects-bg.mp4?v=3`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
       </div>
