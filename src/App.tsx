@@ -78,9 +78,22 @@ function HomePage() {
     }
   }, [])
 
+  // Check for reduced motion preference and handle video autoplay
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      // Pause all videos if user prefers reduced motion
+      const videos = document.querySelectorAll('video[autoplay]')
+      videos.forEach(video => {
+        const videoElement = video as HTMLVideoElement
+        videoElement.pause()
+      })
+    }
+  }, [])
+
   return (
     <div className="relative">
-      {/* Subtle grain texture */}
+      {/* Enhanced grain texture */}
       <div className="grain fixed inset-0 pointer-events-none z-10" />
       
       {/* Navigation */}
@@ -93,28 +106,35 @@ function HomePage() {
         onScreenClick={scrollToScreen} 
       />
       
-      {/* Scroll Snap Container */}
-      <div className="scroll-snap-container">
+      {/* Main Content */}
+      <main className="scroll-snap-container">
         {screens.map((screen) => {
           const ScreenComponent = screen.component
+          const isHero = screen.id === 'hero'
+          const isContact = screen.id === 'contact'
+          
+          // Use semantic HTML elements
+          const Tag = isHero ? 'section' : isContact ? 'footer' : 'section'
+          
           return (
-            <div
+            <Tag
               key={screen.id}
               id={screen.id}
               className="screen-snap"
+              aria-labelledby={`${screen.id}-heading`}
             >
               <ScreenComponent />
-            </div>
+            </Tag>
           )
         })}
-      </div>
+      </main>
     </div>
   )
 }
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router basename="/wip3/">
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
