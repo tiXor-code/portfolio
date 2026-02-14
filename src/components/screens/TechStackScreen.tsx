@@ -75,6 +75,8 @@ export default function TechStackScreen() {
           muted
           loop
           playsInline
+          width="1920"
+          height="1080"
           className="w-full h-full object-cover"
           src={`${import.meta.env.BASE_URL}images/journey/techstack-bg.mp4`}
         />

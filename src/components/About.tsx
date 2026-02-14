@@ -90,7 +90,7 @@ export default function About() {
                 whileHover={{ scale: 1.05 }}
                 className="text-center group cursor-default"
               >
-                <div className="glass p-6 rounded-xl transition-all duration-300 group-hover:border-accent-blue/50">
+                <div className="glass p-6 rounded-xl transition-colors duration-300 group-hover:border-accent-blue/50">
                   <div className="text-display font-bold text-accent-blue mb-2">
                     {stat.value}
                   </div>

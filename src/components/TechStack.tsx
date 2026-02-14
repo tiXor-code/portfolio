@@ -133,7 +133,7 @@ export default function TechStack() {
                       }}
                       className="group cursor-default"
                     >
-                      <div className="glass p-6 rounded-xl text-center card-hover group-hover:border-accent-blue/50 transition-all duration-300">
+                      <div className="glass p-6 rounded-xl text-center card-hover group-hover:border-accent-blue/50 transition-colors duration-300">
                         {/* Icon */}
                         <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                           {tool.icon}

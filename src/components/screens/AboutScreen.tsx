@@ -38,6 +38,8 @@ export default function AboutScreen() {
           muted
           loop
           playsInline
+          width="1920"
+          height="1080"
           className="w-full h-full object-cover"
           src={`${import.meta.env.BASE_URL}images/journey/about-bg.mp4`}
           aria-hidden="true"

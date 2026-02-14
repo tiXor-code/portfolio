@@ -1,140 +1,77 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './styles/globals.css'
-import './styles/scroll-snap.css'
 
-import Navigation from './components/Navigation'
-import ProgressDots from './components/ProgressDots'
-import HeroScreen from './components/screens/HeroScreen'
-import AboutScreen from './components/screens/AboutScreen'
-import UniversityScreen from './components/screens/UniversityScreen'
-import PlayForDemocracyScreen from './components/screens/PlayForDemocracyScreen'
-import BrusselsScreen from './components/screens/BrusselsScreen'
-import UbisoftScreen from './components/screens/UbisoftScreen'
-import LeadershipSchoolScreen from './components/screens/LeadershipSchoolScreen'
-import EAScreen from './components/screens/EAScreen'
-import WhatsNextScreen from './components/screens/WhatsNextScreen'
-import ProjectsScreen from './components/screens/ProjectsScreen'
-import TechStackScreen from './components/screens/TechStackScreen'
-import ContactScreen from './components/screens/ContactScreen'
-
-const screens = [
-  { id: 'hero', label: 'Hero', component: HeroScreen },
-  { id: 'about', label: 'About', component: AboutScreen },
-  { id: 'university', label: 'University', component: UniversityScreen },
-  { id: 'play-for-democracy', label: 'Play For Democracy', component: PlayForDemocracyScreen },
-  { id: 'brussels', label: 'Brussels', component: BrusselsScreen },
-  { id: 'ubisoft', label: 'Ubisoft', component: UbisoftScreen },
-  { id: 'leadership-school', label: 'Leadership School', component: LeadershipSchoolScreen },
-  { id: 'ea', label: 'EA', component: EAScreen },
-  { id: 'whats-next', label: 'What\'s Next', component: WhatsNextScreen },
-  { id: 'projects', label: 'Projects', component: ProjectsScreen },
-  { id: 'tech-stack', label: 'Tech Stack', component: TechStackScreen },
-  { id: 'contact', label: 'Contact', component: ContactScreen },
-]
+// Import the new editorial components
+import EditorialNavigation from './components/EditorialNavigation'
+import EditorialHero from './components/EditorialHero'
+import EditorialAbout from './components/EditorialAbout'
+import EditorialJourney from './components/EditorialJourney'
+import EditorialProjects from './components/EditorialProjects'
+import EditorialTechStack from './components/EditorialTechStack'
+import EditorialContact from './components/EditorialContact'
 
 function HomePage() {
-  const [currentScreen, setCurrentScreen] = useState(0)
-
-  const scrollToScreen = (index: number) => {
-    const element = document.getElementById(screens[index].id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0,
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const screenIndex = screens.findIndex(screen => screen.id === entry.target.id)
-          if (screenIndex !== -1) {
-            setCurrentScreen(screenIndex)
-          }
-        }
-      })
-    }, observerOptions)
-
-    screens.forEach(screen => {
-      const element = document.getElementById(screen.id)
-      if (element) {
-        observer.observe(element)
-      }
-    })
-
-    return () => {
-      screens.forEach(screen => {
-        const element = document.getElementById(screen.id)
-        if (element) {
-          observer.unobserve(element)
-        }
-      })
-    }
-  }, [])
-
-  // Check for reduced motion preference and handle video autoplay
+  // Handle reduced motion preference
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) {
-      // Pause all videos if user prefers reduced motion
-      const videos = document.querySelectorAll('video[autoplay]')
-      videos.forEach(video => {
-        const videoElement = video as HTMLVideoElement
-        videoElement.pause()
-      })
+      document.body.classList.add('reduce-motion')
     }
   }, [])
 
   return (
-    <div className="relative">
-      {/* Enhanced grain texture */}
-      <div className="grain fixed inset-0 pointer-events-none z-10" />
-      
+    <div className="min-h-screen bg-bg-primary">
+      {/* Skip to content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent-primary text-text-inverse px-4 py-2 rounded-lg z-[9999] transition-all"
+      >
+        Skip to main content
+      </a>
+
       {/* Navigation */}
-      <Navigation screens={screens} scrollToScreen={scrollToScreen} currentScreen={currentScreen} />
-      
-      {/* Progress Dots */}
-      <ProgressDots 
-        screens={screens} 
-        currentScreen={currentScreen} 
-        onScreenClick={scrollToScreen} 
-      />
-      
+      <EditorialNavigation />
+
       {/* Main Content */}
-      <main className="scroll-snap-container">
-        {screens.map((screen) => {
-          const ScreenComponent = screen.component
-          const isHero = screen.id === 'hero'
-          const isContact = screen.id === 'contact'
-          
-          // Use semantic HTML elements
-          const Tag = isHero ? 'section' : isContact ? 'footer' : 'section'
-          
-          return (
-            <Tag
-              key={screen.id}
-              id={screen.id}
-              className="screen-snap"
-              aria-labelledby={`${screen.id}-heading`}
-            >
-              <ScreenComponent />
-            </Tag>
-          )
-        })}
+      <main id="main-content" className="relative">
+        {/* Hero Section */}
+        <section id="hero" className="relative">
+          <EditorialHero />
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="section-padding">
+          <EditorialAbout />
+        </section>
+
+        {/* Journey Section */}
+        <section id="journey" className="section-padding bg-bg-secondary">
+          <EditorialJourney />
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="section-padding">
+          <EditorialProjects />
+        </section>
+
+        {/* Tech Stack Section */}
+        <section id="tech" className="section-padding bg-bg-secondary">
+          <EditorialTechStack />
+        </section>
       </main>
+
+      {/* Footer/Contact */}
+      <footer id="contact" className="section-padding bg-editorial-near-black">
+        <EditorialContact />
+      </footer>
     </div>
   )
 }
 
 function App() {
   return (
-    <Router basename="/wip3/">
+    <Router basename="/wip4/">
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>

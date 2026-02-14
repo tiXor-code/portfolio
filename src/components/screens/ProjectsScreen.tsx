@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import projectsData from '../../data/projects.json'
 
 const GamepadIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
     <path d="M4 10c0-2 1.5-3.5 3.5-3.5h9c2 0 3.5 1.5 3.5 3.5v1c0 3-1 6-2.5 8-.5 1-1.5 1-2 0L14 15h-4l-1.5 4c-.5 1-1.5 1-2 0C5 17 4 14 4 11v-1z"/>
     <line x1="7" y1="10" x2="10" y2="10"/><line x1="8.5" y1="8.5" x2="8.5" y2="11.5"/>
     <circle cx="15.5" cy="9.5" r="1"/><circle cx="17.5" cy="11.5" r="1"/>
@@ -12,32 +12,32 @@ const GamepadIcon = () => (
 )
 
 const CodeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
     <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
   </svg>
 )
 
 const VideoIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
     <rect x="2" y="4" width="15" height="16" rx="2"/><path d="M17 8l5-3v14l-5-3V8z"/>
   </svg>
 )
 
 const BrainIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
     <path d="M12 3c-3 0-5 2-5 4.5 0 1.5.5 2.5 1.5 3.5-1.5.5-2.5 2-2.5 3.5 0 2 1.5 3.5 3.5 3.5h.5c.5 1.5 2 2.5 3.5 2.5h-1.5"/>
     <path d="M12 3c3 0 5 2 5 4.5 0 1.5-.5 2.5-1.5 3.5 1.5.5 2.5 2 2.5 3.5 0 2-1.5 3.5-3.5 3.5h-.5c-.5 1.5-2 2.5-3.5 2.5h1.5"/>
   </svg>
 )
 
 const BugIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
     <rect x="8" y="6" width="8" height="14" rx="4"/><path d="M6 10H2"/><path d="M22 10h-4"/><path d="M6 18H2"/><path d="M22 18h-4"/><path d="M6 14H2"/><path d="M22 14h-4"/><path d="M10 6V4"/><path d="M14 6V4"/>
   </svg>
 )
 
 const LeaderIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
     <path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/>
   </svg>
 )
@@ -88,6 +88,8 @@ export default function ProjectsScreen() {
           muted
           loop
           playsInline
+          width="1920"
+          height="1080"
           className="w-full h-full object-cover"
           src={`${import.meta.env.BASE_URL}images/journey/projects-bg.mp4?v=3`}
         />

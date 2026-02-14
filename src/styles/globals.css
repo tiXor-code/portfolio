@@ -1,18 +1,10 @@
-/* Import Fonts */
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.journey-slide {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
 @layer base {
   :root {
-    --font-size-base: 18px;
+    --font-size-base: 17px;
   }
 
   * {
@@ -27,14 +19,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
   }
 
   body {
     @apply bg-bg-primary text-text-primary font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1, "kern" 1;
   }
 
   /* Screen reader only */
@@ -61,18 +52,30 @@
     white-space: normal;
   }
 
-  /* Hide scrollbar completely for scroll-snap */
+  /* Scrollbar styling for editorial feel */
   ::-webkit-scrollbar {
-    display: none;
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-editorial-light-gray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-editorial-dark-gray rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-editorial-charcoal;
   }
 
   /* Selection styling */
   ::selection {
-    @apply bg-accent-primary/20 text-text-primary;
+    @apply bg-accent-light text-text-primary;
   }
 
   ::-moz-selection {
-    @apply bg-accent-primary/20 text-text-primary;
+    @apply bg-accent-light text-text-primary;
   }
 
   /* Focus styles */
@@ -81,7 +84,7 @@
   }
 
   :focus-visible {
-    @apply ring-2 ring-accent-primary ring-offset-2 ring-offset-bg-primary rounded;
+    @apply ring-2 ring-accent-primary ring-offset-2 ring-offset-bg-primary rounded-lg;
   }
 
   /* Reduced motion support */
@@ -92,43 +95,75 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-    
-    /* Also pause video autoplay */
-    video {
-      animation-play-state: paused !important;
-    }
   }
 }
 
 @layer components {
-  /* Glass morphism effect */
-  .glass {
-    @apply backdrop-blur-subtle bg-surface-elevated/60 border border-border-subtle;
+  /* Editorial Typography */
+  .editorial-headline {
+    @apply text-headline font-display font-black text-text-primary;
+    line-height: 0.9;
+    letter-spacing: -0.025em;
   }
 
-  /* Gradient text with warmer colors */
-  .text-gradient {
-    @apply bg-gradient-to-r from-text-primary via-accent-primary to-accent-warm bg-clip-text text-transparent;
-    background-size: 200% 100%;
-    animation: gradient 3s ease-in-out infinite;
+  .editorial-title {
+    @apply text-title font-display font-bold text-text-primary;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 
-  /* Premium button styles with improved specificity */
+  .editorial-subtitle {
+    @apply text-subtitle font-sans font-medium text-text-secondary;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .editorial-body {
+    @apply text-body font-sans text-text-primary;
+    line-height: 1.65;
+  }
+
+  .editorial-caption {
+    @apply text-caption font-sans font-medium text-text-tertiary uppercase tracking-wider;
+  }
+
+  /* Editorial pull quote */
+  .pull-quote {
+    @apply text-title font-display font-semibold text-accent-primary italic;
+    line-height: 1.2;
+    quotes: """ """;
+  }
+
+  .pull-quote::before {
+    content: open-quote;
+  }
+
+  .pull-quote::after {
+    content: close-quote;
+  }
+
+  /* Editorial buttons */
   .btn-primary {
-    @apply relative overflow-hidden bg-accent-primary hover:bg-accent-primary-hover text-white font-medium px-8 py-3 rounded-lg;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-    @apply hover:shadow-lg hover:shadow-accent-primary/25 hover:scale-105 active:scale-95;
+    @apply relative inline-flex items-center px-8 py-3 bg-accent-primary hover:bg-accent-primary-hover text-text-inverse font-medium rounded-lg transition-all duration-300;
+    @apply hover:shadow-lg hover:shadow-accent-primary/20 hover:scale-105 active:scale-95;
   }
 
   .btn-secondary {
-    @apply relative overflow-hidden border border-border-subtle hover:border-text-secondary text-text-primary hover:text-text-primary font-medium px-8 py-3 rounded-lg;
-    transition: border-color 0.3s, background-color 0.3s, transform 0.2s;
-    @apply hover:bg-surface-elevated hover:scale-105 active:scale-95;
+    @apply relative inline-flex items-center px-8 py-3 border-2 border-text-primary hover:border-accent-primary text-text-primary hover:text-accent-primary font-medium rounded-lg transition-all duration-300;
+    @apply hover:scale-105 active:scale-95;
   }
 
-  /* Content container */
+  .btn-ghost {
+    @apply relative inline-flex items-center px-6 py-2 text-text-primary hover:text-accent-primary font-medium transition-colors duration-300;
+  }
+
+  /* Content containers */
   .container-content {
     @apply max-w-content mx-auto px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply max-w-narrow mx-auto px-6;
   }
 
   /* Section spacing */
@@ -136,108 +171,173 @@
     @apply py-section;
   }
 
-  /* Animated underline */
-  .animated-underline {
-    @apply relative;
+  .section-padding-sm {
+    @apply py-section-sm;
   }
 
-  .animated-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent-primary;
-    transition: width 0.3s ease;
+  /* Magazine grid layouts */
+  .grid-magazine {
+    @apply grid grid-cols-magazine gap-6 lg:gap-8;
   }
 
-  .animated-underline:hover::after {
-    @apply w-full;
+  .grid-editorial {
+    @apply grid grid-cols-editorial gap-8 lg:gap-12;
   }
 
-  /* Card hover effect */
-  .card-hover {
-    transform-origin: center;
-    transition: transform 0.6s, box-shadow 0.6s;
-  }
-  
-  .card-hover:hover {
-    @apply scale-105 shadow-2xl shadow-accent-primary/10;
+  .grid-asymmetric {
+    @apply grid grid-cols-asymmetric gap-8 lg:gap-12;
   }
 
-  /* Stagger animation utility */
-  .stagger-item {
+  /* Image treatments */
+  .img-editorial {
+    @apply w-full object-cover;
+  }
+
+  .img-hero {
+    @apply w-full h-[60vh] lg:h-[70vh] object-cover;
+  }
+
+  .img-feature {
+    @apply w-full aspect-editorial object-cover;
+  }
+
+  .img-portrait {
+    @apply w-full aspect-portrait object-cover;
+  }
+
+  /* Animated elements */
+  .animate-on-scroll {
     @apply opacity-0 translate-y-8;
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 1s ease-out forwards;
   }
 
-  .stagger-item:nth-child(1) { animation-delay: 0ms; }
-  .stagger-item:nth-child(2) { animation-delay: 100ms; }
-  .stagger-item:nth-child(3) { animation-delay: 200ms; }
-  .stagger-item:nth-child(4) { animation-delay: 300ms; }
-  .stagger-item:nth-child(5) { animation-delay: 400ms; }
-  .stagger-item:nth-child(6) { animation-delay: 500ms; }
+  .animate-on-scroll.delay-100 { animation-delay: 100ms; }
+  .animate-on-scroll.delay-200 { animation-delay: 200ms; }
+  .animate-on-scroll.delay-300 { animation-delay: 300ms; }
+  .animate-on-scroll.delay-400 { animation-delay: 400ms; }
+  .animate-on-scroll.delay-500 { animation-delay: 500ms; }
 
-  /* Hero text effect with display font */
-  .hero-text {
-    @apply text-hero font-display font-bold text-text-primary;
-    line-height: 0.85;
+  /* Stats display */
+  .stat-number {
+    @apply text-display font-display font-black text-accent-primary;
+    font-variant-numeric: tabular-nums;
+    line-height: 0.9;
     letter-spacing: -0.03em;
   }
 
-  /* Stats numbers with tabular nums */
-  .stat-number {
-    font-variant-numeric: tabular-nums;
+  .stat-label {
+    @apply editorial-caption text-text-secondary;
   }
 
-  /* Enhanced grain texture */
-  .grain {
-    position: relative;
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-400;
+    @apply hover:scale-105 hover:shadow-xl hover:shadow-black/5;
   }
 
-  .grain::before {
+  .hover-underline {
+    @apply relative;
+  }
+
+  .hover-underline::after {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.08;
-    background-image: 
-      radial-gradient(circle at 25% 25%, #fafafa 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, #fafafa 1px, transparent 1px),
-      radial-gradient(circle at 50% 50%, rgba(255, 122, 95, 0.3) 0.5px, transparent 0.5px);
-    background-size: 60px 60px, 60px 60px, 30px 30px;
-    animation: grain 20s linear infinite;
-    pointer-events: none;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent-primary transition-all duration-300;
   }
 
-  /* Elegant scroll indicator */
-  .scroll-indicator {
-    @apply w-px h-12 bg-gradient-to-b from-transparent via-accent-primary to-transparent;
-    position: relative;
-    overflow: hidden;
+  .hover-underline:hover::after {
+    @apply w-full;
   }
 
-  .scroll-indicator::after {
+  /* Dividers */
+  .editorial-divider {
+    @apply w-full h-px bg-border-subtle my-section-sm;
+  }
+
+  .editorial-divider-thick {
+    @apply w-full h-0.5 bg-accent-primary my-section;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply relative text-text-primary hover:text-accent-primary font-medium transition-colors duration-300;
+  }
+
+  .nav-link.active {
+    @apply text-accent-primary;
+  }
+
+  .nav-link::after {
     content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(255, 122, 95, 0.8), transparent);
-    animation: scroll-pulse 2s ease-in-out infinite;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Progress indicator */
+  .progress-indicator {
+    @apply fixed top-0 left-0 w-full h-1 bg-border-subtle z-50;
+  }
+
+  .progress-bar {
+    @apply h-full bg-accent-primary transition-all duration-300;
+  }
+
+  /* Magazine-style text treatments */
+  .drop-cap {
+    @apply float-left text-display font-display font-black leading-none mr-2 mt-1;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Project cards */
+  .project-card {
+    @apply bg-bg-elevated border border-border-subtle rounded-lg overflow-hidden hover-lift;
+  }
+
+  /* Timeline styles */
+  .timeline-item {
+    @apply relative pl-8 pb-8;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute left-0 top-2 w-3 h-3 bg-accent-primary rounded-full;
+  }
+
+  .timeline-item::after {
+    content: '';
+    @apply absolute left-1.5 top-5 w-px h-full bg-border-subtle;
+  }
+
+  .timeline-item:last-child::after {
+    display: none;
   }
 }
 
 @layer utilities {
   /* Animation delays */
+  .delay-75 { animation-delay: 75ms; }
   .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-1000 { animation-delay: 1000ms; }
 
-  /* Text balance for better typography */
+  /* Text utilities */
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
   }
 
   /* Hide scrollbar but keep functionality */
@@ -249,49 +349,31 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-}
 
-/* Keyframes */
-@keyframes gradient {
-  0%, 100% {
-    background-position: 0% 50%;
+  /* Aspect ratio utilities for editorial layouts */
+  .aspect-editorial {
+    aspect-ratio: 4 / 3;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-}
 
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
-}
+  .aspect-landscape {
+    aspect-ratio: 3 / 2;
+  }
 
-@keyframes scroll-pulse {
-  0%, 100% {
-    transform: translateY(-100%);
-    opacity: 0;
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
   }
-  50% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  /* Overscroll behavior */
+  .overscroll-contain {
+    overscroll-behavior: contain;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* Touch action */
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+
+  .touch-pan-y {
+    touch-action: pan-y;
   }
 }
