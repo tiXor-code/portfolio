@@ -58,7 +58,7 @@ export default function UniversityScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-blue-300 mb-8"
+          className="screen-subtitle text-accent-primary mb-8"
         >
           University of Worcester, 2017-2022
         </motion.p>
@@ -80,9 +80,9 @@ export default function UniversityScreen() {
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-12 flex justify-center"
         >
-          <div className="w-24 h-24 border-2 border-blue-500/30 rounded-full flex items-center justify-center">
-            <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-              <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
+          <div className="w-24 h-24 border-2 border-accent-primary/30 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-accent-primary/20 rounded-full flex items-center justify-center">
+              <div className="w-6 h-6 bg-accent-primary rounded-full"></div>
             </div>
           </div>
         </motion.div>

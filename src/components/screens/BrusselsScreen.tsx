@@ -42,7 +42,7 @@ export default function BrusselsScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-blue-300 mb-8"
+          className="screen-subtitle text-accent-primary mb-8"
         >
           European Parliament
         </motion.p>
@@ -64,8 +64,8 @@ export default function BrusselsScreen() {
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-12"
         >
-          <div className="inline-flex items-center justify-center w-20 h-20 border-2 border-yellow-400 rounded-full">
-            <span className="text-3xl font-bold text-yellow-400">23</span>
+          <div className="inline-flex items-center justify-center w-20 h-20 border-2 border-accent-warm rounded-full">
+            <span className="text-3xl font-bold text-accent-warm">23</span>
           </div>
           <p className="text-gray-300 mt-4 text-sm">Years old when invited</p>
         </motion.div>

@@ -29,7 +29,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, #0066FF 0%, transparent 50%)`,
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, #FF7A5F 0%, transparent 50%)`,
         }}
       />
       
@@ -69,7 +69,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="inline-flex items-center glass px-6 py-3 rounded-full text-small"
           >
-            <div className="w-2 h-2 bg-accent-blue rounded-full mr-3 animate-pulse" />
+            <div className="w-2 h-2 bg-accent-primary rounded-full mr-3 animate-pulse" />
             <span className="text-text-secondary">Currently at</span>
             <span className="ml-2 text-text-primary font-medium">Electronic Arts</span>
           </motion.div>
@@ -106,7 +106,7 @@ export default function Hero() {
 
       {/* Subtle parallax elements */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-blue/10 to-transparent rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-primary/10 to-transparent rounded-full blur-3xl"
         animate={{ 
           x: mousePosition.x * 0.1, 
           y: mousePosition.y * 0.1 
@@ -114,7 +114,7 @@ export default function Hero() {
         transition={{ type: 'spring', stiffness: 100 }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/5 to-transparent rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-accent-warm/5 to-transparent rounded-full blur-3xl"
         animate={{ 
           x: -mousePosition.x * 0.05, 
           y: -mousePosition.y * 0.05 

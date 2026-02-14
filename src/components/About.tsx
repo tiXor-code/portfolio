@@ -65,7 +65,7 @@ export default function About() {
             <h2 className="text-display font-bold text-text-primary mb-4">
               About Me
             </h2>
-            <div className="w-12 h-1 bg-accent-blue mx-auto rounded-full" />
+            <div className="w-12 h-1 bg-accent-primary mx-auto rounded-full" />
           </motion.div>
 
           {/* Bio */}
@@ -90,8 +90,8 @@ export default function About() {
                 whileHover={{ scale: 1.05 }}
                 className="text-center group cursor-default"
               >
-                <div className="glass p-6 rounded-xl transition-colors duration-300 group-hover:border-accent-blue/50">
-                  <div className="text-display font-bold text-accent-blue mb-2">
+                <div className="glass p-6 rounded-xl transition-colors duration-300 group-hover:border-accent-primary/50">
+                  <div className="text-display font-bold text-accent-primary mb-2">
                     {stat.value}
                   </div>
                   <div className="text-text-primary font-medium mb-1">

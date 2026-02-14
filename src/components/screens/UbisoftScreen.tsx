@@ -58,7 +58,7 @@ export default function UbisoftScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-blue-300 mb-8"
+          className="screen-subtitle text-accent-primary mb-8"
         >
           QA Tester, Rainbow Six Siege
         </motion.p>
@@ -97,9 +97,9 @@ export default function UbisoftScreen() {
           transition={{ duration: 1, delay: 1 }}
           className="mt-12 flex justify-center"
         >
-          <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-          <div className="w-2 h-2 bg-red-500 rounded-full mx-4 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-          <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+          <div className="w-2 h-2 bg-accent-primary rounded-full animate-pulse"></div>
+          <div className="w-2 h-2 bg-accent-primary rounded-full mx-4 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-2 h-2 bg-accent-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
         </motion.div>
       </motion.div>
     </div>

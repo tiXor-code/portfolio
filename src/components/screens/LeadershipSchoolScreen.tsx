@@ -41,7 +41,7 @@ export default function LeadershipSchoolScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-blue-300 mb-8"
+          className="screen-subtitle text-accent-primary mb-8"
         >
           Leaders Foundation
         </motion.p>
@@ -75,7 +75,7 @@ export default function LeadershipSchoolScreen() {
                 repeatType: "reverse",
                 repeatDelay: 2
               }}
-              className="w-3 h-3 bg-blue-400 rounded-full"
+              className="w-3 h-3 bg-accent-primary rounded-full"
             />
           ))}
         </motion.div>

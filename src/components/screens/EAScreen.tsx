@@ -58,7 +58,7 @@ export default function EAScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-blue-300 mb-8"
+          className="screen-subtitle text-accent-primary mb-8"
         >
           Assistant Content Producer, EA FC
         </motion.p>
@@ -81,11 +81,11 @@ export default function EAScreen() {
           className="grid grid-cols-2 gap-8 max-w-md mx-auto"
         >
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400 mb-2">10M+</div>
+            <div className="text-3xl font-bold text-accent-primary mb-2">10M+</div>
             <div className="text-sm text-gray-400 uppercase tracking-wide">Active Players</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400 mb-2">Live</div>
+            <div className="text-3xl font-bold text-accent-primary mb-2">Live</div>
             <div className="text-sm text-gray-400 uppercase tracking-wide">Service</div>
           </div>
         </motion.div>
@@ -97,7 +97,7 @@ export default function EAScreen() {
           transition={{ duration: 0.8, delay: 1 }}
           className="mt-12"
         >
-          <span className="px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium">
+          <span className="px-4 py-2 bg-accent-primary/20 border border-accent-primary/30 rounded-full text-accent-primary text-sm font-medium">
             Current Role
           </span>
         </motion.div>

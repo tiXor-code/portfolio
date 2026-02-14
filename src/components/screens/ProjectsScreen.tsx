@@ -52,13 +52,13 @@ function getProjectIcon(domain: string) {
 }
 
 function getProjectColor(domain: string) {
-  if (domain.includes('Gaming')) return 'text-blue-400 bg-blue-500/20'
-  if (domain.includes('Creative')) return 'text-pink-400 bg-pink-500/20'
-  if (domain.includes('AI')) return 'text-purple-400 bg-purple-500/20'
-  if (domain.includes('Quality')) return 'text-yellow-400 bg-yellow-500/20'
-  if (domain.includes('Leadership')) return 'text-green-400 bg-green-500/20'
-  if (domain.includes('Technical')) return 'text-cyan-400 bg-cyan-500/20'
-  return 'text-blue-400 bg-blue-500/20'
+  if (domain.includes('Gaming')) return 'text-accent-primary bg-accent-primary/20'
+  if (domain.includes('Creative')) return 'text-accent-warm bg-accent-warm/20'
+  if (domain.includes('AI')) return 'text-accent-primary bg-accent-primary/20'
+  if (domain.includes('Quality')) return 'text-accent-warm bg-accent-warm/20'
+  if (domain.includes('Leadership')) return 'text-accent-primary bg-accent-primary/20'
+  if (domain.includes('Technical')) return 'text-accent-warm bg-accent-warm/20'
+  return 'text-accent-primary bg-accent-primary/20'
 }
 
 export default function ProjectsScreen() {
@@ -134,7 +134,7 @@ export default function ProjectsScreen() {
                 {project.title}
               </h3>
 
-              <p className="text-sm text-blue-300 mb-2">{project.company}</p>
+              <p className="text-sm text-accent-primary mb-2">{project.company}</p>
 
               <p className="text-sm text-gray-300 mb-3">
                 {project.description}
@@ -155,7 +155,7 @@ export default function ProjectsScreen() {
                 ))}
               </div>
 
-              <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+              <div className="absolute inset-0 bg-accent-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
             </motion.div>
           ))}
         </motion.div>

@@ -22,48 +22,44 @@ export default function TechStackScreen() {
     {
       title: "Analytics & Data",
       tools: ["Excel", "SQL", "Tableau", "Python", "Google Analytics", "Power BI", "BigQuery"],
-      color: "blue",
+      color: "coral",
       primaryCount: 4
     },
     {
       title: "Game Development",
       tools: ["Unity", "Unreal Engine", "C#", "C++", "Perforce", "Game Design Docs"],
-      color: "purple",
+      color: "warm",
       primaryCount: 3
     },
     {
       title: "Production Tools", 
       tools: ["Jira", "Confluence", "Slack", "Notion", "Monday.com", "Trello", "Google Workspace"],
-      color: "green",
+      color: "coral",
       primaryCount: 4
     },
     {
       title: "Design & Content",
       tools: ["Figma", "Adobe Suite", "Miro", "Canva", "Photoshop", "Premiere Pro", "WordPress"],
-      color: "orange",
+      color: "warm",
       primaryCount: 3
     },
     {
       title: "Web & Frontend",
       tools: ["React", "TypeScript", "Tailwind", "Next.js", "HTML/CSS", "JavaScript", "Vite", "Vercel", "Supabase"],
-      color: "cyan",
+      color: "coral",
       primaryCount: 4
     },
     {
       title: "AI & Automation",
       tools: ["ChatGPT API", "n8n", "Zapier", "Claude", "OpenAI API", "Midjourney", "Stable Diffusion"],
-      color: "pink",
+      color: "warm",
       primaryCount: 3
     }
   ]
 
   const colorMap: Record<string, { card: string; tool: string; glow: string }> = {
-    blue: { card: "border-blue-500/30", tool: "bg-blue-500/20 text-blue-300 border-blue-500/30", glow: "hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] hover:border-blue-400/60" },
-    purple: { card: "border-purple-500/30", tool: "bg-purple-500/20 text-purple-300 border-purple-500/30", glow: "hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:border-purple-400/60" },
-    green: { card: "border-green-500/30", tool: "bg-green-500/20 text-green-300 border-green-500/30", glow: "hover:shadow-[0_0_25px_rgba(34,197,94,0.3)] hover:border-green-400/60" },
-    orange: { card: "border-orange-500/30", tool: "bg-orange-500/20 text-orange-300 border-orange-500/30", glow: "hover:shadow-[0_0_25px_rgba(249,115,22,0.3)] hover:border-orange-400/60" },
-    cyan: { card: "border-cyan-500/30", tool: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30", glow: "hover:shadow-[0_0_25px_rgba(6,182,212,0.3)] hover:border-cyan-400/60" },
-    pink: { card: "border-pink-500/30", tool: "bg-pink-500/20 text-pink-300 border-pink-500/30", glow: "hover:shadow-[0_0_25px_rgba(236,72,153,0.3)] hover:border-pink-400/60" },
+    coral: { card: "border-accent-primary/30", tool: "bg-accent-primary/20 text-accent-primary border-accent-primary/30", glow: "hover:shadow-[0_0_25px_rgba(255,122,95,0.3)] hover:border-accent-primary/60" },
+    warm: { card: "border-accent-warm/30", tool: "bg-accent-warm/20 text-accent-warm border-accent-warm/30", glow: "hover:shadow-[0_0_25px_rgba(255,179,71,0.3)] hover:border-accent-warm/60" },
   }
 
   return (
