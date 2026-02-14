@@ -150,13 +150,20 @@ html {
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
-  .screen-content {
-    padding: 1rem;
+  .scroll-snap-container {
+    scroll-snap-type: y proximity;
   }
 
   .screen-snap {
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .screen-content {
+    padding: 1rem;
+    height: auto;
+    min-height: 100vh;
   }
   
   .hero-title {
