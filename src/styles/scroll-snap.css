@@ -150,9 +150,12 @@ html {
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
+  .screen-snap {
+    padding-top: 4.5rem; /* account for fixed nav h-20 */
+  }
+
   .screen-content {
     padding: 0.5rem;
-    padding-top: 5rem; /* account for fixed nav h-20 = 80px */
   }
 
   .screen-content {
