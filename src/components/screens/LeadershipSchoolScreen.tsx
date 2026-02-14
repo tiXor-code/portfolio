@@ -21,7 +21,7 @@ export default function LeadershipSchoolScreen() {
       </div>
 
       <div className="screen-content">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
           {/* Clean, minimal approach - let the copy breathe */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

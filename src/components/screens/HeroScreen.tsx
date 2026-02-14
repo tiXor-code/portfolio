@@ -24,13 +24,13 @@ export default function HeroScreen() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-start justify-center h-full text-left max-w-4xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 flex flex-col items-start justify-center h-full text-left max-w-4xl mx-auto px-4 lg:px-6 lg:px-8">
         {/* Current Position Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={inView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-          className="inline-flex items-center px-4 py-2 bg-accent-primary/20 backdrop-blur-sm border border-accent-primary/30 rounded-full text-accent-primary text-sm font-medium mb-8 hover:bg-accent-primary/30"
+          className="inline-flex items-center px-4 py-2 bg-accent-primary/20 backdrop-blur-sm border border-accent-primary/30 rounded-full text-accent-primary text-sm font-medium mb-4 lg:mb-8 hover:bg-accent-primary/30"
           style={{ transition: 'background-color 0.3s' }}
         >
           <div className="w-2 h-2 bg-accent-primary rounded-full mr-3 animate-pulse" />

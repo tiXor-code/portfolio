@@ -82,7 +82,7 @@ export default function ProjectsScreen() {
   const regularProjects = allProjects.slice(2)
 
   return (
-    <div ref={ref} className="relative screen-content px-8">
+    <div ref={ref} className="relative screen-content px-4 lg:px-8">
       <div className="absolute inset-0">
         <video
           ref={videoRef}
@@ -110,7 +110,7 @@ export default function ProjectsScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-display font-bold text-white mb-4"
+            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-4"
             style={{ letterSpacing: '-0.02em' }}
           >
             Selected
@@ -136,7 +136,7 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 mb-3 lg:mb-6"
         >
           {featuredProjects.map((project, index) => (
             <motion.article
@@ -208,7 +208,7 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4"
         >
           {regularProjects.map((project, index) => (
             <motion.article

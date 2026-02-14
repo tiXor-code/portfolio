@@ -151,15 +151,33 @@ html {
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .screen-content {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .screen-snap {
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   
   .hero-title {
-    font-size: clamp(2.5rem, 10vw, 4rem);
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 1rem;
   }
   
   .screen-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .screen-subtitle {
+    font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+  }
+
+  .screen-description {
+    font-size: clamp(0.875rem, 1.3vw, 1rem);
   }
   
   .current-badge {

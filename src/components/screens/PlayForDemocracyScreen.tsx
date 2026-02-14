@@ -44,7 +44,7 @@ export default function PlayForDemocracyScreen() {
       </div>
 
       <div className="screen-content">
-        <div className="max-w-6xl mx-auto px-8 md:px-16 text-center">
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 md:px-16 text-center">
           {/* Title with better hierarchy */}
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -74,7 +74,7 @@ export default function PlayForDemocracyScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl text-gray-200 max-w-2xl mx-auto mb-16 leading-relaxed"
+            className="text-xl text-gray-200 max-w-2xl mx-auto mb-6 lg:mb-16 leading-relaxed"
           >
             Producer on a game built to get Gen Z to vote. 
             <span className="text-accent-warm font-medium"> Team of 8, backed by the EU.</span>
@@ -92,7 +92,7 @@ export default function PlayForDemocracyScreen() {
                   scale: 1.05,
                   transition: { duration: 0.3 }
                 }}
-                className={`glass p-8 rounded-xl text-center cursor-default group transition-all duration-300 ${
+                className={`glass p-4 lg:p-8 rounded-xl text-center cursor-default group transition-all duration-300 ${
                   stat.featured 
                     ? 'border-2 border-accent-warm/50 bg-accent-warm/10 md:scale-110' 
                     : 'hover:border-accent-primary/30'

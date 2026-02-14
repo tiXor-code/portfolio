@@ -78,7 +78,7 @@ export default function TechStackScreen() {
   }
 
   return (
-    <div ref={ref} className="relative screen-content px-8">
+    <div ref={ref} className="relative screen-content px-4 lg:px-8">
       <div className="absolute inset-0">
         <video
           ref={videoRef}
@@ -100,7 +100,7 @@ export default function TechStackScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-left mb-16"
+          className="text-left mb-6 lg:mb-16"
         >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -128,7 +128,7 @@ export default function TechStackScreen() {
         </motion.div>
 
         {/* Enhanced category grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
           {techCategories.map((category, categoryIndex) => {
             const colors = colorStyles[category.color as keyof typeof colorStyles]
             return (
@@ -138,7 +138,7 @@ export default function TechStackScreen() {
                 animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.95 }}
                 transition={{ duration: 0.8, delay: 0.6 + categoryIndex * 0.15, ease: 'easeOut' }}
                 whileHover={{ y: -6 }}
-                className={`glass p-6 rounded-2xl border transition-all duration-500 cursor-default ${colors.card} ${
+                className={`glass p-3 lg:p-6 rounded-2xl border transition-all duration-500 cursor-default ${colors.card} ${
                   category.featured ? 'lg:col-span-1 lg:row-span-1 border-accent-warm/40 bg-accent-warm/5' : ''
                 }`}
               >

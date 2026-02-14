@@ -68,7 +68,7 @@ export default function WhatsNextScreen() {
       </div>
 
       <div className="screen-content">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
           {/* Header section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -119,7 +119,7 @@ export default function WhatsNextScreen() {
               animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -30, y: 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="md:row-span-2 glass p-8 rounded-2xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-500 group"
+              className="md:row-span-2 glass p-4 lg:p-8 rounded-2xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-500 group"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="p-4 bg-accent-primary/20 rounded-xl text-accent-primary group-hover:scale-110 transition-transform duration-300">
@@ -166,7 +166,7 @@ export default function WhatsNextScreen() {
               animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 30, y: 30 }}
               transition={{ duration: 0.8, delay: 1.2 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="glass p-8 rounded-2xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-500 group"
+              className="glass p-4 lg:p-8 rounded-2xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-500 group"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="p-4 bg-accent-warm/20 rounded-xl text-accent-warm group-hover:scale-110 transition-transform duration-300">

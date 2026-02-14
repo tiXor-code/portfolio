@@ -47,13 +47,13 @@ export default function AboutScreen() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-black/80" />
       </div>
 
-      <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 grid lg:grid-cols-2 gap-6 lg:gap-16 items-center max-w-6xl mx-auto px-4 lg:px-8">
         {/* Content - Asymmetric layout */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-left space-y-8"
+          className="text-left space-y-3 lg:space-y-8"
         >
           {/* Title */}
           <motion.h2
@@ -120,13 +120,13 @@ export default function AboutScreen() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-              className="bg-surface-elevated/60 backdrop-blur-sm border border-border-subtle rounded-xl p-6 hover:bg-surface-elevated/80 hover:scale-105"
+              className="bg-surface-elevated/60 backdrop-blur-sm border border-border-subtle rounded-xl p-3 lg:p-6 hover:bg-surface-elevated/80 hover:scale-105"
               style={{ transition: 'background-color 0.3s, transform 0.3s' }}
             >
-              <div className="text-display font-display font-bold text-accent-primary mb-2 stat-number">
+              <div className="text-2xl lg:text-display font-display font-bold text-accent-primary mb-1 lg:mb-2 stat-number">
                 {stat.value}
               </div>
-              <div className="text-small text-text-tertiary uppercase tracking-wider font-medium">
+              <div className="text-xs lg:text-small text-text-tertiary uppercase tracking-wider font-medium">
                 {stat.label}
               </div>
             </motion.div>

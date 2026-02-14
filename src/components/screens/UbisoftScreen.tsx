@@ -42,7 +42,7 @@ export default function UbisoftScreen() {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center max-w-5xl mx-auto px-8"
+          className="text-center max-w-5xl mx-auto px-4 lg:px-8"
         >
           {/* Company name with subtle branding */}
           <motion.h2
@@ -71,7 +71,7 @@ export default function UbisoftScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-2xl text-gray-200 mb-16 max-w-2xl mx-auto"
+            className="text-2xl text-gray-200 mb-6 lg:mb-16 max-w-2xl mx-auto"
           >
             Started by breaking games professionally.
           </motion.p>
@@ -81,7 +81,7 @@ export default function UbisoftScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex items-center justify-center gap-16 max-w-3xl mx-auto"
+            className="flex items-center justify-center gap-6 lg:gap-16 max-w-3xl mx-auto"
           >
             {/* First stat - smaller, supporting */}
             <div className="text-center">

@@ -22,7 +22,7 @@ export default function BrusselsScreen() {
       </div>
 
       <div className="screen-content">
-        <div className="max-w-6xl mx-auto px-8 md:px-16 h-full flex items-center">
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 md:px-16 h-full flex items-center">
           {/* Dramatic age number - editorial typography moment */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

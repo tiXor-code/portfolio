@@ -38,7 +38,7 @@ export default function EAScreen() {
       </div>
 
       <div className="screen-content">
-        <div className="max-w-6xl mx-auto px-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 text-center">
           {/* Current Role Badge - prominent at top */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -46,7 +46,7 @@ export default function EAScreen() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center glass border border-accent-primary/50 px-8 py-4 rounded-full">
+            <div className="inline-flex items-center glass border border-accent-primary/50 px-4 lg:px-8 py-4 rounded-full">
               <div className="w-3 h-3 bg-accent-primary rounded-full mr-4 animate-pulse" />
               <span className="text-accent-primary font-bold text-lg tracking-wide uppercase">
                 Current Role
@@ -74,7 +74,7 @@ export default function EAScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mb-12"
+            className="mb-4 lg:mb-12"
           >
             <p className="text-xl text-gray-300 mb-2">
               Assistant Content Producer
@@ -89,7 +89,7 @@ export default function EAScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-2xl text-white max-w-2xl mx-auto mb-16"
+            className="text-2xl text-white max-w-2xl mx-auto mb-6 lg:mb-16"
           >
             Now I ship to millions.
           </motion.p>
@@ -107,7 +107,7 @@ export default function EAScreen() {
               animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.8, delay: 1.1 }}
               whileHover={{ scale: 1.05 }}
-              className="glass p-8 rounded-xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-300"
+              className="glass p-4 lg:p-8 rounded-xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-300"
             >
               <div className="text-7xl md:text-8xl font-display font-black text-accent-primary mb-4">
                 10M+
@@ -126,7 +126,7 @@ export default function EAScreen() {
               animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.8, delay: 1.3 }}
               whileHover={{ scale: 1.05 }}
-              className="glass p-8 rounded-xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-300"
+              className="glass p-4 lg:p-8 rounded-xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-300"
             >
               <div className="text-5xl md:text-6xl font-display font-black text-accent-warm mb-4 flex items-center justify-center">
                 <span className="mr-3">LIVE</span>
