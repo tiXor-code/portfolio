@@ -87,10 +87,11 @@ export default function TechStackScreen() {
         className="relative z-10 text-center max-w-6xl w-full"
       >
         <motion.h2
+          id="tech-stack-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="screen-title text-white mb-4"
+          className="text-display font-display font-bold text-text-primary mb-4"
         >
           Tech Stack
         </motion.h2>
@@ -118,7 +119,8 @@ export default function TechStackScreen() {
                 initial={{ opacity: 0, scale: 0.85, y: 40 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.85, y: 40 }}
                 transition={{ duration: 0.7, delay: 0.6 + categoryIndex * 0.2, ease: 'easeOut' }}
-                className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 transition-all duration-300 hover:scale-[1.03] hover:bg-white/8 ${colors.glow}`}
+                className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:scale-[1.03] hover:bg-white/8 ${colors.glow}`}
+                style={{ transition: 'background-color 0.3s, transform 0.3s, box-shadow 0.3s' }}
               >
                 <h3 className="text-lg font-semibold text-white mb-4">
                   {category.title}

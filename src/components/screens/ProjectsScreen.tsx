@@ -121,7 +121,8 @@ export default function ProjectsScreen() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300"
+              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10"
+              style={{ transition: 'background-color 0.3s, border-color 0.3s' }}
             >
               <div className={`w-12 h-12 rounded-lg mb-3 flex items-center justify-center ${getProjectColor(project.domain)}`}>
                 {getProjectIcon(project.domain)}

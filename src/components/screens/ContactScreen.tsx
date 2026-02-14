@@ -80,10 +80,11 @@ export default function ContactScreen() {
           className="max-w-md"
         >
           <motion.h2
+            id="contact-heading"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="screen-title text-white mb-8"
+            className="text-display font-display font-bold text-text-primary mb-8"
           >
             Contact
           </motion.h2>
@@ -114,7 +115,8 @@ export default function ContactScreen() {
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                 whileHover={{ scale: 1.05, x: 10 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex items-center justify-between p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-lg hover:bg-black/60 hover:border-white/20 transition-all duration-300"
+                className="group flex items-center justify-between p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-lg hover:bg-black/60 hover:border-white/20"
+                style={{ transition: 'background-color 0.3s, border-color 0.3s' }}
               >
                 <div className="flex items-center space-x-4">
                   <span className="text-white/80 group-hover:text-white transition-colors">{method.icon}</span>

@@ -129,7 +129,8 @@ export default function WhatsNextScreen() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.9 + i * 0.15 }}
-              className={`text-center group cursor-default p-4 rounded-xl border border-transparent transition-all duration-300 ${glowMap[area.glowColor]}`}
+              className={`text-center group cursor-default p-4 rounded-xl border border-transparent ${glowMap[area.glowColor]}`}
+              style={{ transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.3s' }}
             >
               <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 {area.icon}
