@@ -3,7 +3,7 @@ import { chromium } from 'playwright';
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
 const page = await ctx.newPage();
-await page.goto('http://localhost:4175/wip3/', { waitUntil: 'networkidle', timeout: 15000 });
+await page.goto('https://teodorlutoiu.com/wip3/', { waitUntil: 'networkidle', timeout: 15000 });
 await page.waitForTimeout(2000);
 
 const screens = ['hero','about','university','play-for-democracy','brussels','ubisoft','leadership-school','ea','whats-next','projects','tech-stack','contact'];
