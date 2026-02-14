@@ -44,7 +44,7 @@ export default function EAScreen() {
             initial={{ opacity: 0, y: -20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-8"
+            className="mb-2 lg:mb-8"
           >
             <div className="inline-flex items-center glass border border-accent-primary/50 px-4 lg:px-8 py-4 rounded-full">
               <div className="w-3 h-3 bg-accent-primary rounded-full mr-4 animate-pulse" />
@@ -61,7 +61,7 @@ export default function EAScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-6xl md:text-7xl font-display font-bold text-white mb-6"
+            className="text-3xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-2 lg:mb-6"
             style={{ letterSpacing: '-0.02em' }}
           >
             Electronic
@@ -89,7 +89,7 @@ export default function EAScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-2xl text-white max-w-2xl mx-auto mb-6 lg:mb-16"
+            className="text-sm lg:text-2xl text-white max-w-2xl mx-auto mb-3 lg:mb-16"
           >
             Now I ship to millions.
           </motion.p>
@@ -128,7 +128,7 @@ export default function EAScreen() {
               whileHover={{ scale: 1.05 }}
               className="glass p-4 lg:p-8 rounded-xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-300"
             >
-              <div className="text-5xl md:text-6xl font-display font-black text-accent-warm mb-4 flex items-center justify-center">
+              <div className="text-2xl md:text-5xl lg:text-6xl font-display font-black text-accent-warm mb-1 lg:mb-4 flex items-center justify-center">
                 <span className="mr-3">LIVE</span>
                 <div className="w-3 h-3 bg-accent-warm rounded-full animate-pulse" />
               </div>

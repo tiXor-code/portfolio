@@ -53,7 +53,7 @@ export default function AboutScreen() {
           initial={{ opacity: 0, x: -50 }}
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-left space-y-3 lg:space-y-8"
+          className="text-left space-y-2 lg:space-y-8"
         >
           {/* Title */}
           <motion.h2
@@ -61,7 +61,7 @@ export default function AboutScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display font-display font-bold text-text-primary"
+            className="text-3xl lg:text-display font-display font-bold text-text-primary"
           >
             About Me
           </motion.h2>
@@ -73,14 +73,14 @@ export default function AboutScreen() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
-            <p className="text-title font-display text-accent-primary font-medium">
+            <p className="text-base lg:text-title font-display text-accent-primary font-medium">
               I turn complex data into player experiences that matter.
             </p>
-            <p className="text-body text-text-secondary leading-relaxed">
+            <p className="text-sm lg:text-body text-text-secondary leading-relaxed">
               Currently at EA, I analyze millions of players to shape content strategy. 
               Previously shipped mobile games that reached the European Parliament.
             </p>
-            <p className="text-body text-text-secondary leading-relaxed">
+            <p className="text-sm lg:text-body text-text-secondary leading-relaxed">
               From QA tester to content producer, I build things that work—on time, every time.
             </p>
           </motion.div>
@@ -90,7 +90,7 @@ export default function AboutScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-3"
+            className="flex flex-wrap gap-1.5 lg:gap-3"
           >
             {['Data Analysis', 'Content Strategy', 'Game Design', 'Player Psychology'].map((skill, index) => (
               <motion.span
@@ -98,7 +98,7 @@ export default function AboutScreen() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                className="px-4 py-2 bg-surface-elevated/80 backdrop-blur-sm border border-border-subtle rounded-full text-small text-text-secondary hover:text-text-primary hover:border-accent-primary/50"
+                className="px-2 py-1 lg:px-4 lg:py-2 bg-surface-elevated/80 backdrop-blur-sm border border-border-subtle rounded-full text-xs lg:text-small text-text-secondary hover:text-text-primary hover:border-accent-primary/50"
                 style={{ transition: 'color 0.3s, border-color 0.3s' }}
               >
                 {skill}

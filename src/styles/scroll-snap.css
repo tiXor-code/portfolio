@@ -150,8 +150,8 @@ html {
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
-  .screen-snap {
-    overflow: visible;
+  .screen-content {
+    padding: 0.5rem;
   }
 
   .screen-content {

@@ -93,16 +93,16 @@ export default function ContactScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12"
+            className="mb-2 lg:mb-12"
           >
-            <h2 className="text-6xl md:text-7xl font-display font-bold text-white mb-6" 
+            <h2 className="text-2xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-1 lg:mb-6" 
                 style={{ letterSpacing: '-0.02em' }}>
               Get In
               <br />
               <span className="text-accent-warm">Touch</span>
             </h2>
 
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-2 lg:mb-6">
               <div className="w-12 h-0.5 bg-accent-warm mr-4" />
               <p className="text-xl text-gray-200">
                 Let's build something together
@@ -119,7 +119,7 @@ export default function ContactScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-4"
+            className="space-y-1.5 lg:space-y-4"
           >
             {contactMethods.map((method, index) => (
               <motion.a
@@ -136,7 +136,7 @@ export default function ContactScreen() {
                   transition: { duration: 0.2 }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className={`group flex items-center justify-between p-6 glass border transition-all duration-300 rounded-xl cursor-pointer overflow-hidden relative
+                className={`group flex items-center justify-between p-3 lg:p-6 glass border transition-all duration-300 rounded-xl cursor-pointer overflow-hidden relative
                   ${method.accent === 'accent-warm' 
                     ? 'border-accent-warm/20 hover:border-accent-warm/50 hover:shadow-[0_0_30px_rgba(255,179,71,0.1)]' 
                     : 'border-accent-primary/20 hover:border-accent-primary/50 hover:shadow-[0_0_30px_rgba(255,122,95,0.1)]'
@@ -197,12 +197,12 @@ export default function ContactScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-12 pt-8 border-t border-white/10"
+            className="mt-2 lg:mt-12 pt-2 lg:pt-8 border-t border-white/10"
           >
             <p className="text-gray-400 text-sm leading-relaxed">
               Usually respond within 24 hours. Looking forward to hearing from you!
             </p>
-            <div className="mt-4 flex items-center text-accent-warm text-xs font-medium">
+            <div className="mt-2 flex items-center text-accent-warm text-xs font-medium">
               <div className="w-2 h-2 bg-accent-warm rounded-full mr-2 animate-pulse" />
               Available for new opportunities
             </div>

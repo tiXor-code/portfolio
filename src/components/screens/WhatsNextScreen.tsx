@@ -74,7 +74,7 @@ export default function WhatsNextScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-center mb-6 lg:mb-20"
+            className="text-center mb-3 lg:mb-20"
           >
             <motion.h2
               initial={{ opacity: 0, scale: 0.9 }}
@@ -105,14 +105,14 @@ export default function WhatsNextScreen() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-base lg:text-2xl text-gray-200 max-w-2xl mx-auto mt-3 lg:mt-8"
+              className="text-sm lg:text-2xl text-gray-200 max-w-2xl mx-auto mt-2 lg:mt-8"
             >
               Building things that didn't exist yesterday.
             </motion.p>
           </motion.div>
 
           {/* Bento-style grid layout */}
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-3 lg:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-2 lg:gap-6 max-w-5xl mx-auto">
             {/* AI Tools - Large card, top left */}
             <motion.div
               initial={{ opacity: 0, x: -30, y: 30 }}
