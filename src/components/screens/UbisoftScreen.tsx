@@ -37,71 +37,95 @@ export default function UbisoftScreen() {
         <div className="bg-overlay" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="screen-content text-center max-w-4xl"
-      >
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="screen-title text-white mb-4"
-        >
-          Ubisoft
-        </motion.h2>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-accent-primary mb-8"
-        >
-          QA Tester, Rainbow Six Siege
-        </motion.p>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="screen-description text-gray-300"
-        >
-          Started by breaking games professionally.
-        </motion.p>
-
-        {/* Stats */}
+      <div className="screen-content">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-12 grid grid-cols-2 gap-8 max-w-md mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="text-center max-w-5xl mx-auto px-8"
         >
-          <div className="text-center">
-            <div className="text-3xl font-bold text-white mb-2">100+</div>
-            <div className="text-sm text-gray-400 uppercase tracking-wide">Bugs Found</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-white mb-2">First</div>
-            <div className="text-sm text-gray-400 uppercase tracking-wide">Industry Job</div>
-          </div>
-        </motion.div>
+          {/* Company name with subtle branding */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-6xl md:text-7xl font-display font-bold text-white mb-6"
+            style={{ letterSpacing: '-0.02em' }}
+          >
+            <span className="text-accent-primary">Ubi</span>soft
+          </motion.h2>
 
-        {/* Visual Element */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-12 flex justify-center"
-        >
-          <div className="w-2 h-2 bg-accent-primary rounded-full animate-pulse"></div>
-          <div className="w-2 h-2 bg-accent-primary rounded-full mx-4 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-          <div className="w-2 h-2 bg-accent-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+          {/* Role */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="inline-flex items-center glass px-6 py-3 rounded-full mb-8"
+          >
+            <div className="w-2 h-2 bg-accent-primary rounded-full mr-3" />
+            <span className="text-white font-medium">QA Tester • Rainbow Six Siege</span>
+          </motion.div>
+
+          {/* Hook */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-2xl text-gray-200 mb-16 max-w-2xl mx-auto"
+          >
+            Started by breaking games professionally.
+          </motion.p>
+
+          {/* Stats with different visual weights */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex items-center justify-center gap-16 max-w-3xl mx-auto"
+          >
+            {/* First stat - smaller, supporting */}
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-display font-bold text-accent-primary mb-2">
+                100+
+              </div>
+              <div className="text-gray-400 text-sm uppercase tracking-wide">
+                Bugs Found
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="w-px h-16 bg-gray-600" />
+
+            {/* Second stat - emphasized, primary */}
+            <div className="text-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="relative"
+              >
+                <div className="text-6xl md:text-7xl font-display font-bold text-accent-warm mb-2">
+                  First
+                </div>
+                <div className="text-white text-lg font-medium">
+                  Industry Job
+                </div>
+                
+                {/* Emphasis decoration */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent-warm rounded-full animate-pulse" />
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Simple visual accent */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={inView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="w-24 h-0.5 bg-accent-primary mx-auto mt-12"
+          />
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   )
 }

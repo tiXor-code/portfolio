@@ -37,71 +37,111 @@ export default function EAScreen() {
         <div className="bg-overlay" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="screen-content text-center max-w-4xl"
-      >
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="screen-title text-white mb-4"
-        >
-          Electronic Arts
-        </motion.h2>
+      <div className="screen-content">
+        <div className="max-w-6xl mx-auto px-8 text-center">
+          {/* Current Role Badge - prominent at top */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-8"
+          >
+            <div className="inline-flex items-center glass border border-accent-primary/50 px-8 py-4 rounded-full">
+              <div className="w-3 h-3 bg-accent-primary rounded-full mr-4 animate-pulse" />
+              <span className="text-accent-primary font-bold text-lg tracking-wide uppercase">
+                Current Role
+              </span>
+              <div className="w-3 h-3 bg-accent-primary rounded-full ml-4 animate-pulse" 
+                style={{ animationDelay: '0.5s' }} />
+            </div>
+          </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-accent-primary mb-8"
-        >
-          Assistant Content Producer, EA FC
-        </motion.p>
+          {/* Company name - bold and active feeling */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-6xl md:text-7xl font-display font-bold text-white mb-6"
+            style={{ letterSpacing: '-0.02em' }}
+          >
+            Electronic
+            <br />
+            <span className="text-accent-primary">Arts</span>
+          </motion.h2>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="screen-description text-gray-300 mb-12"
-        >
-          Now I ship to millions. Ultimate Team.
-        </motion.p>
+          {/* Role with product emphasis */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mb-12"
+          >
+            <p className="text-xl text-gray-300 mb-2">
+              Assistant Content Producer
+            </p>
+            <p className="text-2xl md:text-3xl font-bold text-accent-warm">
+              EA FC Ultimate Team
+            </p>
+          </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-2 gap-8 max-w-md mx-auto"
-        >
-          <div className="text-center">
-            <div className="text-3xl font-bold text-accent-primary mb-2">10M+</div>
-            <div className="text-sm text-gray-400 uppercase tracking-wide">Active Players</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-accent-primary mb-2">Live</div>
-            <div className="text-sm text-gray-400 uppercase tracking-wide">Service</div>
-          </div>
-        </motion.div>
+          {/* Impact statement */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-2xl text-white max-w-2xl mx-auto mb-16"
+          >
+            Now I ship to millions.
+          </motion.p>
 
-        {/* Current Role Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="mt-12"
-        >
-          <span className="px-4 py-2 bg-accent-primary/20 border border-accent-primary/30 rounded-full text-accent-primary text-sm font-medium">
-            Current Role
-          </span>
-        </motion.div>
-      </motion.div>
+          {/* Impressive stats - make them feel HUGE */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto"
+          >
+            {/* 10M+ Players - this should be the hero stat */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              whileHover={{ scale: 1.05 }}
+              className="glass p-8 rounded-xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-300"
+            >
+              <div className="text-7xl md:text-8xl font-display font-black text-accent-primary mb-4">
+                10M+
+              </div>
+              <div className="text-white font-semibold text-xl mb-2">
+                Active Players
+              </div>
+              <div className="text-gray-400 text-sm">
+                Worldwide engagement
+              </div>
+            </motion.div>
+
+            {/* Live Service - secondary but important */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+              whileHover={{ scale: 1.05 }}
+              className="glass p-8 rounded-xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-300"
+            >
+              <div className="text-5xl md:text-6xl font-display font-black text-accent-warm mb-4 flex items-center justify-center">
+                <span className="mr-3">LIVE</span>
+                <div className="w-3 h-3 bg-accent-warm rounded-full animate-pulse" />
+              </div>
+              <div className="text-white font-semibold text-xl mb-2">
+                Service
+              </div>
+              <div className="text-gray-400 text-sm">
+                Real-time operations
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </div>
   )
 }

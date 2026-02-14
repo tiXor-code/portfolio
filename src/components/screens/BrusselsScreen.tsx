@@ -21,55 +21,95 @@ export default function BrusselsScreen() {
         <div className="bg-overlay" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="screen-content text-center max-w-4xl"
-      >
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="screen-title text-white mb-4"
-        >
-          Brussels
-        </motion.h2>
+      <div className="screen-content">
+        <div className="max-w-6xl mx-auto px-8 md:px-16 h-full flex items-center">
+          {/* Dramatic age number - editorial typography moment */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 1.2, delay: 0.1, ease: 'easeOut' }}
+            className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2"
+          >
+            <div className="text-[300px] lg:text-[400px] font-display font-black text-accent-warm/15 select-none leading-none">
+              23
+            </div>
+          </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="screen-subtitle text-accent-primary mb-8"
-        >
-          European Parliament
-        </motion.p>
+          {/* Content - left aligned */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="max-w-2xl text-left z-10"
+          >
+            {/* Location */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex items-center mb-4"
+            >
+              <div className="w-8 h-0.5 bg-accent-primary mr-4" />
+              <span className="text-accent-primary font-medium text-lg tracking-wide uppercase">
+                Brussels, Belgium
+              </span>
+            </motion.div>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="screen-description text-white"
-        >
-          The European Parliament invited us to present. I was 23.
-        </motion.p>
+            {/* Main title */}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-5xl md:text-7xl font-display font-bold text-white mb-8 leading-tight"
+              style={{ letterSpacing: '-0.03em' }}
+            >
+              European
+              <br />
+              <span className="text-accent-warm">Parliament</span>
+            </motion.h2>
 
-        {/* Age Highlight */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-12"
-        >
-          <div className="inline-flex items-center justify-center w-20 h-20 border-2 border-accent-warm rounded-full">
-            <span className="text-3xl font-bold text-accent-warm">23</span>
-          </div>
-          <p className="text-gray-300 mt-4 text-sm">Years old when invited</p>
-        </motion.div>
-      </motion.div>
+            {/* The story */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-8"
+            >
+              The European Parliament invited us to present.
+              <br />
+              <span className="text-white font-medium">I was</span>
+              <span className="text-accent-warm font-bold text-3xl md:text-4xl mx-2">23.</span>
+            </motion.p>
+
+            {/* Age context on mobile */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="md:hidden inline-flex items-center glass px-6 py-3 rounded-full"
+            >
+              <div className="text-4xl font-display font-bold text-accent-warm mr-4">23</div>
+              <div className="text-left">
+                <div className="text-white font-medium text-sm">Years Old</div>
+                <div className="text-gray-300 text-xs">When invited to EU Parliament</div>
+              </div>
+            </motion.div>
+
+            {/* Moment emphasis */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="hidden md:block mt-12"
+            >
+              <div className="text-gray-400 text-sm font-medium tracking-wider uppercase">
+                A defining moment
+              </div>
+              <div className="w-24 h-0.5 bg-accent-warm mt-2" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </div>
   )
 }
