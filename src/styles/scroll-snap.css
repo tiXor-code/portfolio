@@ -152,12 +152,14 @@ html {
 @media (max-width: 768px) {
   .scroll-snap-container {
     scroll-snap-type: y proximity;
+    overscroll-behavior: auto;
   }
 
   .screen-snap {
     height: auto;
     min-height: 100vh;
     overflow: visible;
+    scroll-snap-stop: normal;
   }
 
   .screen-content {
