@@ -104,13 +104,13 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-left mb-16"
+          className="text-left mb-8"
         >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-7xl font-display font-bold text-white mb-6"
+            className="text-5xl md:text-6xl font-display font-bold text-white mb-4"
             style={{ letterSpacing: '-0.02em' }}
           >
             Selected
@@ -124,19 +124,19 @@ export default function ProjectsScreen() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex items-center"
           >
-            <div className="w-16 h-0.5 bg-accent-warm mr-6" />
-            <p className="text-gray-300 text-lg max-w-2xl">
+            <div className="w-12 h-0.5 bg-accent-warm mr-4" />
+            <p className="text-gray-300 text-base max-w-2xl">
               A curated collection showcasing diverse problem-solving approaches across gaming, AI, and interactive experiences
             </p>
           </motion.div>
         </motion.div>
 
-        {/* Featured projects - larger cards */}
+        {/* Featured projects - compact cards */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6"
         >
           {featuredProjects.map((project, index) => (
             <motion.article
@@ -145,14 +145,14 @@ export default function ProjectsScreen() {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.15 }}
               whileHover={{ 
-                y: -8,
+                y: -6,
                 transition: { duration: 0.3, ease: 'easeOut' }
               }}
-              className="group glass p-8 rounded-2xl border border-white/10 hover:border-accent-primary/30 transition-all duration-500 cursor-default overflow-hidden relative"
+              className="group glass p-5 rounded-xl border border-white/10 hover:border-accent-primary/30 transition-all duration-500 cursor-default overflow-hidden relative"
             >
               {/* Icon and domain */}
-              <div className="flex items-start justify-between mb-6">
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${getProjectColor(project.domain)}`}>
+              <div className="flex items-start justify-between mb-4">
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${getProjectColor(project.domain)}`}>
                   {getProjectIcon(project.domain)}
                 </div>
                 <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">
@@ -161,36 +161,36 @@ export default function ProjectsScreen() {
               </div>
 
               {/* Title with better typography hierarchy */}
-              <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 leading-tight group-hover:text-accent-primary transition-colors duration-300">
+              <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-3 leading-tight group-hover:text-accent-primary transition-colors duration-300">
                 {project.title}
               </h3>
 
               {/* Company with visual emphasis */}
-              <div className="flex items-center mb-4">
-                <div className="w-4 h-0.5 bg-accent-warm mr-3" />
+              <div className="flex items-center mb-3">
+                <div className="w-3 h-0.5 bg-accent-warm mr-2" />
                 <p className="text-accent-warm font-semibold text-sm uppercase tracking-wide">
                   {project.company}
                 </p>
               </div>
 
               {/* Description with better line height */}
-              <p className="text-gray-300 text-base leading-relaxed mb-6">
+              <p className="text-gray-300 text-sm leading-relaxed mb-4">
                 {project.description}
               </p>
 
               {/* Impact with better visual weight */}
-              <div className="mb-6 p-4 bg-white/5 rounded-xl border-l-4 border-accent-primary">
-                <p className="text-white font-medium text-sm">
+              <div className="mb-4 p-3 bg-white/5 rounded-lg border-l-2 border-accent-primary">
+                <p className="text-white font-medium text-xs">
                   {project.impact}
                 </p>
               </div>
 
               {/* Tags with refined styling */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tags.slice(0, 3).map(tag => (
                   <span 
                     key={tag} 
-                    className="text-xs px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-gray-300 font-medium transition-colors duration-300 group-hover:bg-accent-primary/20 group-hover:border-accent-primary/30"
+                    className="text-xs px-2 py-1 bg-white/10 border border-white/20 rounded-full text-gray-300 font-medium transition-colors duration-300 group-hover:bg-accent-primary/20 group-hover:border-accent-primary/30"
                   >
                     {tag}
                   </span>
@@ -198,17 +198,17 @@ export default function ProjectsScreen() {
               </div>
 
               {/* Subtle hover effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
             </motion.article>
           ))}
         </motion.div>
 
-        {/* Regular projects - compact grid */}
+        {/* Regular projects - ultra compact grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {regularProjects.map((project, index) => (
             <motion.article
@@ -217,29 +217,25 @@ export default function ProjectsScreen() {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
               whileHover={{ 
-                y: -4,
+                y: -3,
                 transition: { duration: 0.2 }
               }}
-              className="group glass p-6 rounded-xl border border-white/10 hover:border-accent-primary/30 transition-all duration-300 cursor-default"
+              className="group glass p-4 rounded-lg border border-white/10 hover:border-accent-primary/30 transition-all duration-300 cursor-default"
             >
-              <div className={`w-10 h-10 rounded-lg mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${getProjectColor(project.domain)}`}>
+              <div className={`w-8 h-8 rounded-md mb-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${getProjectColor(project.domain)}`}>
                 {getProjectIcon(project.domain)}
               </div>
 
-              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-accent-primary transition-colors duration-300">
+              <h3 className="text-base font-semibold text-white mb-2 group-hover:text-accent-primary transition-colors duration-300 leading-tight">
                 {project.title}
               </h3>
 
-              <p className="text-xs text-accent-warm font-medium mb-3 uppercase tracking-wide">
+              <p className="text-xs text-accent-warm font-medium mb-2 uppercase tracking-wide">
                 {project.company}
               </p>
 
-              <p className="text-sm text-gray-300 leading-relaxed mb-4">
-                {project.description}
-              </p>
-
-              <div className="border-t border-white/10 pt-3">
-                <p className="text-xs text-gray-400">
+              <div className="border-t border-white/10 pt-2">
+                <p className="text-xs text-gray-400 leading-tight">
                   {project.impact}
                 </p>
               </div>
@@ -252,11 +248,11 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="text-center mt-16"
+          className="text-center mt-8"
         >
-          <div className="inline-flex items-center glass px-6 py-3 rounded-full">
-            <div className="w-2 h-2 bg-accent-primary rounded-full mr-3 animate-pulse" />
-            <span className="text-gray-400 text-sm">Full portfolio available on request</span>
+          <div className="inline-flex items-center glass px-4 py-2 rounded-full">
+            <div className="w-2 h-2 bg-accent-primary rounded-full mr-2 animate-pulse" />
+            <span className="text-gray-400 text-xs">Full portfolio available on request</span>
           </div>
         </motion.div>
       </div>
