@@ -114,7 +114,7 @@ export default function Contact() {
                       rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
                       variants={itemVariants}
                       whileHover={{ scale: 1.02, x: 10 }}
-                      className="group flex items-center p-6 glass rounded-xl card-hover hover:border-accent-blue/50 transition-all duration-300"
+                      className="group flex items-center p-6 min-h-[44px] glass rounded-xl card-hover hover:border-accent-blue/50 transition-colors duration-300"
                     >
                       <div className="text-3xl mr-6 group-hover:scale-110 transition-transform duration-300">
                         {link.icon}
@@ -131,7 +131,7 @@ export default function Contact() {
                         </p>
                       </div>
                       <div className="text-text-secondary group-hover:text-accent-blue transition-colors duration-300">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                           <path d="M7 17L17 7M17 7H7M17 7V17"/>
                         </svg>
                       </div>
@@ -170,7 +170,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all duration-300"
+                        className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors duration-300"
                         placeholder="Your name"
                       />
                     </div>
@@ -185,7 +185,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all duration-300"
+                        className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors duration-300"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -201,7 +201,7 @@ export default function Contact() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all duration-300"
+                      className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors duration-300"
                       placeholder="What's this about?"
                     />
                   </div>
@@ -217,7 +217,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 glass rounded-lg text-text-primary placeholder-text-secondary focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors duration-300 resize-none"
                       placeholder="Tell me about your project, idea, or just say hello..."
                     />
                   </div>

@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { useRef, useEffect } from 'react'
 
 const BrainIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M24 6C18 6 14 10 14 15c0 3 1 5 3 7-3 1-5 4-5 7 0 4 3 7 7 7h1c1 3 4 5 7 5h-3" stroke="#c084fc" strokeWidth="2" strokeLinecap="round" fill="none"/>
     <path d="M24 6c6 0 10 4 10 9 0 3-1 5-3 7 3 1 5 4 5 7 0 4-3 7-7 7h-1c-1 3-4 5-7 5h3" stroke="#c084fc" strokeWidth="2" strokeLinecap="round" fill="none"/>
     <circle cx="18" cy="18" r="2" fill="#c084fc" opacity="0.8"/>
@@ -20,7 +20,7 @@ const BrainIcon = () => (
 )
 
 const GamepadIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M8 20c0-4 3-7 7-7h18c4 0 7 3 7 7v2c0 6-2 12-5 16-1 2-3 2-4 0l-3-6H20l-3 6c-1 2-3 2-4 0-3-4-5-10-5-16v-2z" stroke="#60a5fa" strokeWidth="2" fill="none"/>
     <rect x="14" y="20" width="6" height="2" rx="1" fill="#60a5fa"/>
     <rect x="16" y="17" width="2" height="8" rx="1" fill="#60a5fa"/>
@@ -30,7 +30,7 @@ const GamepadIcon = () => (
 )
 
 const RocketIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M24 6c-6 8-8 16-8 24h16c0-8-2-16-8-24z" stroke="#4ade80" strokeWidth="2" fill="none"/>
     <path d="M16 30c-4 0-6 4-6 8h6v-8z" stroke="#4ade80" strokeWidth="1.5" fill="#4ade80" opacity="0.2"/>
     <path d="M32 30c4 0 6 4 6 8h-6v-8z" stroke="#4ade80" strokeWidth="1.5" fill="#4ade80" opacity="0.2"/>
@@ -77,6 +77,8 @@ export default function WhatsNextScreen() {
           muted
           loop
           playsInline
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
         >
           <source src={`${import.meta.env.BASE_URL}images/journey/ai-bg.mp4`} type="video/mp4" />

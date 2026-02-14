@@ -8,7 +8,7 @@ interface ProgressDotsProps {
 
 export default function ProgressDots({ screens, currentScreen, onScreenClick }: ProgressDotsProps) {
   return (
-    <nav className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-4" aria-label="Page sections">
+    <nav className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden md:flex flex-col space-y-4" aria-label="Page sections">
       {/* Elegant scroll indicator line */}
       <div className="scroll-indicator absolute left-1/2 transform -translate-x-1/2 -top-8" />
       

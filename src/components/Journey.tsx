@@ -104,6 +104,8 @@ function ChapterSlide({ chapter, index }: { chapter: JourneyChapter; index: numb
             muted
             loop
             playsInline
+            width={1920}
+            height={1080}
             poster={chapter.image ? `${import.meta.env.BASE_URL}images/journey/${chapter.image}` : undefined}
             className="absolute inset-0 w-full h-full object-cover"
           >
@@ -212,7 +214,7 @@ export default function Journey() {
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`block w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+            className={`block w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
               activeIndex === index 
                 ? 'bg-white scale-150' 
                 : 'bg-white/30 hover:bg-white/60'

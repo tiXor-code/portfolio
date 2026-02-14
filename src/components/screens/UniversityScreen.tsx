@@ -28,6 +28,8 @@ export default function UniversityScreen() {
           muted
           loop
           playsInline
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
         >
           <source src={`${import.meta.env.BASE_URL}images/journey/university-bg.mp4`} type="video/mp4" />
