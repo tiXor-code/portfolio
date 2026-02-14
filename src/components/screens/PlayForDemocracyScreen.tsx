@@ -50,7 +50,7 @@ export default function PlayForDemocracyScreen() {
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-display font-bold text-white mb-6"
+            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-3 lg:mb-6"
             style={{ letterSpacing: '-0.02em' }}
           >
             Play For
@@ -63,7 +63,7 @@ export default function PlayForDemocracyScreen() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="inline-flex items-center glass px-6 py-3 rounded-full mb-8"
+            className="inline-flex items-center glass px-4 py-2 lg:px-6 lg:py-3 rounded-full mb-3 lg:mb-8 text-xs lg:text-base"
           >
             <div className="w-2 h-2 bg-accent-warm rounded-full mr-3" />
             <span className="text-white font-medium">Producer & Game Designer</span>
@@ -74,7 +74,7 @@ export default function PlayForDemocracyScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl text-gray-200 max-w-2xl mx-auto mb-6 lg:mb-16 leading-relaxed"
+            className="text-sm lg:text-xl text-gray-200 max-w-2xl mx-auto mb-3 lg:mb-16 leading-relaxed"
           >
             Producer on a game built to get Gen Z to vote. 
             <span className="text-accent-warm font-medium"> Team of 8, backed by the EU.</span>
@@ -98,7 +98,7 @@ export default function PlayForDemocracyScreen() {
                     : 'hover:border-accent-primary/30'
                 }`}
               >
-                <div className={`text-5xl md:text-6xl font-display font-bold mb-3 ${
+                <div className={`text-2xl md:text-5xl lg:text-6xl font-display font-bold mb-1 lg:mb-3 ${
                   stat.featured ? 'text-accent-warm' : 'text-accent-primary'
                 }`}>
                   {stat.value}

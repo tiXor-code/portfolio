@@ -74,13 +74,13 @@ export default function WhatsNextScreen() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-center mb-20"
+            className="text-center mb-6 lg:mb-20"
           >
             <motion.h2
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-6xl md:text-7xl font-display font-bold text-white mb-6"
+              className="text-3xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-3 lg:mb-6"
               style={{ letterSpacing: '-0.02em' }}
             >
               What's
@@ -105,34 +105,34 @@ export default function WhatsNextScreen() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-2xl text-gray-200 max-w-2xl mx-auto mt-8"
+              className="text-base lg:text-2xl text-gray-200 max-w-2xl mx-auto mt-3 lg:mt-8"
             >
               Building things that didn't exist yesterday.
             </motion.p>
           </motion.div>
 
           {/* Bento-style grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-3 lg:gap-6 max-w-5xl mx-auto">
             {/* AI Tools - Large card, top left */}
             <motion.div
               initial={{ opacity: 0, x: -30, y: 30 }}
               animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -30, y: 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="md:row-span-2 glass p-4 lg:p-8 rounded-2xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-500 group"
+              className="col-span-2 md:col-span-1 md:row-span-2 glass p-3 lg:p-8 rounded-2xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-500 group"
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className="p-4 bg-accent-primary/20 rounded-xl text-accent-primary group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-start justify-between mb-2 lg:mb-6">
+                <div className="p-2 lg:p-4 bg-accent-primary/20 rounded-xl text-accent-primary group-hover:scale-110 transition-transform duration-300">
                   <BrainIcon />
                 </div>
-                <div className="text-accent-primary text-xs font-medium px-3 py-1 bg-accent-primary/10 rounded-full">
+                <div className="text-accent-primary text-[10px] lg:text-xs font-medium px-2 py-0.5 lg:px-3 lg:py-1 bg-accent-primary/10 rounded-full">
                   FOCUS
                 </div>
               </div>
-              <h3 className="text-3xl font-display font-bold text-white mb-4">
+              <h3 className="text-xl lg:text-3xl font-display font-bold text-white mb-2 lg:mb-4">
                 AI Tools
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              <p className="text-gray-300 text-sm lg:text-lg leading-relaxed mb-2 lg:mb-6">
                 Building smart automation & assistants that amplify human creativity and streamline complex workflows.
               </p>
               <div className="flex items-center text-accent-primary text-sm font-medium">
@@ -147,15 +147,15 @@ export default function WhatsNextScreen() {
               animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 30, y: -30 }}
               transition={{ duration: 0.8, delay: 1 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="glass p-6 rounded-2xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-500 group"
+              className="glass p-3 lg:p-6 rounded-2xl border border-accent-primary/20 hover:border-accent-primary/50 transition-all duration-500 group"
             >
-              <div className="p-3 bg-accent-primary/20 rounded-xl text-accent-primary w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="p-2 lg:p-3 bg-accent-primary/20 rounded-xl text-accent-primary w-fit mb-2 lg:mb-4 group-hover:scale-110 transition-transform duration-300">
                 <GamepadIcon />
               </div>
-              <h3 className="text-2xl font-display font-bold text-white mb-3">
+              <h3 className="text-lg lg:text-2xl font-display font-bold text-white mb-1 lg:mb-3">
                 Live Games
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 text-sm lg:text-base leading-relaxed">
                 Data-driven live service experiences that evolve with player behavior.
               </p>
             </motion.div>
@@ -168,18 +168,18 @@ export default function WhatsNextScreen() {
               whileHover={{ scale: 1.02, y: -5 }}
               className="glass p-4 lg:p-8 rounded-2xl border border-accent-warm/20 hover:border-accent-warm/50 transition-all duration-500 group"
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className="p-4 bg-accent-warm/20 rounded-xl text-accent-warm group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-start justify-between mb-2 lg:mb-6">
+                <div className="p-2 lg:p-4 bg-accent-warm/20 rounded-xl text-accent-warm group-hover:scale-110 transition-transform duration-300">
                   <RocketIcon />
                 </div>
-                <div className="text-accent-warm text-xs font-medium px-3 py-1 bg-accent-warm/10 rounded-full">
+                <div className="text-accent-warm text-[10px] lg:text-xs font-medium px-2 py-0.5 lg:px-3 lg:py-1 bg-accent-warm/10 rounded-full">
                   NEXT
                 </div>
               </div>
-              <h3 className="text-3xl font-display font-bold text-white mb-4">
+              <h3 className="text-xl lg:text-3xl font-display font-bold text-white mb-2 lg:mb-4">
                 Innovation
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              <p className="text-gray-300 text-sm lg:text-lg leading-relaxed mb-2 lg:mb-6">
                 Shipping ideas that don't exist yet. Turning curiosity into products people actually use.
               </p>
               <div className="flex items-center text-accent-warm text-sm font-medium">

@@ -104,7 +104,7 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-left mb-8"
+          className="text-left mb-3 lg:mb-8"
         >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -148,10 +148,10 @@ export default function ProjectsScreen() {
                 y: -6,
                 transition: { duration: 0.3, ease: 'easeOut' }
               }}
-              className="group glass p-5 rounded-xl border border-white/10 hover:border-accent-primary/30 transition-all duration-500 cursor-default overflow-hidden relative"
+              className="group glass p-3 lg:p-5 rounded-xl border border-white/10 hover:border-accent-primary/30 transition-all duration-500 cursor-default overflow-hidden relative"
             >
               {/* Icon and domain */}
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-2 lg:mb-4">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${getProjectColor(project.domain)}`}>
                   {getProjectIcon(project.domain)}
                 </div>
@@ -161,7 +161,7 @@ export default function ProjectsScreen() {
               </div>
 
               {/* Title with better typography hierarchy */}
-              <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-3 leading-tight group-hover:text-accent-primary transition-colors duration-300">
+              <h3 className="text-base lg:text-xl md:text-2xl font-display font-bold text-white mb-1 lg:mb-3 leading-tight group-hover:text-accent-primary transition-colors duration-300">
                 {project.title}
               </h3>
 
@@ -173,24 +173,25 @@ export default function ProjectsScreen() {
                 </p>
               </div>
 
-              {/* Description with better line height */}
-              <p className="text-gray-300 text-sm leading-relaxed mb-4">
+              {/* Description - hidden on mobile */}
+              <p className="hidden lg:block text-gray-300 text-sm leading-relaxed mb-4">
                 {project.description}
               </p>
 
-              {/* Impact with better visual weight */}
-              <div className="mb-4 p-3 bg-white/5 rounded-lg border-l-2 border-accent-primary">
-                <p className="text-white font-medium text-xs">
+              {/* Impact */}
+              <div className="mb-2 lg:mb-4 p-2 lg:p-3 bg-white/5 rounded-lg border-l-2 border-accent-primary">
+                <p className="text-white font-medium text-[11px] lg:text-xs">
                   {project.impact}
                 </p>
               </div>
 
-              {/* Tags with refined styling */}
-              <div className="flex flex-wrap gap-1.5">
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1 lg:gap-1.5">
                 {project.tags.slice(0, 3).map(tag => (
                   <span 
                     key={tag} 
-                    className="text-xs px-2 py-1 bg-white/10 border border-white/20 rounded-full text-gray-300 font-medium transition-colors duration-300 group-hover:bg-accent-primary/20 group-hover:border-accent-primary/30"
+                    className="text-[10px] lg:text-xs px-1.5 lg:px-2 py-0.5 lg:py-1 bg-white/10 border border-white/20 rounded-full text-gray-300 font-medium"
+                    style={{ transition: 'color 0.3s, border-color 0.3s' }}
                   >
                     {tag}
                   </span>
@@ -208,7 +209,7 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4"
+          className="hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4"
         >
           {regularProjects.map((project, index) => (
             <motion.article
@@ -248,7 +249,7 @@ export default function ProjectsScreen() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="text-center mt-8"
+          className="hidden lg:block text-center mt-8"
         >
           <div className="inline-flex items-center glass px-4 py-2 rounded-full">
             <div className="w-2 h-2 bg-accent-primary rounded-full mr-2 animate-pulse" />

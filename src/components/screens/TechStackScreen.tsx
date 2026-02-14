@@ -106,7 +106,7 @@ export default function TechStackScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-7xl font-display font-bold text-white mb-6"
+            className="text-3xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-2 lg:mb-6"
             style={{ letterSpacing: '-0.02em' }}
           >
             Tech
@@ -143,37 +143,34 @@ export default function TechStackScreen() {
                 }`}
               >
                 {/* Header */}
-                <div className="mb-6">
-                  <h3 className="text-xl font-display font-bold text-white mb-2">
+                <div className="mb-2 lg:mb-6">
+                  <h3 className="text-sm lg:text-xl font-display font-bold text-white mb-1 lg:mb-2">
                     {category.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-xs lg:text-sm text-gray-400 leading-relaxed hidden lg:block">
                     {category.subtitle}
                   </p>
                   
                   {category.featured && (
-                    <div className="mt-3 inline-flex items-center text-accent-warm text-xs font-medium">
-                      <div className="w-2 h-2 bg-accent-warm rounded-full mr-2 animate-pulse" />
-                      CURRENT FOCUS
+                    <div className="mt-1 lg:mt-3 inline-flex items-center text-accent-warm text-[10px] lg:text-xs font-medium">
+                      <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-accent-warm rounded-full mr-1.5 lg:mr-2 animate-pulse" />
+                      FOCUS
                     </div>
                   )}
                 </div>
 
-                {/* Tools with clear visual hierarchy */}
-                <div className="space-y-4">
-                  {/* Primary tools */}
+                {/* Tools - compact on mobile */}
+                <div className="space-y-2 lg:space-y-4">
                   <div>
-                    <div className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-medium">
-                      Primary
-                    </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 lg:gap-2">
                       {category.tools.slice(0, category.primaryCount).map((tool, toolIndex) => (
                         <motion.span
                           key={tool}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                           transition={{ duration: 0.4, delay: 0.8 + categoryIndex * 0.15 + toolIndex * 0.05 }}
-                          className={`px-3 py-1.5 text-sm font-semibold rounded-lg border transition-all duration-300 hover:scale-105 hover:shadow-lg ${colors.primary}`}
+                          className={`px-2 py-0.5 lg:px-3 lg:py-1.5 text-[10px] lg:text-sm font-semibold rounded-md lg:rounded-lg border ${colors.primary}`}
+                          style={{ transition: 'transform 0.3s' }}
                         >
                           {tool}
                         </motion.span>
@@ -181,9 +178,9 @@ export default function TechStackScreen() {
                     </div>
                   </div>
 
-                  {/* Secondary tools */}
+                  {/* Secondary tools - hidden on mobile */}
                   {category.tools.length > category.primaryCount && (
-                    <div>
+                    <div className="hidden lg:block">
                       <div className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-medium">
                         Secondary
                       </div>
@@ -197,7 +194,8 @@ export default function TechStackScreen() {
                               duration: 0.3, 
                               delay: 0.8 + categoryIndex * 0.15 + category.primaryCount * 0.05 + toolIndex * 0.03 
                             }}
-                            className={`px-3 py-1 text-xs font-medium rounded-lg border transition-all duration-300 hover:scale-105 ${colors.secondary}`}
+                            className={`px-3 py-1 text-xs font-medium rounded-lg border ${colors.secondary}`}
+                            style={{ transition: 'transform 0.3s' }}
                           >
                             {tool}
                           </motion.span>
@@ -216,9 +214,9 @@ export default function TechStackScreen() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 1.8 }}
-          className="text-center mt-16"
+          className="text-center mt-4 lg:mt-16"
         >
-          <div className="inline-flex items-center glass px-8 py-4 rounded-full">
+          <div className="hidden lg:inline-flex items-center glass px-8 py-4 rounded-full">
             <div className="w-2 h-2 bg-accent-primary rounded-full mr-4 animate-pulse" />
             <span className="text-gray-300 font-medium">Always learning</span>
             <div className="w-1 h-1 bg-gray-500 rounded-full mx-4" />
