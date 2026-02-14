@@ -152,6 +152,7 @@ html {
 @media (max-width: 768px) {
   .screen-content {
     padding: 0.5rem;
+    padding-top: 5rem; /* account for fixed nav h-20 = 80px */
   }
 
   .screen-content {
