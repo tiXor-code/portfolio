@@ -1,196 +1,133 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
-const About = () => {
-  const sectionRef = useRef<HTMLElement>(null)
+const stats = [
+  {
+    value: '5+',
+    label: 'Years Experience',
+    description: 'Building games & digital experiences'
+  },
+  {
+    value: '10M+',
+    label: 'Players Reached',
+    description: 'Through EA FC Ultimate Team'
+  },
+  {
+    value: '6+',
+    label: 'Projects Shipped',
+    description: 'From mobile games to AAA titles'
+  },
+  {
+    value: '2+',
+    label: 'Platforms',
+    description: 'iOS, Android, PC, Console'
+  }
+]
+
+export default function About() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2
   })
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  })
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
-  
-  const skillCategories = [
-    {
-      title: "Strategic & Leadership",
-      skills: [
-        { name: 'Team Leadership', level: 95 },
-        { name: 'Cross-functional Collaboration', level: 92 },
-        { name: 'Agile Project Management', level: 88 },
-        { name: 'Data-driven Decision Making', level: 85 },
-      ]
-    },
-    {
-      title: "Creative & Technical",
-      skills: [
-        { name: 'Game Development (Unity/Unreal)', level: 90 },
-        { name: 'Content Production (Adobe Suite)', level: 85 },
-        { name: 'Web Development & APIs', level: 88 },
-        { name: 'AI & Automation (ChatGPT/Gemini/n8n)', level: 92 },
-      ]
-    },
-    {
-      title: "Adaptive Excellence",
-      skills: [
-        { name: 'Problem Solving', level: 95 },
-        { name: 'Quick Learning & Domain Translation', level: 93 },
-        { name: 'Innovation Mindset', level: 90 },
-        { name: 'Stakeholder Communication', level: 88 },
-      ]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
     }
-  ]
-  
-  const impactMetrics = [
-    { value: "5+", label: "Industries Impacted", color: "from-apple-blue to-cyan-500" },
-    { value: "30%", label: "Process Optimization", color: "from-purple-500 to-pink-500" },
-    { value: "100%", label: "Adaptability Score", color: "from-green-500 to-emerald-500" },
-    { value: "∞", label: "Growth Potential", color: "from-orange-500 to-red-500" },
-  ]
-  
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
+  }
+
   return (
-    <section
-      ref={sectionRef}
-      id="about"
-      className="relative py-32 px-6"
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="section-padding bg-bg-primary">
+      <div className="container-content">
         <motion.div
           ref={ref}
-          style={{ y }}
-          className="space-y-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="max-w-4xl mx-auto"
         >
-          {/* Introduction */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Adaptive <span className="text-gradient">Excellence</span>
+          {/* Section header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-display font-bold text-text-primary mb-4">
+              About Me
             </h2>
-            
-            <p className="text-lg text-apple-gray-300 mb-8 leading-relaxed">
-              From clicking "Start Game" as a kid, my journey evolved into a quest for excellence 
-              across multiple domains. Each industry I touch benefits from my unique ability to 
-              translate success patterns, innovate solutions, and drive meaningful impact.
+            <div className="w-12 h-1 bg-accent-primary mx-auto rounded-full" />
+          </motion.div>
+
+          {/* Bio */}
+          <motion.div variants={itemVariants} className="text-center mb-20">
+            <p className="text-body text-text-secondary leading-relaxed text-balance max-w-3xl mx-auto">
+              I'm a game producer and developer with a passion for creating experiences that matter. Currently at Electronic Arts working on FC Ultimate Team, I analyze player behavior to help shape content strategy for millions of players worldwide. My journey spans from indie game development to AAA production, with a focus on using data and creativity to build better games.
             </p>
-            
-            <p className="text-lg text-apple-gray-300 leading-relaxed">
-              Whether optimizing player engagement at EA Sports, leading teams to launch social impact 
-              games, or automating workflows with cutting-edge AI, I thrive on transforming challenges 
-              into opportunities across any field.
+            <p className="text-body text-text-secondary leading-relaxed text-balance max-w-3xl mx-auto mt-6">
+              When I'm not diving into player analytics, you'll find me exploring AI automation tools, prototyping new game ideas, or collaborating with teams to bring interactive experiences to life.
             </p>
           </motion.div>
 
-          {/* Impact Metrics */}
+          {/* Stats grid */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            variants={itemVariants}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {impactMetrics.map((metric, index) => (
+            {stats.map((stat) => (
               <motion.div
-                key={metric.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center glass-effect rounded-2xl p-6"
+                key={stat.label}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                className="text-center group cursor-default"
               >
-                <motion.div
-                  className={`text-4xl font-bold bg-gradient-to-r ${metric.color} bg-clip-text text-transparent`}
-                  animate={{ 
-                    textShadow: [
-                      `0 0 20px rgba(0,113,227,0.5)`,
-                      `0 0 40px rgba(0,113,227,0.8)`,
-                      `0 0 20px rgba(0,113,227,0.5)`
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                >
-                  {metric.value}
-                </motion.div>
-                <p className="text-sm text-apple-gray-400 mt-2">{metric.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Skills by Category */}
-          <div className="grid lg:grid-cols-3 gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, x: -30 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: categoryIndex * 0.2 }}
-                className="glass-effect rounded-2xl p-6"
-              >
-                <h3 className="text-xl font-semibold mb-6 text-gradient">{category.title}</h3>
-                <div className="space-y-4">
-                  {category.skills.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={inView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.3, delay: categoryIndex * 0.2 + index * 0.1 }}
-                    >
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-sm text-apple-gray-500">{skill.level}%</span>
-                      </div>
-                      <div className="h-2 bg-apple-gray-800 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full bg-gradient-to-r from-apple-blue to-purple-500"
-                          initial={{ width: 0 }}
-                          animate={inView ? { width: `${skill.level}%` } : {}}
-                          transition={{ duration: 1, delay: categoryIndex * 0.2 + index * 0.1, ease: "easeOut" }}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
+                <div className="glass p-6 rounded-xl transition-colors duration-300 group-hover:border-accent-primary/50">
+                  <div className="text-display font-bold text-accent-primary mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-text-primary font-medium mb-1">
+                    {stat.label}
+                  </div>
+                  <div className="text-small text-text-secondary">
+                    {stat.description}
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Journey Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-center"
-          >
-            <h3 className="text-3xl font-semibold mb-8">
-              Cross-Domain <span className="text-gradient">Journey</span>
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
+          {/* Skills highlight */}
+          <motion.div variants={itemVariants} className="mt-16 text-center">
+            <p className="text-small text-text-secondary mb-4">
+              Specializing in
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
               {[
-                { domain: "Education", icon: "🎓", desc: "Technical Foundation" },
-                { domain: "Sales", icon: "💼", desc: "Communication Mastery" },
-                { domain: "Gaming", icon: "🎮", desc: "Quality & Production" },
-                { domain: "Leadership", icon: "👥", desc: "Team Innovation" },
-                { domain: "Enterprise", icon: "🏢", desc: "Strategic Impact" },
-                { domain: "AI/Automation", icon: "🤖", desc: "Future Building" },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.domain}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass-effect rounded-xl px-6 py-4 text-center cursor-pointer"
+                'Game Production',
+                'Data Analytics',
+                'Team Leadership',
+                'React Development',
+                'AI Automation',
+                'Unity Engine'
+              ].map((skill, index) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                  className="glass px-4 py-2 text-small text-text-primary rounded-full"
                 >
-                  <div className="text-3xl mb-2">{item.icon}</div>
-                  <div className="font-semibold">{item.domain}</div>
-                  <div className="text-xs text-apple-gray-400">{item.desc}</div>
-                </motion.div>
+                  {skill}
+                </motion.span>
               ))}
             </div>
           </motion.div>
@@ -199,5 +136,3 @@ const About = () => {
     </section>
   )
 }
-
-export default About

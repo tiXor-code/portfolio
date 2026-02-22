@@ -1,86 +1,142 @@
-import { useEffect, useRef, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import Navigation from './components/Navigation'
-import ParallaxBackground from './components/ParallaxBackground'
-import LoadingScreen from './components/LoadingScreen'
-import { useLoading } from './hooks/useLoading'
+import { useEffect, useState } from 'react'
+import './styles/globals.css'
+import './styles/scroll-snap.css'
 
-const Hero = lazy(() => import('./components/Hero'))
-const About = lazy(() => import('./components/About'))
-const Projects = lazy(() => import('./components/Projects'))
-const Contact = lazy(() => import('./components/Contact'))
-const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
+import Navigation from './components/Navigation'
+import ProgressDots from './components/ProgressDots'
+import HeroScreen from './components/screens/HeroScreen'
+import AboutScreen from './components/screens/AboutScreen'
+import UniversityScreen from './components/screens/UniversityScreen'
+import PlayForDemocracyScreen from './components/screens/PlayForDemocracyScreen'
+import BrusselsScreen from './components/screens/BrusselsScreen'
+import UbisoftScreen from './components/screens/UbisoftScreen'
+import LeadershipSchoolScreen from './components/screens/LeadershipSchoolScreen'
+import EAScreen from './components/screens/EAScreen'
+import WhatsNextScreen from './components/screens/WhatsNextScreen'
+import ProjectsScreen from './components/screens/ProjectsScreen'
+import TechStackScreen from './components/screens/TechStackScreen'
+import ContactScreen from './components/screens/ContactScreen'
+
+const screens = [
+  { id: 'hero', label: 'Hero', component: HeroScreen },
+  { id: 'about', label: 'About', component: AboutScreen },
+  { id: 'university', label: 'University', component: UniversityScreen },
+  { id: 'play-for-democracy', label: 'Play For Democracy', component: PlayForDemocracyScreen },
+  { id: 'brussels', label: 'Brussels', component: BrusselsScreen },
+  { id: 'ubisoft', label: 'Ubisoft', component: UbisoftScreen },
+  { id: 'leadership-school', label: 'Leadership School', component: LeadershipSchoolScreen },
+  { id: 'ea', label: 'EA', component: EAScreen },
+  { id: 'whats-next', label: 'What\'s Next', component: WhatsNextScreen },
+  { id: 'projects', label: 'Projects', component: ProjectsScreen },
+  { id: 'tech-stack', label: 'Tech Stack', component: TechStackScreen },
+  { id: 'contact', label: 'Contact', component: ContactScreen },
+]
 
 function HomePage() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  })
+  const [currentScreen, setCurrentScreen] = useState(0)
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
+  const scrollToScreen = (index: number) => {
+    const element = document.getElementById(screens[index].id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   useEffect(() => {
-    // Enable smooth scrolling
-    document.documentElement.style.scrollBehavior = 'smooth'
-    
-    // Handle hash navigation on page load
-    if (window.location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(window.location.hash)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0,
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const screenIndex = screens.findIndex(screen => screen.id === entry.target.id)
+          if (screenIndex !== -1) {
+            setCurrentScreen(screenIndex)
+          }
         }
-      }, 100)
+      })
+    }, observerOptions)
+
+    screens.forEach(screen => {
+      const element = document.getElementById(screen.id)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => {
+      screens.forEach(screen => {
+        const element = document.getElementById(screen.id)
+        if (element) {
+          observer.unobserve(element)
+        }
+      })
+    }
+  }, [])
+
+  // Check for reduced motion preference and handle video autoplay
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      // Pause all videos if user prefers reduced motion
+      const videos = document.querySelectorAll('video[autoplay]')
+      videos.forEach(video => {
+        const videoElement = video as HTMLVideoElement
+        videoElement.pause()
+      })
     }
   }, [])
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-apple-black">
-      <ParallaxBackground />
+    <div className="relative">
+      {/* Enhanced grain texture */}
+      <div className="grain fixed inset-0 pointer-events-none z-10" />
       
-      <Navigation />
+      {/* Navigation */}
+      <Navigation screens={screens} scrollToScreen={scrollToScreen} currentScreen={currentScreen} />
       
-      <motion.div
-        style={{ opacity }}
-        className="fixed top-0 left-0 w-full h-screen pointer-events-none z-10"
-      >
-        <div className="hero-gradient opacity-50 w-full h-full" />
-      </motion.div>
+      {/* Progress Dots */}
+      <ProgressDots 
+        screens={screens} 
+        currentScreen={currentScreen} 
+        onScreenClick={scrollToScreen} 
+      />
       
-      <main className="relative z-20">
-        <Suspense fallback={<div className="h-screen" />}>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </Suspense>
+      {/* Main Content */}
+      <main className="scroll-snap-container">
+        {screens.map((screen) => {
+          const ScreenComponent = screen.component
+          const isHero = screen.id === 'hero'
+          const isContact = screen.id === 'contact'
+          
+          // Use semantic HTML elements
+          const Tag = isHero ? 'section' : isContact ? 'footer' : 'section'
+          
+          return (
+            <Tag
+              key={screen.id}
+              id={screen.id}
+              className="screen-snap"
+              aria-labelledby={`${screen.id}-heading`}
+            >
+              <ScreenComponent />
+            </Tag>
+          )
+        })}
       </main>
-      
-      <footer className="relative z-20 py-12 text-center text-apple-gray-500 text-sm">
-        <p>&copy; 2025 Teodor-Cristian Luțoiu. All rights reserved.</p>
-      </footer>
     </div>
   )
 }
 
 function App() {
-  const { isLoading } = useLoading()
-
-  if (isLoading) {
-    return <LoadingScreen />
-  }
-
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/project/:id" element={
-          <Suspense fallback={<LoadingScreen />}>
-            <ProjectDetail />
-          </Suspense>
-        } />
       </Routes>
     </Router>
   )

@@ -1,15 +1,50 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: dark;">
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Teodor-Cristian Luțoiu - Creative Developer crafting cinematic digital experiences" />
+    <meta name="description" content="Teodor-Cristian Lutoiu - Game Producer and Developer. Currently at EA working on FC Ultimate Team. React, Next.js, Unity, automation." />
     <meta name="theme-color" content="#000000" />
-    <title>Teodor-Cristian Luțoiu - Creative Developer</title>
+    <meta name="author" content="Teodor-Cristian Lutoiu" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Teodor-Cristian Lutoiu - Game Producer & Developer" />
+    <meta property="og:description" content="Currently at EA working on FC Ultimate Team. Previously shipped mobile games, built AI automation, broke things at Ubisoft." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://teodorlutoiu.com" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Teodor-Cristian Lutoiu - Game Producer & Developer" />
+    <meta name="twitter:description" content="Currently at EA working on FC Ultimate Team. React, Next.js, Unity, n8n automation." />
+    
+    <title>Teodor-Cristian Lutoiu - Game Producer & Developer</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Teodor-Cristian Lutoiu",
+      "jobTitle": "Assistant Content Producer",
+      "worksFor": { "@type": "Organization", "name": "Electronic Arts" },
+      "url": "https://teodorlutoiu.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/teodorlc",
+        "https://github.com/tiXor-code"
+      ]
+    }
+    </script>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FEFFX2D6P0"></script>
     <script>
@@ -39,9 +74,10 @@
         }
       };
     </script>
-  </head>
-  <body>
+</head>
+<body>
+    <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent-blue text-white px-4 py-2 rounded z-[9999]">Skip to content</a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+</body>
 </html>

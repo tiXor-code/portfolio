@@ -1,228 +1,168 @@
-import { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import clsx from 'clsx'
-import Modal from './Modal' // Import the Modal component
-import projectsData from '../../content/projects.json' // Import projects data
-import type { Project } from '../types/projects'
+import projectsData from '../data/projects.json'
 
-const Projects = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const [selectedDomain, setSelectedDomain] = useState<string | null>(null)
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [projects, setProjects] = useState<Project[]>([])
+export default function Projects() {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.1
   })
 
-  useEffect(() => {
-    setProjects(projectsData as unknown as Project[])
-  }, [])
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
+  }
+
+  // Sort projects to show featured ones first
+  const sortedProjects = [...projectsData].sort((a, b) => {
+    if (a.featured && !b.featured) return -1
+    if (!a.featured && b.featured) return 1
+    return 0
   })
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
-  
-  const domains = [...new Set(projects.map(p => p.domain))]
-  const filteredProjects = selectedDomain 
-    ? projects.filter(p => p.domain === selectedDomain)
-    : projects
 
-  const openModal = (project: Project) => {
-    setSelectedProject(project)
-    setIsModalOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-    setSelectedProject(null)
-  }
-  
   return (
-    <section
-      ref={sectionRef}
-      id="projects"
-      className="relative py-32 px-6 overflow-hidden"
-    >
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-apple-blue rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="projects" className="section-padding bg-bg-primary">
+      <div className="container-content">
         <motion.div
           ref={ref}
-          style={{ y }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-4">
-            Cross-Domain <span className="text-gradient">Impact</span>
-          </h2>
-          <p className="text-lg text-apple-gray-300 text-center mb-12 max-w-3xl mx-auto">
-            Real achievements across industries, showcasing adaptability and consistent excellence. 
-            Each project represents a unique challenge conquered through versatile expertise.
-          </p>
-          
-          {/* Domain Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <motion.button
-              onClick={() => setSelectedDomain(null)}
-              className={clsx(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                !selectedDomain 
-                  ? "bg-apple-blue text-white" 
-                  : "glass-effect text-apple-gray-300 hover:bg-white/10"
-              )}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              All Projects
-            </motion.button>
-            {domains.map((domain) => (
-              <motion.button
-                key={domain}
-                onClick={() => setSelectedDomain(domain)}
-                className={clsx(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                  selectedDomain === domain 
-                    ? "bg-apple-blue text-white" 
-                    : "glass-effect text-apple-gray-300 hover:bg-white/10"
-                )}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {domain}
-              </motion.button>
-            ))}
-          </div>
-          
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+          {/* Section header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-display font-bold text-text-primary mb-4">
+              Featured Projects
+            </h2>
+            <div className="w-12 h-1 bg-accent-blue mx-auto rounded-full mb-6" />
+            <p className="text-body text-text-secondary max-w-2xl mx-auto text-balance">
+              A showcase of projects that demonstrate my experience in game production, 
+              technical development, and creative problem-solving.
+            </p>
+          </motion.div>
+
+          {/* Projects grid */}
+          <div className="grid gap-8 lg:gap-12">
+            {sortedProjects.map((project) => (
               <motion.div
                 key={project.id}
-                layout
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onHoverStart={() => setHoveredProject(project.id)}
-                onHoverEnd={() => setHoveredProject(null)}
+                variants={itemVariants}
                 className="group"
               >
                 <motion.div
-                  className={clsx(
-                    "relative overflow-hidden rounded-2xl transition-all duration-500 h-full",
-                    "glass-effect hover:bg-white/10",
-                    project.featured && "lg:col-span-1 border-2 border-apple-blue/30"
-                  )}
-                  whileHover={{ y: -10 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="glass rounded-2xl overflow-hidden card-hover"
                 >
-                  {/* Project Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-apple-blue/20 to-purple-500/20"
-                      animate={{
-                        opacity: hoveredProject === project.id ? 0.8 : 0.4
-                      }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        className="text-6xl"
-                        animate={{
-                          scale: hoveredProject === project.id ? 1.2 : 1,
-                          rotate: hoveredProject === project.id ? 5 : 0
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {project.domain === "Gaming & Analytics" && "🎮"}
-                        {project.domain === "Leadership & Social Impact" && "👥"}
-                        {project.domain === "AI & Innovation" && "🤖"}
-                        {project.domain === "Technical Development" && "💻"}
-                        {project.domain === "Creative Production" && "🎬"}
-                        {project.domain === "Quality & Process" && "✅"}
-                      </motion.div>
-                    </div>
-                  </div>
-                  
-                  {/* Project Info */}
-                  <div className="p-6">
-                    <div className="text-sm text-apple-blue mb-2">{project.company}</div>
-                    <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-apple-gray-300 mb-3 line-clamp-2">{project.description}</p>
-                    
-                    {/* Impact Metric */}
-                    <div className="mb-4 p-3 bg-apple-blue/10 rounded-lg">
-                      <p className="text-sm text-apple-blue font-medium">💡 {project.impact}</p>
-                    </div>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1 text-xs font-medium bg-apple-gray-800/50 text-apple-gray-300 rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* View Project Button */}
-                    <div className="flex items-center gap-3">
-                      <motion.button
-                        onClick={() => openModal(project)}
-                        className="inline-flex items-center text-apple-blue hover:text-apple-blue-hover transition-colors duration-300"
-                        whileHover={{ x: 5 }}
-                      >
-                        <span className="mr-2">Quick View</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                      </motion.button>
+                  <div className={`grid ${project.featured ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-0`}>
+                    {/* Project image */}
+                    <div className={`relative ${project.featured ? 'lg:col-span-1' : 'lg:col-span-1'} aspect-video lg:aspect-square overflow-hidden`}>
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-500/20" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-6xl font-bold text-white/20 select-none">
+                          {project.company.charAt(0)}
+                        </div>
+                      </div>
                       
-                      <Link
-                        to={`/project/${project.id}`}
-                        className="inline-flex items-center text-apple-gray-400 hover:text-white transition-colors duration-300"
-                      >
-                        <span className="mr-2">Full Details</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+                      {/* Featured badge */}
+                      {project.featured && (
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="bg-accent-blue text-white text-xs font-medium px-3 py-1 rounded-full">
+                            Featured
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Project content */}
+                    <div className={`p-8 ${project.featured ? 'lg:col-span-1' : 'lg:col-span-2'} flex flex-col justify-between`}>
+                      <div>
+                        {/* Header */}
+                        <div className="mb-4">
+                          <div className="flex items-start justify-between mb-2">
+                            <span className="text-accent-blue font-medium text-small">
+                              {project.domain}
+                            </span>
+                          </div>
+                          <h3 className="text-title font-bold text-text-primary mb-2 group-hover:text-accent-blue transition-colors duration-300">
+                            {project.title}
+                          </h3>
+                          <p className="text-text-secondary font-medium text-body">
+                            {project.company}
+                          </p>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-text-secondary text-body leading-relaxed mb-4">
+                          {project.description}
+                        </p>
+
+                        {/* Impact */}
+                        <div className="mb-6">
+                          <div className="flex items-start mb-2">
+                            <div className="w-1.5 h-1.5 bg-accent-blue rounded-full mt-2.5 mr-3 shrink-0" />
+                            <span className="text-accent-blue font-medium text-body">
+                              {project.impact}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="px-3 py-1 text-small text-text-secondary bg-surface-elevated rounded-full border border-border-subtle"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               </motion.div>
             ))}
           </div>
+
+          {/* View more projects */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-16"
+          >
+            <p className="text-text-secondary text-body mb-6">
+              Interested in seeing more of my work?
+            </p>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="btn-secondary inline-block"
+            >
+              Let's discuss your project
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
-      
-      {selectedProject && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title={selectedProject.title}
-          company={selectedProject.company}
-          details={selectedProject.details}
-          tags={selectedProject.tags}
-          domain={selectedProject.domain}
-        />
-      )}
     </section>
   )
 }
-
-export default Projects

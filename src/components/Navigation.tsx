@@ -1,117 +1,176 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import clsx from 'clsx'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const Navigation = () => {
-  const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
-  const location = useLocation()
-  const isProjectPage = location.pathname.startsWith('/project/')
+interface NavigationProps {
+  screens: Array<{ id: string; label: string }>
+  scrollToScreen: (index: number) => void
+  currentScreen: number
+}
+
+const keyScreens = [
+  { name: 'About', screenId: 'about' },
+  { name: 'Journey', screenId: 'play-for-democracy' },
+  { name: 'Projects', screenId: 'projects' },
+  { name: 'Tech Stack', screenId: 'tech-stack' },
+  { name: 'Contact', screenId: 'contact' },
+]
+
+export default function Navigation({ screens, scrollToScreen, currentScreen }: NavigationProps) {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-      
-      // Update active section based on scroll position (only on home page)
-      if (!isProjectPage) {
-        const sections = ['hero', 'about', 'projects', 'contact']
-        for (const section of sections) {
-          const element = document.getElementById(section)
-          if (element) {
-            const rect = element.getBoundingClientRect()
-            if (rect.top <= 100 && rect.bottom >= 100) {
-              setActiveSection(section)
-              break
-            }
-          }
-        }
-      }
-    }
+    setIsScrolled(currentScreen > 0)
+  }, [currentScreen])
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isProjectPage])
-  
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ]
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (isProjectPage) {
-      // If on project page, navigate to home page with hash
-      e.preventDefault()
-      window.location.href = '/' + href
+  const handleNavClick = (screenId: string) => {
+    setIsMobileMenuOpen(false)
+    const screenIndex = screens.findIndex(screen => screen.id === screenId)
+    if (screenIndex !== -1) {
+      scrollToScreen(screenIndex)
     }
   }
 
   return (
-    <motion.header
-      className={clsx(
-        'fixed top-0 w-full z-50 transition-all duration-500',
-        scrolled ? 'py-4' : 'py-6'
-      )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      <nav className={clsx(
-        'mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between transition-all duration-500',
-        scrolled && 'glass-effect-dark rounded-full py-3 px-6'
-      )}>
-        {isProjectPage ? (
-          <Link
-            to="/"
-            className="text-xl font-bold tracking-tight hover:text-apple-blue transition-colors"
-          >
-            TCL
-          </Link>
-        ) : (
-          <motion.a
-            href="#hero"
-            className="text-xl font-bold tracking-tight"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            TCL
-          </motion.a>
-        )}
-        
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <motion.a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className={clsx(
-                'text-sm font-medium transition-colors duration-300',
-                !isProjectPage && activeSection === item.href.slice(1)
-                  ? 'text-apple-blue'
-                  : 'text-apple-gray-300 hover:text-apple-white'
-              )}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
+    <header>
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm ${
+          isScrolled ? 'glass backdrop-blur-subtle' : ''
+        }`}
+        style={{ transition: 'background-color 0.6s, backdrop-filter 0.6s' }}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="container-content">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleNavClick('hero')}
+              className="text-xl font-display font-bold text-text-primary hover:text-accent-primary"
+              style={{ transition: 'color 0.3s' }}
+              aria-label="Go to homepage"
             >
-              {item.name}
-            </motion.a>
-          ))}
-          
-          <motion.a
-            href="https://drive.google.com/file/d/1PRUAyB4xNXOS6iGj_1fRA_jF08JEozNR/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-4 px-4 py-2 bg-apple-blue text-white text-sm font-medium rounded-full hover:bg-apple-blue-hover transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Download CV
-          </motion.a>
+              TCL
+            </motion.button>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {keyScreens.map((item, index) => (
+                <motion.button
+                  key={item.name}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  onClick={() => handleNavClick(item.screenId)}
+                  className="text-text-secondary hover:text-text-primary animated-underline"
+                  style={{ transition: 'color 0.3s' }}
+                  aria-label={`Navigate to ${item.name} section`}
+                >
+                  {item.name}
+                </motion.button>
+              ))}
+              <motion.a
+                href="https://drive.google.com/file/d/1PRUAyB4xNXOS6iGj_1fRA_jF08JEozNR/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: keyScreens.length * 0.1 }}
+                className="ml-6 px-6 py-2.5 bg-accent-primary text-white text-sm font-medium rounded-full hover:bg-accent-primary-hover"
+                style={{ transition: 'background-color 0.3s, transform 0.2s' }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="View CV (opens in new tab)"
+              >
+                View CV
+              </motion.a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden flex flex-col justify-center items-center w-8 h-8 relative"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              <motion.span
+                animate={{
+                  rotate: isMobileMenuOpen ? 45 : 0,
+                  y: isMobileMenuOpen ? 0 : -4,
+                }}
+                className="w-6 h-0.5 bg-text-primary transform"
+                style={{ transition: 'transform 0.3s' }}
+              />
+              <motion.span
+                animate={{
+                  opacity: isMobileMenuOpen ? 0 : 1,
+                }}
+                className="w-6 h-0.5 bg-text-primary my-1"
+                style={{ transition: 'opacity 0.3s' }}
+              />
+              <motion.span
+                animate={{
+                  rotate: isMobileMenuOpen ? -45 : 0,
+                  y: isMobileMenuOpen ? -2 : 4,
+                }}
+                className="w-6 h-0.5 bg-text-primary transform"
+                style={{ transition: 'transform 0.3s' }}
+              />
+            </motion.button>
+          </div>
         </div>
-      </nav>
-    </motion.header>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              id="mobile-menu"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden glass border-t border-border-subtle"
+            >
+              <div className="container-content py-6">
+                {keyScreens.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    onClick={() => handleNavClick(item.screenId)}
+                    className="block w-full text-left py-3 text-text-secondary hover:text-text-primary"
+                    style={{ transition: 'color 0.3s' }}
+                    aria-label={`Navigate to ${item.name} section`}
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
+                <motion.a
+                  href="https://drive.google.com/file/d/1PRUAyB4xNXOS6iGj_1fRA_jF08JEozNR/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: keyScreens.length * 0.1 }}
+                  className="block w-full text-left py-3 text-accent-primary hover:text-accent-primary-hover font-medium"
+                  style={{ transition: 'color 0.3s' }}
+                  aria-label="View CV (opens in new tab)"
+                >
+                  View CV →
+                </motion.a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </header>
   )
 }
-
-export default Navigation

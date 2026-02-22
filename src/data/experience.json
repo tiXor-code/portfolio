@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ea-fc",
+    "company": "Electronic Arts",
+    "role": "Assistant Content Producer",
+    "department": "FC Ultimate Team",
+    "period": "Sep 2024 - Present",
+    "location": "Remote",
+    "description": "Analyzing player behavior data and supporting content strategy for one of the world's biggest live-service games with 10M+ active players.",
+    "achievements": [
+      "Data-driven content timing optimization",
+      "Cross-functional collaboration with analytics team",
+      "Player engagement pattern analysis"
+    ],
+    "skills": ["Data Analytics", "Content Strategy", "Live Service Games"],
+    "featured": true
+  },
+  {
+    "id": "arden-producer",
+    "company": "ARDEN - Play for Democracy",
+    "role": "Producer & Game Designer",
+    "department": "Development Team",
+    "period": "Mar 2024 - Aug 2024",
+    "location": "Brussels / Remote",
+    "description": "Led a 7-person team to develop and ship Vote It!, a mobile democracy education game that reached 2K downloads and earned EU Commission recognition.",
+    "achievements": [
+      "Successfully shipped on iOS and Android",
+      "Led team coordination and project management",
+      "Invited to Brussels by European Commission"
+    ],
+    "skills": ["Team Leadership", "Game Production", "Unity", "Project Management"],
+    "featured": true
+  },
+  {
+    "id": "ubisoft-qa",
+    "company": "Ubisoft",
+    "role": "QA Tester",
+    "department": "Quality Assurance",
+    "period": "Jun 2022 - Mar 2023",
+    "location": "On-site",
+    "description": "Entry-level position testing AAA games, documenting bugs, and learning professional game development workflows.",
+    "achievements": [
+      "Documented 100+ bugs systematically",
+      "Learned professional QA methodologies",
+      "Gained insight into AAA development process"
+    ],
+    "skills": ["Quality Assurance", "Bug Testing", "Team Collaboration"],
+    "featured": false
+  },
+  {
+    "id": "education",
+    "company": "University of Worcester",
+    "role": "BSc Computer Games Design & Development",
+    "department": "Academic Foundation",
+    "period": "2017 - 2022",
+    "location": "Worcester, UK",
+    "description": "Built comprehensive technical foundation in game development, programming, and design principles.",
+    "achievements": [
+      "Graduated with technical foundation",
+      "Hands-on project experience",
+      "Industry-relevant curriculum"
+    ],
+    "skills": ["Game Development", "Programming", "Design Principles"],
+    "featured": false
+  }
+]

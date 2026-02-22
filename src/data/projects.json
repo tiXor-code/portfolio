@@ -1,0 +1,208 @@
+[
+  {
+    "id": 1,
+    "title": "EA FC 25 Ultimate Team",
+    "company": "Electronic Arts",
+    "description": "Working on one of the biggest live-service games in the world. I analyze player behavior data and help the content team figure out what to release and when.",
+    "impact": "Data-driven content timing for 10M+ active players",
+    "image": "/images/ea-fc.jpg",
+    "tags": ["Data Analytics", "Live Service", "Player Experience", "Content Strategy"],
+    "link": "#",
+    "featured": true,
+    "domain": "Gaming & Analytics",
+    "details": {
+      "challenge": "EA FC Ultimate Team needed to maintain player engagement and optimize content releases to keep the community active throughout the season.",
+      "role": "As a member of the analytics team, I contributed to player behavior analysis and helped identify engagement patterns to inform content strategy decisions.",
+      "approach": "Analyzed player data to understand engagement patterns and behavior trends. Collaborated with the team to suggest content timing optimizations based on data insights.",
+      "technologies": ["Excel", "SQL", "Jira", "Confluence"],
+      "outcomes": [
+        "Contributed to team efforts in analyzing player engagement metrics",
+        "Helped identify key periods for content releases",
+        "Participated in cross-functional meetings to share insights",
+        "Gained valuable experience in live service analytics"
+      ],
+      "learnings": "This experience taught me the importance of data-driven decision making in live service games and how player behavior analysis can inform content strategies.",
+      "timeline": "September 2024 - Present",
+      "teamSize": "Part of larger analytics team",
+      "images": ["/images/ea-fc-dashboard.jpg", "/images/ea-fc-analytics.jpg"],
+      "metrics": {
+        "dataAnalyzed": "1000+ hours",
+        "reportsCreated": "15+",
+        "insightsDelivered": "Weekly",
+        "teamCollaboration": "Cross-functional"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "JobMap",
+    "company": "How To Get A Job",
+    "description": "Full-stack job market intelligence platform for bootcamp grads. Aggregates 13K+ listings from 4 APIs, extracts skills with GPT-4o-mini, and generates personalized career reports.",
+    "impact": "13K+ jobs indexed, 980 skills mapped, 15 paying users",
+    "image": "/images/jobmap.jpg",
+    "tags": ["Next.js", "TypeScript", "PostgreSQL", "Azure", "OpenAI"],
+    "link": "https://how-to-get-a-job.com",
+    "featured": true,
+    "domain": "Technical Development",
+    "details": {
+      "challenge": "Bootcamp graduates lack visibility into the real job market — what skills are demanded, which companies are hiring, and how competitive their profile is.",
+      "role": "Co-founder and sole developer. Designed the 68-table database architecture, built the data pipeline, admin dashboard, client app, and landing page.",
+      "approach": "Built a 6-layer canonical database schema to normalize job data from multiple APIs. Automated enrichment with Azure OpenAI for skill extraction, seniority classification, and category assignment. Created an admin dashboard for pipeline monitoring and a client-facing app for job seekers.",
+      "technologies": ["Next.js", "TypeScript", "Flask", "PostgreSQL", "Azure App Services", "GitHub Actions", "Tailwind CSS", "OpenAI API"],
+      "outcomes": [
+        "Aggregated 13,282 job listings from 4 different APIs",
+        "Extracted and mapped 980 unique skills with 77,834 job-skill mappings",
+        "Onboarded 15 Le Wagon graduates with personalized PDF career reports",
+        "Built shard-based pipeline scheduler with 22 shards across 5 schedules",
+        "28 automated data quality tests, all passing"
+      ],
+      "learnings": "Building a data-intensive platform taught me the importance of schema design, data normalization, and pipeline reliability. Running enrichment at scale requires careful cost management and caching.",
+      "timeline": "December 2025 - Present",
+      "teamSize": "Solo developer + business co-founder",
+      "images": ["/images/jobmap-dashboard.jpg", "/images/jobmap-client.jpg"],
+      "metrics": {
+        "jobsIndexed": "13,282",
+        "skillsMapped": "980",
+        "activeUsers": "15",
+        "dbTables": "68"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Vote It! Democracy Game",
+    "company": "ARDEN - Play for Democracy",
+    "description": "Produced a mobile game from scratch with a 7-person team. Shipped on iOS and Android, got 2K downloads, and led to an invitation to Brussels by the European Commission.",
+    "impact": "Shipped on 2 platforms, 2K+ downloads, EU Commission recognition",
+    "image": "/images/vote-it.jpg",
+    "tags": ["Production", "Game Design", "Mobile Development", "Social Impact"],
+    "link": "#",
+    "featured": true,
+    "domain": "Leadership & Social Impact",
+    "details": {
+      "challenge": "ARDEN needed to create an engaging mobile game that would educate young people about democracy and encourage civic participation, working within budget constraints and timeline requirements.",
+      "role": "Producer and Game Designer, responsible for project coordination, design decisions, team communication, and ensuring the project met its educational and engagement goals.",
+      "approach": "Implemented structured production processes with regular milestones and team check-ins. Co-designed game mechanics that balanced educational content with engaging gameplay. Coordinated between development, art, and content teams.",
+      "technologies": ["Unity", "C#", "Jira", "Slack", "Miro", "Figma"],
+      "outcomes": [
+        "Successfully launched on iOS and Android on schedule",
+        "Reached 2,000 downloads in initial release period",
+        "Received positive feedback from test groups",
+        "Created an educational tool that effectively teaches democratic concepts",
+        "Built strong relationships with team members and stakeholders"
+      ],
+      "learnings": "This project taught me how to balance creative vision with practical constraints, and showed me the potential of games as educational tools for social impact.",
+      "timeline": "March 2024 - August 2024",
+      "teamSize": "7 person development team",
+      "images": ["/images/vote-it-gameplay.jpg", "/images/vote-it-team.jpg"],
+      "metrics": {
+        "onTimeDelivery": "100%",
+        "teamSize": "7 members",
+        "platformsLaunched": "2",
+        "downloads": "2K+"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "ORB Trading Bot",
+    "company": "Personal Project",
+    "description": "Automated futures trading system executing Opening Range Breakout strategy on MNQ/MES micro contracts via Interactive Brokers API. Backtested across 8 months of live market data.",
+    "impact": "67.7% win rate, +$7,121 backtested profit over 8 months",
+    "image": "/images/orb-trading.jpg",
+    "tags": ["Python", "IBKR API", "Algorithmic Trading", "pandas"],
+    "link": "#",
+    "domain": "Technical Development",
+    "details": {
+      "challenge": "Manual trading is emotionally driven and inconsistent. Wanted to build a systematic, backtested approach to micro futures that removes emotional decision-making.",
+      "role": "Solo developer. Designed the strategy parameters, implemented the bot, connected to IBKR Gateway, and ran extensive backtests across multiple contracts and sessions.",
+      "approach": "Implemented the Opening Range Breakout strategy with per-contract parameters for entry, stop-loss, take-profit, and breakeven. Connected to Interactive Brokers Gateway for real-time data and order execution. Built a backtesting framework across London and New York sessions.",
+      "technologies": ["Python", "IBKR API", "IBC", "pandas", "systemd", "Telegram API"],
+      "outcomes": [
+        "317 trades backtested: 130 wins, 62 losses, 109 breakeven",
+        "67.7% win rate with +$7,121 profit (~$890/month on 1 MNQ)",
+        "London session: +$3,309 (64% WR), New York: +$3,812 (71% WR)",
+        "Max drawdown limited to -$889 with $500 daily loss cap",
+        "Automated execution via systemd with Telegram monitoring alerts"
+      ],
+      "learnings": "Algorithmic trading taught me the importance of rigorous backtesting, risk management, and the gap between theoretical and live performance. Systems thinking applies to everything.",
+      "timeline": "October 2025 - February 2026",
+      "teamSize": "Solo developer",
+      "images": ["/images/orb-backtest.jpg", "/images/orb-dashboard.jpg"],
+      "metrics": {
+        "winRate": "67.7%",
+        "backtestProfit": "+$7,121",
+        "totalTrades": "317",
+        "maxDrawdown": "-$889"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "AI Marketing Automation",
+    "company": "Personal Project",
+    "description": "Built automation workflows using n8n and AI APIs to handle repetitive marketing tasks. Cut manual work time in half.",
+    "impact": "50% reduction in manual task time",
+    "image": "/images/ai-automation.jpg",
+    "tags": ["AI Tools", "n8n", "ChatGPT", "Workflow Design"],
+    "link": "#",
+    "domain": "AI & Innovation",
+    "details": {
+      "challenge": "Repetitive marketing tasks were consuming significant time that could be better spent on creative and strategic work.",
+      "role": "Solo experimenter and workflow designer, exploring various AI tools and creating automation workflows for personal use.",
+      "approach": "Experimented with n8n to create automated workflows, integrated ChatGPT and Gemini APIs for content generation, and tested various automation scenarios to find optimal solutions.",
+      "technologies": ["n8n", "ChatGPT API", "Google Gemini API", "Zapier", "Make"],
+      "outcomes": [
+        "Created several working automation workflows for personal use",
+        "Reduced time on repetitive tasks by approximately 50%",
+        "Gained hands-on experience with AI APIs and automation tools",
+        "Developed reusable templates for common marketing tasks",
+        "Shared learnings with peers interested in automation"
+      ],
+      "learnings": "This project taught me the practical applications of AI in everyday tasks and the importance of thoughtful workflow design. Not every task should be automated, but finding the right balance can significantly improve productivity.",
+      "timeline": "January 2024 - April 2024",
+      "teamSize": "Solo project",
+      "images": ["/images/ai-workflow.jpg", "/images/ai-dashboard.jpg"],
+      "metrics": {
+        "timeReduction": "~50%",
+        "workflowsCreated": "10+",
+        "toolsExplored": "5+",
+        "personalUse": "Ongoing"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "title": "Video Content",
+    "company": "Freelance",
+    "description": "Freelance video editing using Adobe Premiere and After Effects. Promotional videos, educational content, whatever clients needed.",
+    "impact": "20+ projects delivered on schedule",
+    "image": "/images/content-production.jpg",
+    "tags": ["Adobe Premiere", "After Effects", "Video Editing", "Content Creation"],
+    "link": "#",
+    "domain": "Creative Production",
+    "details": {
+      "challenge": "Different clients had varying needs for video content, from promotional materials to educational videos, each requiring a unique approach.",
+      "role": "Video Editor and Content Creator, responsible for editing, post-production, and delivering final video products to client specifications.",
+      "approach": "Developed a streamlined workflow for common video types. Created templates for frequently requested formats. Maintained clear communication with clients throughout the production process.",
+      "technologies": ["Adobe Premiere Pro", "After Effects", "Photoshop", "Audition"],
+      "outcomes": [
+        "Completed projects for multiple satisfied clients",
+        "Developed efficient editing workflows",
+        "Built a portfolio of diverse video content",
+        "Established repeat client relationships",
+        "Improved technical skills through varied projects"
+      ],
+      "learnings": "Content creation taught me that understanding client needs and maintaining clear communication is as important as technical skills. Each project is an opportunity to refine both creative and professional abilities.",
+      "timeline": "January 2023 - Present",
+      "teamSize": "Solo freelancer",
+      "images": ["/images/editing-suite.jpg", "/images/client-work.jpg"],
+      "metrics": {
+        "projectsDelivered": "20+",
+        "clientSatisfaction": "High",
+        "skillsRefined": "Continuous",
+        "turnaroundTime": "On schedule"
+      }
+    }
+  }
+]
