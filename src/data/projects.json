@@ -35,6 +35,41 @@
   },
   {
     "id": 2,
+    "title": "JobMap",
+    "company": "How To Get A Job",
+    "description": "Full-stack job market intelligence platform for bootcamp grads. Aggregates 13K+ listings from 4 APIs, extracts skills with GPT-4o-mini, and generates personalized career reports.",
+    "impact": "13K+ jobs indexed, 980 skills mapped, 15 paying users",
+    "image": "/images/jobmap.jpg",
+    "tags": ["Next.js", "TypeScript", "PostgreSQL", "Azure", "OpenAI"],
+    "link": "https://how-to-get-a-job.com",
+    "featured": true,
+    "domain": "Technical Development",
+    "details": {
+      "challenge": "Bootcamp graduates lack visibility into the real job market — what skills are demanded, which companies are hiring, and how competitive their profile is.",
+      "role": "Co-founder and sole developer. Designed the 68-table database architecture, built the data pipeline, admin dashboard, client app, and landing page.",
+      "approach": "Built a 6-layer canonical database schema to normalize job data from multiple APIs. Automated enrichment with Azure OpenAI for skill extraction, seniority classification, and category assignment. Created an admin dashboard for pipeline monitoring and a client-facing app for job seekers.",
+      "technologies": ["Next.js", "TypeScript", "Flask", "PostgreSQL", "Azure App Services", "GitHub Actions", "Tailwind CSS", "OpenAI API"],
+      "outcomes": [
+        "Aggregated 13,282 job listings from 4 different APIs",
+        "Extracted and mapped 980 unique skills with 77,834 job-skill mappings",
+        "Onboarded 15 Le Wagon graduates with personalized PDF career reports",
+        "Built shard-based pipeline scheduler with 22 shards across 5 schedules",
+        "28 automated data quality tests, all passing"
+      ],
+      "learnings": "Building a data-intensive platform taught me the importance of schema design, data normalization, and pipeline reliability. Running enrichment at scale requires careful cost management and caching.",
+      "timeline": "December 2025 - Present",
+      "teamSize": "Solo developer + business co-founder",
+      "images": ["/images/jobmap-dashboard.jpg", "/images/jobmap-client.jpg"],
+      "metrics": {
+        "jobsIndexed": "13,282",
+        "skillsMapped": "980",
+        "activeUsers": "15",
+        "dbTables": "68"
+      }
+    }
+  },
+  {
+    "id": 3,
     "title": "Vote It! Democracy Game",
     "company": "ARDEN - Play for Democracy",
     "description": "Produced a mobile game from scratch with a 7-person team. Shipped on iOS and Android, got 2K downloads, and led to an invitation to Brussels by the European Commission.",
@@ -69,7 +104,41 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
+    "title": "ORB Trading Bot",
+    "company": "Personal Project",
+    "description": "Automated futures trading system executing Opening Range Breakout strategy on MNQ/MES micro contracts via Interactive Brokers API. Backtested across 8 months of live market data.",
+    "impact": "67.7% win rate, +$7,121 backtested profit over 8 months",
+    "image": "/images/orb-trading.jpg",
+    "tags": ["Python", "IBKR API", "Algorithmic Trading", "pandas"],
+    "link": "#",
+    "domain": "Technical Development",
+    "details": {
+      "challenge": "Manual trading is emotionally driven and inconsistent. Wanted to build a systematic, backtested approach to micro futures that removes emotional decision-making.",
+      "role": "Solo developer. Designed the strategy parameters, implemented the bot, connected to IBKR Gateway, and ran extensive backtests across multiple contracts and sessions.",
+      "approach": "Implemented the Opening Range Breakout strategy with per-contract parameters for entry, stop-loss, take-profit, and breakeven. Connected to Interactive Brokers Gateway for real-time data and order execution. Built a backtesting framework across London and New York sessions.",
+      "technologies": ["Python", "IBKR API", "IBC", "pandas", "systemd", "Telegram API"],
+      "outcomes": [
+        "317 trades backtested: 130 wins, 62 losses, 109 breakeven",
+        "67.7% win rate with +$7,121 profit (~$890/month on 1 MNQ)",
+        "London session: +$3,309 (64% WR), New York: +$3,812 (71% WR)",
+        "Max drawdown limited to -$889 with $500 daily loss cap",
+        "Automated execution via systemd with Telegram monitoring alerts"
+      ],
+      "learnings": "Algorithmic trading taught me the importance of rigorous backtesting, risk management, and the gap between theoretical and live performance. Systems thinking applies to everything.",
+      "timeline": "October 2025 - February 2026",
+      "teamSize": "Solo developer",
+      "images": ["/images/orb-backtest.jpg", "/images/orb-dashboard.jpg"],
+      "metrics": {
+        "winRate": "67.7%",
+        "backtestProfit": "+$7,121",
+        "totalTrades": "317",
+        "maxDrawdown": "-$889"
+      }
+    }
+  },
+  {
+    "id": 5,
     "title": "AI Marketing Automation",
     "company": "Personal Project",
     "description": "Built automation workflows using n8n and AI APIs to handle repetitive marketing tasks. Cut manual work time in half.",
@@ -103,41 +172,7 @@
     }
   },
   {
-    "id": 4,
-    "title": "Indie Game Dev",
-    "company": "Personal Projects",
-    "description": "Taught myself Unity and Unreal Engine by actually finishing small games. Game jams, prototypes, the whole thing.",
-    "impact": "5+ completed projects across 2 engines",
-    "image": "/images/game-dev.jpg",
-    "tags": ["Unity", "Unreal Engine", "C#", "Game Design"],
-    "link": "#",
-    "domain": "Technical Development",
-    "details": {
-      "challenge": "Learning game development requires hands-on experience with multiple aspects of the development pipeline, from programming to design to deployment.",
-      "role": "Solo developer handling all aspects of game creation including programming, design, art integration, and testing.",
-      "approach": "Started with small prototype projects to learn the tools, gradually increasing complexity. Participated in game jams to practice rapid development. Focused on completing projects rather than perfecting them.",
-      "technologies": ["Unity", "Unreal Engine 5", "C#", "C++", "Blender", "Git"],
-      "outcomes": [
-        "Completed several small game projects from start to finish",
-        "Learned both Unity and Unreal Engine workflows",
-        "Gained experience in all aspects of game development",
-        "Built a portfolio of playable prototypes",
-        "Connected with other indie developers in the community"
-      ],
-      "learnings": "Game development taught me the importance of scope management and iterative design. Starting small and actually finishing projects is more valuable than attempting overly ambitious ones.",
-      "timeline": "September 2022 - December 2023",
-      "teamSize": "Solo developer",
-      "images": ["/images/game-prototypes.jpg", "/images/dev-workspace.jpg"],
-      "metrics": {
-        "projectsCompleted": "5+",
-        "enginesLearned": "2",
-        "skillsGained": "Full stack",
-        "communityEngagement": "Active"
-      }
-    }
-  },
-  {
-    "id": 5,
+    "id": 6,
     "title": "Video Content",
     "company": "Freelance",
     "description": "Freelance video editing using Adobe Premiere and After Effects. Promotional videos, educational content, whatever clients needed.",
@@ -167,40 +202,6 @@
         "clientSatisfaction": "High",
         "skillsRefined": "Continuous",
         "turnaroundTime": "On schedule"
-      }
-    }
-  },
-  {
-    "id": 6,
-    "title": "QA at Ubisoft",
-    "company": "Ubisoft",
-    "description": "My entry into the games industry. Tested games systematically, documented 100+ bugs, learned how professional game development actually works.",
-    "impact": "100+ bugs identified and documented",
-    "image": "/images/qa-testing.jpg",
-    "tags": ["Game Testing", "Quality Assurance", "Bug Reporting", "Team Collaboration"],
-    "link": "#",
-    "domain": "Quality & Process",
-    "details": {
-      "challenge": "Game testing requires attention to detail and systematic approaches to identify issues that could impact player experience.",
-      "role": "QA Tester, responsible for testing assigned game areas, documenting bugs, and verifying fixes.",
-      "approach": "Followed established testing protocols and checklists. Documented bugs with clear reproduction steps. Collaborated with team members to ensure comprehensive coverage.",
-      "technologies": ["JIRA", "Bug tracking tools", "Test documentation"],
-      "outcomes": [
-        "Contributed to successful game releases",
-        "Identified and documented numerous bugs",
-        "Learned professional QA methodologies",
-        "Gained insight into game development process",
-        "Developed attention to detail and patience"
-      ],
-      "learnings": "QA testing taught me the importance of systematic thinking and clear communication. Every bug found and fixed contributes to a better player experience.",
-      "timeline": "June 2022 - March 2023",
-      "teamSize": "Part of QA team",
-      "images": ["/images/qa-workspace.jpg", "/images/testing-setup.jpg"],
-      "metrics": {
-        "bugsReported": "100+",
-        "areasTested": "Multiple",
-        "teamContribution": "Consistent",
-        "skillsDeveloped": "Professional QA"
       }
     }
   }

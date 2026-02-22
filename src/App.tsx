@@ -134,7 +134,7 @@ function HomePage() {
 
 function App() {
   return (
-    <Router basename="/wip3/">
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
