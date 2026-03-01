@@ -112,7 +112,7 @@ export default function WhatsNextScreen() {
           </motion.div>
 
           {/* Bento-style grid layout */}
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-2 lg:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-6 max-w-5xl mx-auto">
             {/* AI Tools - Large card, top left */}
             <motion.div
               initial={{ opacity: 0, x: -30, y: 30 }}
