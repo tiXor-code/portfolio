@@ -129,7 +129,7 @@ export default function WhatsNextScreen() {
                   FOCUS
                 </div>
               </div>
-              <h3 className="text-xl lg:text-3xl font-display font-bold text-white mb-2 lg:mb-4">
+              <h3 className="text-base sm:text-xl lg:text-3xl font-display font-bold text-white mb-2 lg:mb-4 break-words">
                 AI Tools
               </h3>
               <p className="text-gray-300 text-sm lg:text-lg leading-relaxed mb-2 lg:mb-6">
@@ -152,7 +152,7 @@ export default function WhatsNextScreen() {
               <div className="p-2 lg:p-3 bg-accent-primary/20 rounded-xl text-accent-primary w-fit mb-2 lg:mb-4 group-hover:scale-110 transition-transform duration-300">
                 <GamepadIcon />
               </div>
-              <h3 className="text-lg lg:text-2xl font-display font-bold text-white mb-1 lg:mb-3">
+              <h3 className="text-sm sm:text-lg lg:text-2xl font-display font-bold text-white mb-1 lg:mb-3 break-words">
                 Live Games
               </h3>
               <p className="text-gray-300 text-sm lg:text-base leading-relaxed">
@@ -176,7 +176,7 @@ export default function WhatsNextScreen() {
                   NEXT
                 </div>
               </div>
-              <h3 className="text-xl lg:text-3xl font-display font-bold text-white mb-2 lg:mb-4">
+              <h3 className="text-base sm:text-xl lg:text-3xl font-display font-bold text-white mb-2 lg:mb-4 break-words">
                 Innovation
               </h3>
               <p className="text-gray-300 text-sm lg:text-lg leading-relaxed mb-2 lg:mb-6">

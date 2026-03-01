@@ -76,11 +76,11 @@ export default function AboutScreen() {
             <p className="text-base lg:text-title font-display text-accent-primary font-medium">
               I turn complex data into player experiences that matter.
             </p>
-            <p className="text-sm lg:text-body text-text-secondary leading-relaxed">
+            <p className="text-sm lg:text-body text-text-secondary leading-relaxed break-words overflow-wrap-anywhere">
               Currently at EA, I analyze millions of players to shape content strategy. 
               Previously shipped mobile games that reached the European Parliament.
             </p>
-            <p className="text-sm lg:text-body text-text-secondary leading-relaxed">
+            <p className="text-sm lg:text-body text-text-secondary leading-relaxed break-words overflow-wrap-anywhere">
               From QA tester to content producer, I build things that work—on time, every time.
             </p>
           </motion.div>
