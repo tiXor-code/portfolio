@@ -21,7 +21,7 @@ export default function HeroScreen() {
           animate={{ scale: 1.05 }}
           transition={{ duration: 20, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/90" />
       </div>
 
       <div className="relative z-10 flex flex-col items-start justify-center h-full text-left max-w-4xl mx-auto px-4 lg:px-6 lg:px-8">
@@ -54,7 +54,7 @@ export default function HeroScreen() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-          className="text-subtitle font-display text-text-secondary mb-8 max-w-lg"
+          className="text-subtitle font-display text-white/90 mb-8 max-w-lg"
         >
           Content Producer & Game Designer
         </motion.p>
@@ -64,7 +64,7 @@ export default function HeroScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-          className="text-body text-text-tertiary max-w-md mb-12"
+          className="text-body text-white/70 max-w-md mb-12"
         >
           Building immersive game experiences and shipping products that connect millions of players worldwide.
         </motion.p>
