@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Retro Many Money</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 60px auto; padding: 0 24px; color: #222; line-height: 1.6; }
+  h1 { font-size: 32px; margin-bottom: 8px; }
+  .meta { color: #888; font-size: 14px; margin-bottom: 40px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  ul { padding-left: 20px; }
+  a { color: #d63384; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; font-size: 14px; }
+  th { background: #f5f5f5; }
+</style>
+</head>
+<body>
+<h1>Privacy Policy</h1>
+<p class="meta">Retro Many Money · Last updated 26 April 2026</p>
+
+<h2>1. Scope</h2>
+<p>This policy describes how the "Retro Games Clipper" developer integration handles data when used by its single authorized TikTok account: <strong>@retromanymoney</strong>. The integration is operated solely by the channel owner; no end-user data from third parties is processed.</p>
+
+<h2>2. Data accessed via TikTok APIs</h2>
+<p>When the channel owner authorizes the integration on the TikTok account, the following scopes and data are accessed:</p>
+<table>
+  <thead><tr><th>Scope</th><th>Data</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td><code>user.info.basic</code></td><td>open_id, display name, avatar URL</td><td>Identify which authorized account a request belongs to</td></tr>
+    <tr><td><code>video.upload</code></td><td>Video files uploaded by the channel owner</td><td>Place pre-edited clips into the TikTok app drafts inbox</td></tr>
+    <tr><td><code>video.publish</code></td><td>Video files + caption + privacy setting</td><td>Direct-publish pre-edited clips with channel-owner-supplied caption</td></tr>
+  </tbody>
+</table>
+
+<h2>3. Storage</h2>
+<p>OAuth tokens (access token, refresh token, open_id) are stored locally on the channel owner's machine in an environment variables file. They are not transmitted to any server other than TikTok's official API endpoints. Video files are uploaded directly from the channel owner's machine to TikTok and are not retained anywhere else by the integration.</p>
+
+<h2>4. Sharing</h2>
+<p>No data accessed via TikTok APIs is shared with any third party. The integration does not analytics, log, or transmit any personal data to external services.</p>
+
+<h2>5. Retention</h2>
+<p>OAuth tokens are kept until the channel owner manually revokes the integration's access (via TikTok Settings → Manage app permissions) or rotates credentials. There is no remote database; deleting the local environment file removes all stored data.</p>
+
+<h2>6. Your rights</h2>
+<p>Because the integration is operated for the single authorized account holder, that account holder has direct control: revoke at any time via TikTok's app permissions screen, or delete the local credentials.</p>
+
+<h2>7. Contact</h2>
+<p>Questions or revocation requests: <a href="mailto:retromanymoney@gmail.com">retromanymoney@gmail.com</a></p>
+
+<h2>8. Reference</h2>
+<p>This integration uses TikTok's APIs in accordance with the <a href="https://developers.tiktok.com/legal/page/tiktok-api-terms-of-service/en">TikTok API Terms of Service</a> and the <a href="https://developers.tiktok.com/legal/partner-privacy-policy">TikTok Partner Privacy Policy</a>.</p>
+</body>
+</html>
