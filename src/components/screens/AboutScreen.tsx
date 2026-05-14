@@ -74,11 +74,11 @@ export default function AboutScreen() {
             className="space-y-6"
           >
             <p className="text-base lg:text-title font-display text-accent-primary font-medium">
-              I turn complex data into player experiences that matter.
+              I turn ideas into agentic systems that ship.
             </p>
             <p className="text-sm lg:text-body text-text-secondary leading-relaxed break-words overflow-wrap-anywhere">
-              Currently at EA, I analyze millions of players to shape content strategy. 
-              Previously shipped mobile games that reached the European Parliament.
+              Currently at EA on FC Ultimate Team. On the side I build AI automations,
+              ship n8n pipelines, and run Ministeru' Creativ.
             </p>
             <p className="text-sm lg:text-body text-text-secondary leading-relaxed break-words overflow-wrap-anywhere">
               From QA tester to content producer, I build things that work—on time, every time.

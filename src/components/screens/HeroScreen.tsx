@@ -56,7 +56,7 @@ export default function HeroScreen() {
           transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
           className="text-subtitle font-display text-white/90 mb-8 max-w-lg"
         >
-          Content Producer & Game Designer
+          AI automation engineer & builder
         </motion.p>
 
         {/* Descriptive text */}
@@ -66,7 +66,7 @@ export default function HeroScreen() {
           transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
           className="text-body text-white/70 max-w-md mb-12"
         >
-          Building immersive game experiences and shipping products that connect millions of players worldwide.
+          Building agentic systems and automations with n8n, Claude, and Azure OpenAI. Founder of Ministeru' Creativ. Co-founder of JobMap.
         </motion.p>
 
         {/* CTA Button */}

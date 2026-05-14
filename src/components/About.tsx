@@ -71,10 +71,10 @@ export default function About() {
           {/* Bio */}
           <motion.div variants={itemVariants} className="text-center mb-20">
             <p className="text-body text-text-secondary leading-relaxed text-balance max-w-3xl mx-auto">
-              I'm a game producer and developer with a passion for creating experiences that matter. Currently at Electronic Arts working on FC Ultimate Team, I analyze player behavior to help shape content strategy for millions of players worldwide. My journey spans from indie game development to AAA production, with a focus on using data and creativity to build better games.
+              I'm an AI automation engineer building agentic systems and pipelines with n8n, Claude, and Azure OpenAI. Currently at Electronic Arts as Assistant Content Producer on FC Ultimate Team. Outside the day job I run Ministeru' Creativ and co-founded JobMap. My background is in games, but the work I'm building now is on the automation and AI side.
             </p>
             <p className="text-body text-text-secondary leading-relaxed text-balance max-w-3xl mx-auto mt-6">
-              When I'm not diving into player analytics, you'll find me exploring AI automation tools, prototyping new game ideas, or collaborating with teams to bring interactive experiences to life.
+              When I'm not in the day job, you'll find me shipping automations, exploring new AI tools, or wiring agents into real workflows for clients.
             </p>
           </motion.div>
 
