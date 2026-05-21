@@ -11,43 +11,27 @@ const LINKS = [
 export default function Nav() {
   const [solid, setSolid] = useState(false)
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const f = () => setSolid(window.scrollY > 40)
+    f(); window.addEventListener('scroll', f, { passive: true })
+    return () => window.removeEventListener('scroll', f)
   }, [])
-
   return (
     <header
-      className={
-        'fixed inset-x-0 top-0 z-50 transition-colors duration-300 ' +
-        (solid ? 'bg-base/85 backdrop-blur-md border-b border-line' : 'border-b border-transparent')
-      }
+      className={'fixed inset-x-0 top-0 z-50 transition-colors duration-300 ' +
+        (solid ? 'bg-base/80 backdrop-blur-md border-b border-line' : 'border-b border-transparent')}
     >
       <nav className="shell flex h-16 items-center justify-between">
-        <a href="#top" className="mono text-sm font-semibold tracking-tight" aria-label="Home">
-          <span className="text-ink">teodor</span>
-          <span className="text-signal">.lutoiu</span>
+        <a href="#top" className="mono text-[13px] tracking-wide" aria-label="Home">
+          TEODOR&nbsp;LUTOIU
         </a>
-
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="mono hidden items-center gap-7 text-[12px] uppercase tracking-[0.12em] text-ink-dim md:flex">
           {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-ink-dim transition-colors hover:text-ink"
-            >
-              {l.label}
-            </a>
+            <a key={l.href} href={l.href} className="transition-colors hover:text-ink">{l.label}</a>
           ))}
         </div>
-
-        <a
-          href="#contact"
-          className="flex items-center gap-2 rounded-full border border-signal-dim bg-signal/10 px-3.5 py-1.5 text-xs text-signal transition-colors hover:bg-signal/20"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-signal animate-blink" />
-          <span className="mono">Available for work</span>
+        <a href="#contact" className="mono flex items-center gap-2 text-[12px] text-accent">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-blink" />
+          <span className="hidden sm:inline">AVAILABLE FOR WORK</span>
         </a>
       </nav>
     </header>
