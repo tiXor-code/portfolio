@@ -1,126 +1,125 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+
+const ease = [0.22, 1, 0.36, 1] as const
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
-  const scrollToAbout = () => {
-    const element = document.querySelector('#about')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle gradient background with mouse parallax */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, #FF7A5F 0%, transparent 50%)`,
-        }}
+    <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+      <div className="grid-bg pointer-events-none absolute inset-0 opacity-70" />
+      <div
+        className="pointer-events-none absolute -top-32 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(91,232,164,0.13), transparent 70%)' }}
       />
-      
-      <div className="container-content text-center z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          {/* Name */}
-          <motion.h1 
-            className="text-4xl md:text-6xl lg:text-8xl font-display font-bold text-text-primary mb-6"
-            style={{ lineHeight: '0.85', letterSpacing: '-0.03em' }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+
+      <div className="shell relative grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="mono flex flex-wrap items-center gap-x-3 gap-y-1 text-xs tracking-[0.18em] text-ink-faint"
           >
-            Teodor-Cristian
-            <br />
-            <span className="text-gradient">Lutoiu</span>
+            <span className="text-signal">AI AUTOMATION ENGINEER</span>
+            <span className="text-line-strong">/</span>
+            <span>BUCHAREST</span>
+            <span className="text-line-strong">/</span>
+            <span>REMOTE, EU</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.08, ease }}
+            className="mt-6 text-mega font-semibold text-balance"
+          >
+            I build AI agents that{' '}
+            <span className="text-signal">decide, act,</span> and ship.
           </motion.h1>
 
-          {/* One-liner subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-title text-text-secondary max-w-3xl mx-auto text-balance mb-16"
+            transition={{ duration: 0.7, delay: 0.16, ease }}
+            className="mt-6 max-w-xl text-[1.12rem] leading-relaxed text-ink-dim"
           >
-            Game Producer & Developer at EA, crafting experiences that connect millions of players worldwide
+            Autonomous agents, RAG pipelines, and production automation. Not slideware,
+            running systems. One of mine is live on this page, scroll down and hand it a lead.
           </motion.p>
 
-          {/* Current role badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="inline-flex items-center glass px-6 py-3 rounded-full text-small"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.24, ease }}
+            className="mt-9 flex flex-wrap items-center gap-3"
           >
-            <div className="w-2 h-2 bg-accent-primary rounded-full mr-3 animate-pulse" />
-            <span className="text-text-secondary">Currently at</span>
-            <span className="ml-2 text-text-primary font-medium">Electronic Arts</span>
+            <a
+              href="#demo"
+              className="group flex items-center gap-2 rounded-full bg-signal px-5 py-3 text-sm font-medium text-base transition-transform hover:-translate-y-0.5"
+            >
+              Run the live agent
+              <span className="transition-transform group-hover:translate-y-0.5">↓</span>
+            </a>
+            <a
+              href="#services"
+              className="rounded-full border border-line-strong px-5 py-3 text-sm text-ink transition-colors hover:border-ink-faint hover:bg-panel"
+            >
+              Work with me
+            </a>
           </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.button
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={scrollToAbout}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-text-secondary hover:text-text-primary transition-colors duration-300 group"
-      >
-        <div className="flex flex-col items-center">
-          <span className="text-small mb-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-            Scroll to explore
-          </span>
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-current rounded-full flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.36 }}
+            className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6"
           >
-            <motion.div
-              animate={{ y: [0, 12, 0], opacity: [0, 1, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-current rounded-full mt-2"
-            />
+            {[
+              ['6+', 'AI systems shipped'],
+              ['2', 'live products, paying users'],
+              ['5 yrs', 'shipping at studio scale'],
+            ].map(([n, l]) => (
+              <div key={l}>
+                <div className="font-display text-2xl text-ink">{n}</div>
+                <div className="mono text-xs text-ink-faint">{l}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
-      </motion.button>
 
-      {/* Subtle parallax elements */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-primary/10 to-transparent rounded-full blur-3xl"
-        animate={{ 
-          x: mousePosition.x * 0.1, 
-          y: mousePosition.y * 0.1 
-        }}
-        transition={{ type: 'spring', stiffness: 100 }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-accent-warm/5 to-transparent rounded-full blur-3xl"
-        animate={{ 
-          x: -mousePosition.x * 0.05, 
-          y: -mousePosition.y * 0.05 
-        }}
-        transition={{ type: 'spring', stiffness: 50 }}
-      />
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease }}
+          className="rounded-xl border border-line bg-panel/80 p-1.5 shadow-2xl"
+        >
+          <div className="flex items-center justify-between border-b border-line px-3 py-2">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+            </div>
+            <span className="mono text-[11px] text-ink-faint">icp-agent · idle</span>
+          </div>
+          <div className="mono space-y-1.5 p-4 text-[12.5px] leading-relaxed">
+            <div className="text-ink-faint">$ POST /api/webhook/inbound</div>
+            <div className="text-ink-dim">{'{'}</div>
+            <div className="text-ink-dim">
+              {'  '}"email": <span className="text-signal">"founders@linear.app"</span>,
+            </div>
+            <div className="text-ink-dim">
+              {'  '}"domain": <span className="text-signal">"linear.app"</span>
+            </div>
+            <div className="text-ink-dim">{'}'}</div>
+            <div className="pt-2 text-ink-faint">
+              {'>'} waiting for input
+              <span className="ml-0.5 inline-block h-3.5 w-2 translate-y-0.5 bg-signal animate-blink" />
+            </div>
+            <div className="pt-1 text-[11px] text-ink-faint">
+              the panel below is the real thing
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   )
 }

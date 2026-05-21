@@ -1,24 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
   plugins: [react()],
-  server: {
-    port: 3000,
-    host: 'localhost'
-  },
+  server: { port: 3000, host: 'localhost' },
   build: {
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom'],
-          'animations': ['framer-motion'],
-          'router': ['react-router-dom']
-        }
-      }
+          vendor: ['react', 'react-dom'],
+          motion: ['framer-motion'],
+        },
+      },
     },
-    chunkSizeWarningLimit: 700
-  }
+    chunkSizeWarningLimit: 700,
+  },
 })

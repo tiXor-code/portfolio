@@ -1,0 +1,90 @@
+export interface Project {
+  id: string
+  name: string
+  kind: string
+  summary: string
+  detail: string
+  stack: string[]
+  accent: 'signal' | 'warm' | 'cold'
+  links: { label: string; href: string }[]
+  isDemo?: boolean
+}
+
+export const PROJECTS: Project[] = [
+  {
+    id: 'icp-agent',
+    name: 'icp-agent',
+    kind: 'Autonomous lead-engagement agent',
+    summary:
+      'Takes a lead webhook, enriches it, decides on its own whether to research further, scores it against a six-criterion ICP, routes it Hot / Warm / Cold, and drafts the opening email.',
+    detail:
+      'A bounded ReAct loop: the model picks each next action from a closed enum until it has enough to score. Every decision is logged. 15 unit tests. This is the agent running in the panel above.',
+    stack: ['TypeScript', 'Hono', 'Azure OpenAI', 'Hunter.io', 'SerpAPI'],
+    accent: 'signal',
+    isDemo: true,
+    links: [
+      { label: 'GitHub', href: 'https://github.com/tiXor-code/icp-agent' },
+      { label: 'Live', href: 'https://icp-agent-ten.vercel.app' },
+    ],
+  },
+  {
+    id: 'support-agent',
+    name: 'RAG support agent',
+    kind: 'Support auto-responder with a confidence gate',
+    summary:
+      'Classifies a support ticket, retrieves from an indexed help centre, drafts a cited reply, self-grades it, then a three-lever confidence gate decides auto-send versus human review.',
+    detail:
+      '226 document chunks at 1536 dimensions in Supabase pgvector with an HNSW index. The gate uses a retrieval check and a self-grade check independently, so each failure mode is tunable on its own.',
+    stack: ['Next.js', 'Supabase pgvector', 'Azure OpenAI', 'n8n'],
+    accent: 'cold',
+    links: [{ label: 'GitHub', href: 'https://github.com/tiXor-code/instantly-support-agent' }],
+  },
+  {
+    id: 'jobmap',
+    name: 'JobMap',
+    kind: 'Job-search SaaS, co-founder',
+    summary:
+      'A paid product that indexes thousands of jobs, maps the skills behind them, and scores roles against a user profile. 9,300 jobs and 504 skills mapped.',
+    detail:
+      'Runs on Azure. An AI pipeline classifies each role and builds the skill graph that powers the match score. Co-founded and shipped to paying users.',
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Azure'],
+    accent: 'warm',
+    links: [{ label: 'Site', href: 'https://how-to-get-a-job.com' }],
+  },
+  {
+    id: 'openclaw',
+    name: 'OpenClaw stack',
+    kind: 'Self-hosted agent operations',
+    summary:
+      'A personal AI operations stack running 24/7 on a Mac mini M4: an agent runtime, n8n workflows, a trading bot, and a Cloudflare tunnel.',
+    detail:
+      'The home base behind most of the work here. Real uptime, real workloads, no managed platform underneath it.',
+    stack: ['n8n', 'Docker', 'Cloudflare Tunnel', 'Mac mini M4'],
+    accent: 'signal',
+    links: [{ label: 'GitHub', href: 'https://github.com/tiXor-code' }],
+  },
+  {
+    id: 'ministeru',
+    name: 'Ministeru Creativ',
+    kind: 'Creative + automation studio, founder',
+    summary:
+      'A studio I founded, four people plus contractors, live since March 2026. It runs its own lead-enrichment pipeline.',
+    detail:
+      'Where the agent and automation work meets paying clients. The pipeline that feeds it is the production sibling of icp-agent.',
+    stack: ['n8n', 'TypeScript', 'Automation'],
+    accent: 'warm',
+    links: [{ label: 'Site', href: 'https://ministerucreativ.com' }],
+  },
+  {
+    id: 'orb-bot',
+    name: 'ORB trading bot',
+    kind: 'Algorithmic trading system',
+    summary:
+      'An opening-range-breakout bot on Interactive Brokers, backtested across five years and running micro-futures on a paper account.',
+    detail:
+      'The non-agent end of the range: strict rules, strict risk, fully automated execution. Proof that the automation instinct is not limited to LLMs.',
+    stack: ['Python', 'IBKR API', 'Backtesting'],
+    accent: 'cold',
+    links: [],
+  },
+]
