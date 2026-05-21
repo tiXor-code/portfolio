@@ -33,7 +33,7 @@ export default function Journey() {
           </div>
           <Reveal delay={0.1}>
             <figure className="overflow-hidden rounded-2xl border border-line bg-panel">
-              <img src="/images/journey/brussels-street.jpg" alt="Teodor in Brussels during the Play For Democracy project"
+              <img src={import.meta.env.BASE_URL + "images/journey/brussels-street.jpg"} alt="Teodor in Brussels during the Play For Democracy project"
                 loading="lazy" className="h-72 w-full object-cover lg:h-[440px]" />
               <figcaption className="border-t border-line px-4 py-3 text-[12px] text-ink-faint">
                 Brussels, 2024. The Play For Democracy work, on its way to the European Parliament.
