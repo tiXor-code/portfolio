@@ -73,7 +73,7 @@ export const PROJECTS: Project[] = [
       'The eval set is the hard part. Hit, run, score, mutate.',
     stack: ['Python', 'Azure OpenAI', 'GEPA', 'eval design'],
     accent: 'warm',
-    // GitHub link pending: the repo needs a token scrub + history rewrite before it can go public.
+    // No GitHub link by choice: the repo stays private (live token + internal infra in its history). The card stands on its description.
     links: [],
   },
   {

@@ -20,5 +20,8 @@ describe('Journey', () => {
     const img = screen.getByAltText(/Brussels/i)
     expect(img.className).toMatch(/flex-1/)
     expect(img.className).toMatch(/lg:h-auto/)
+    // taller figure: bigger mobile height + a desktop min-height floor
+    expect(img.className).toMatch(/h-96/)
+    expect(img.className).toMatch(/lg:min-h-\[560px\]/)
   })
 })

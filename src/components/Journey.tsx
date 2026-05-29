@@ -37,7 +37,7 @@ export default function Journey() {
                 src={import.meta.env.BASE_URL + 'images/journey/brussels-street.jpg'}
                 alt="Teodor in Brussels during the Play For Democracy project"
                 loading="lazy"
-                className="h-72 w-full flex-1 object-cover lg:h-auto"
+                className="h-96 w-full flex-1 object-cover lg:h-auto lg:min-h-[560px]"
               />
               <figcaption className="border-t border-line px-4 py-3 text-[12px] text-ink-faint">
                 Brussels, 2024. The Play For Democracy work, on its way to the European Parliament.
