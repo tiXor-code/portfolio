@@ -47,6 +47,13 @@ export default function Hero() {
           <a href="#work" className="rounded-full border border-line-2 px-6 py-3 text-sm text-ink backdrop-blur-sm transition-colors hover:border-ink-faint">
             Selected work
           </a>
+          <a
+            href={import.meta.env.BASE_URL + 'cv/teodor-lutoiu-cv.pdf'}
+            target="_blank" rel="noreferrer"
+            className="mono text-[12px] uppercase tracking-[0.12em] text-ink-dim transition-colors hover:text-ink"
+          >
+            Download CV (PDF) &#8599;
+          </a>
         </motion.div>
       </div>
 
@@ -56,8 +63,8 @@ export default function Hero() {
         className="shell flex flex-wrap justify-between gap-6 border-t border-line py-6 mono text-[12px] uppercase tracking-[0.12em] text-ink-dim"
       >
         <span>Bucharest &middot; remote, EU</span>
-        <span>06 systems shipped &middot; 02 products</span>
-        <span className="hidden sm:inline">Est. 2024</span>
+        <span>09 systems shipped &middot; 02 products</span>
+        <span>Available &middot; ~4 weeks notice</span>
       </motion.div>
     </section>
   )
