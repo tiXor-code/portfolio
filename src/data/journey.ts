@@ -25,15 +25,15 @@ export const JOURNEY: JourneyStop[] = [
     note: 'The foot in the door of a major studio. Learned what shipping at scale actually demands.',
   },
   {
-    period: '2024 - 2025',
+    period: '2024 - Present',
     org: 'Electronic Arts',
     role: 'Assistant Content Producer, EA FC Ultimate Team',
     note: 'Data-driven content timing for a live game played by millions. On-time delivery, every cycle.',
   },
   {
-    period: '2025 - now',
-    org: 'Independent',
-    role: 'AI automation engineer & builder',
-    note: 'Founded Ministeru Creativ, co-founded JobMap, and went full-time on agents and automation.',
+    period: '2026 - Present',
+    org: "Ministeru' Creativ",
+    role: 'Founder · AI automation engineer',
+    note: 'Four-person studio plus contractors, live since March 2026. Where the AI automation work meets paying clients. Co-founded JobMap on the side.',
   },
 ]
