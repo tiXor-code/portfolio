@@ -8,9 +8,9 @@ export default function Journey() {
         <SectionHead
           index="04" kicker="The path here"
           title={<>Games taught me how to ship. AI is what I ship now.</>}
-          lead="The short version. Five years from a games degree to producing at Electronic Arts taught me to deliver on time, at real scale, with a team. That discipline is what the AI work runs on."
+          lead="Five years from a games degree to producing at EA, then founding a studio and going full-time on AI. The shipping discipline is what the agents and pipelines run on."
         />
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_minmax(320px,_400px)]">
           <div>
             {JOURNEY.map((j, i) => (
               <Reveal key={j.org} delay={i * 0.05}>
@@ -31,10 +31,14 @@ export default function Journey() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.1}>
-            <figure className="overflow-hidden rounded-2xl border border-line bg-panel">
-              <img src={import.meta.env.BASE_URL + "images/journey/brussels-street.jpg"} alt="Teodor in Brussels during the Play For Democracy project"
-                loading="lazy" className="h-72 w-full object-cover lg:h-[440px]" />
+          <Reveal delay={0.1} className="lg:h-full">
+            <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-panel">
+              <img
+                src={import.meta.env.BASE_URL + 'images/journey/brussels-street.jpg'}
+                alt="Teodor in Brussels during the Play For Democracy project"
+                loading="lazy"
+                className="h-72 w-full flex-1 object-cover lg:h-auto"
+              />
               <figcaption className="border-t border-line px-4 py-3 text-[12px] text-ink-faint">
                 Brussels, 2024. The Play For Democracy work, on its way to the European Parliament.
               </figcaption>
