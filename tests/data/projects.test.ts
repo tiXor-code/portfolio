@@ -37,13 +37,15 @@ describe('PROJECTS data', () => {
     }
   })
 
-  it('the three new cards carry a tiXor-code GitHub link', () => {
+  it('the publishable new cards carry a tiXor-code GitHub link; gepa is intentionally link-less for now', () => {
     const byId = Object.fromEntries(PROJECTS.map((p) => [p.id, p]))
-    for (const id of ['cv-tailor', 'wiki-substrate', 'gepa']) {
+    for (const id of ['cv-tailor', 'wiki-substrate']) {
       expect(
         byId[id].links.some((l) => l.href.includes('github.com/tiXor-code')),
       ).toBe(true)
     }
+    // gepa-prompt-lab needs a token scrub + history rewrite before going public
+    expect(byId['gepa'].links).toEqual([])
   })
 
   it('contains no em or en dashes in copy', () => {

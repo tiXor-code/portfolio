@@ -73,7 +73,8 @@ export const PROJECTS: Project[] = [
       'The eval set is the hard part. Hit, run, score, mutate.',
     stack: ['Python', 'Azure OpenAI', 'GEPA', 'eval design'],
     accent: 'warm',
-    links: [{ label: 'GitHub', href: 'https://github.com/tiXor-code/gepa-prompt-lab' }],
+    // GitHub link pending: the repo needs a token scrub + history rewrite before it can go public.
+    links: [],
   },
   {
     id: 'jobmap',
