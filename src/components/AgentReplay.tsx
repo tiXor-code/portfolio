@@ -60,7 +60,7 @@ export default function AgentReplay() {
   const logShown = shown(events.findIndex((e) => e.k === 'log'))
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-panel/90 backdrop-blur-sm">
+    <div className="overflow-hidden bg-panel/90 backdrop-blur-sm">
       <div className="flex items-center justify-between border-b border-line bg-panel-2/80 px-5 py-3">
         <div className="mono flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-ink-faint">
           <span className={'h-1.5 w-1.5 rounded-full ' + (phase === 'running' ? 'bg-accent animate-blink' : phase === 'done' ? 'bg-accent' : 'bg-line-2')} />
