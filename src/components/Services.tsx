@@ -64,6 +64,27 @@ export default function Services() {
                 </div>
               ))}
             </div>
+            <div className="mt-7 border-t border-line pt-5">
+              <div className="mono text-[11px] uppercase tracking-[0.18em] text-ink-faint">Stack</div>
+              <dl className="mt-3 space-y-2 text-[12.5px] leading-relaxed">
+                <div className="grid grid-cols-[88px_1fr] gap-3">
+                  <dt className="mono text-[11px] uppercase tracking-[0.12em] text-ink-faint">Languages</dt>
+                  <dd className="text-ink-dim">Python · TypeScript · JavaScript · SQL · Node.js</dd>
+                </div>
+                <div className="grid grid-cols-[88px_1fr] gap-3">
+                  <dt className="mono text-[11px] uppercase tracking-[0.12em] text-ink-faint">AI / LLM</dt>
+                  <dd className="text-ink-dim">Azure OpenAI · Claude API · RAG · embeddings · pgvector · agentic workflows · prompt engineering · eval design · MCP</dd>
+                </div>
+                <div className="grid grid-cols-[88px_1fr] gap-3">
+                  <dt className="mono text-[11px] uppercase tracking-[0.12em] text-ink-faint">Frameworks</dt>
+                  <dd className="text-ink-dim">Next.js · React · Hono · Flask · FastAPI · n8n</dd>
+                </div>
+                <div className="grid grid-cols-[88px_1fr] gap-3">
+                  <dt className="mono text-[11px] uppercase tracking-[0.12em] text-ink-faint">Infra</dt>
+                  <dd className="text-ink-dim">Vercel · Azure App Services · GitHub Actions (OIDC) · Docker · Cloudflare · Postgres · Supabase</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </Reveal>
       </div>
