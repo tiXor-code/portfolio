@@ -1,25 +1,46 @@
 # robots.txt for https://teodorlutoiu.com
 #
-# Files in public/ are copied verbatim into dist/ by Vite, and .github/workflows/
-# deployHost.yml rsyncs dist/ to the document root, so this ships as-is.
+# Files in public/ are copied verbatim into dist/ by Vite. The site is deployed to
+# Vercel (project "portfolio"), so this ships as-is from the build output.
 #
-# NOTE ON CLOUDFLARE: this zone has Cloudflare's managed robots.txt enabled, which
-# intercepts /robots.txt and PREPENDS its own AI-crawler directives before this
-# file's contents (it needs a 200 from the origin to detect and merge this file).
-# The live response is therefore "Cloudflare managed block" + this content. The
-# Disallow rules for ClaudeBot / GPTBot / Google-Extended / CCBot and friends are
-# managed in the Cloudflare dashboard, not here. Do not duplicate them below.
+# NOTE ON CLOUDFLARE: until 2026-07-27 the apex was Cloudflare-proxied and
+# Cloudflare's managed robots.txt intercepted /robots.txt, PREPENDING its own
+# AI-crawler directives to this file's contents. The site then moved to Vercel and
+# the apex A record was set to DNS-only, which took Cloudflare out of the request
+# path and removed that injection entirely. The AI-crawler rules below therefore
+# live HERE now. They reproduce the policy Cloudflare had been serving; changing
+# them in the Cloudflare dashboard no longer has any effect on this domain.
 
 User-agent: *
+Content-Signal: search=yes,ai-train=no,use=reference
 Allow: /
 
-# Preview deploys. deploy-wip.yml / -wip2 / -wip3 / -wip5 rsync full copies of the
-# site into these subdirectories of the same document root, which would otherwise
-# be crawlable near-duplicates of the homepage. The prod deploy's `rsync --delete`
-# wipes them, so they come and go; keep them out of the index either way.
-Disallow: /wip/
-Disallow: /wip2/
-Disallow: /wip3/
-Disallow: /wip5/
+# AI crawlers. Previously supplied by Cloudflare's managed block, now explicit.
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CloudflareBrowserRenderingCrawler
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 Sitemap: https://teodorlutoiu.com/sitemap.xml

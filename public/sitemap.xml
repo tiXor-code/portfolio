@@ -4,7 +4,7 @@
 
   WHEN YOU ADD A PAGE, ADD IT HERE BY HAND. Nothing generates or validates this
   file. It is a plain static asset: Vite copies public/ into dist/ untouched, and
-  .github/workflows/deployHost.yml rsyncs dist/ to the document root.
+  dist/ is served by Vercel (project "portfolio").
 
   Why hand-authored: this is a plain Vite static build with no route-generation or
   prerender step. src/App.tsx renders a single page and every nav link is an
