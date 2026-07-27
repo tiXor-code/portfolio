@@ -1,0 +1,25 @@
+# robots.txt for https://teodorlutoiu.com
+#
+# Files in public/ are copied verbatim into dist/ by Vite, and .github/workflows/
+# deployHost.yml rsyncs dist/ to the document root, so this ships as-is.
+#
+# NOTE ON CLOUDFLARE: this zone has Cloudflare's managed robots.txt enabled, which
+# intercepts /robots.txt and PREPENDS its own AI-crawler directives before this
+# file's contents (it needs a 200 from the origin to detect and merge this file).
+# The live response is therefore "Cloudflare managed block" + this content. The
+# Disallow rules for ClaudeBot / GPTBot / Google-Extended / CCBot and friends are
+# managed in the Cloudflare dashboard, not here. Do not duplicate them below.
+
+User-agent: *
+Allow: /
+
+# Preview deploys. deploy-wip.yml / -wip2 / -wip3 / -wip5 rsync full copies of the
+# site into these subdirectories of the same document root, which would otherwise
+# be crawlable near-duplicates of the homepage. The prod deploy's `rsync --delete`
+# wipes them, so they come and go; keep them out of the index either way.
+Disallow: /wip/
+Disallow: /wip2/
+Disallow: /wip3/
+Disallow: /wip5/
+
+Sitemap: https://teodorlutoiu.com/sitemap.xml

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-maintained sitemap for https://teodorlutoiu.com
+
+  WHEN YOU ADD A PAGE, ADD IT HERE BY HAND. Nothing generates or validates this
+  file. It is a plain static asset: Vite copies public/ into dist/ untouched, and
+  .github/workflows/deployHost.yml rsyncs dist/ to the document root.
+
+  Why hand-authored: this is a plain Vite static build with no route-generation or
+  prerender step. src/App.tsx renders a single page and every nav link is an
+  in-page #anchor, so the app contributes exactly one indexable URL ("/"). The
+  only other HTML documents in the deployed docroot are the two Retro Many Money
+  compliance pages under public/. Wiring a sitemap plugin would add a dependency
+  to emit three static lines.
+
+  <lastmod> is the date of the last git commit that changed each page's content,
+  not the deploy date. Update it when you change a page.
+
+  <changefreq> and <priority> are deliberately omitted: Google ignores both, and
+  stale values are worse than absent ones.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage. The single-page portfolio: index.html + src/. -->
+  <url>
+    <loc>https://teodorlutoiu.com/</loc>
+    <lastmod>2026-05-21</lastmod>
+  </url>
+
+  <!-- TikTok platform-compliance pages for the Retro Many Money channel, served
+       as static HTML from public/retromanymoney/. Listed because they are real,
+       canonical, publicly reachable documents on this domain and TikTok's app
+       review requires them to stay reachable. They are not organic targets. -->
+  <url>
+    <loc>https://teodorlutoiu.com/retromanymoney/privacy/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://teodorlutoiu.com/retromanymoney/terms/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+
+</urlset>
