@@ -1,37 +1,26 @@
-# A Digital Journey - Portfolio for Teodor-Cristian Luțoiu
+# teodorlutoiu.com
 
-This is an interactive, cinematic portfolio website that takes the user on a journey through space to explore the work of Teodor-Cristian Luțoiu. The project is built with vanilla HTML, CSS, and JavaScript, and it leverages the GSAP (GreenSock Animation Platform) library for high-performance animations.
+The portfolio of Teodor-Cristian Lutoiu, AI engineer in Bucharest.
 
-## Current Progress & Implemented Features
+One static page that alternates between two looks: a loud poster (hot pink, giant type, HELLO! with my face as the O) and a hand-made scrapbook (index cards, sticky notes, polaroids). Every project is named by what it does for the reader, with the internal name on a small tag.
 
-The project has been built with a specific vision in mind, drawing inspiration from the polished, story-driven animations of Apple's product pages and the immersive, layered environments of sites like "The Goonies."
+## Stack
 
-- **Cinematic Launch Sequence:** The user experience begins on Earth. As the user scrolls, a rocket launches, and the view transitions seamlessly from an Earth-orbit backdrop to a deep-space nebula.
-- **GSAP-Powered Animations:** The entire scrolling experience is controlled by GSAP and its `ScrollTrigger` plugin, ensuring fluid, high-performance animations.
-- **Multi-Layered Parallax:** The background is composed of multiple layers (Earth, a nebula, and a starfield) that move at different speeds, creating a convincing illusion of depth.
-- **Pinned Content Sections:** The "Selected Works" section uses a pinning effect. As the user scrolls, the section locks in place while the project cards animate into view, creating a focused showcase.
-- **Elegant & Modern UI:** The user interface is designed to be clean, minimalist, and sophisticated, with a dark theme and subtle "glassmorphism" effects on UI elements.
+- Vite + TypeScript, no framework and no runtime dependencies
+- `index.html` holds the markup, `src/style.css` the styles, `src/main.ts` the interactions (card wall, count-up numbers, the story line, notes, copy button)
+- Photos in `public/img/`, social preview image at `public/og.jpg`
+- Deployed on Vercel; security headers live in `vercel.json`
 
-## Asset Replacement Guide
+## Run it
 
-The project currently uses placeholder images. To complete the visual design, you need to download the following assets and place them in the `public/images/` directory, replacing the existing files.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # type-check, then build to dist/
+```
 
-**1. Earth Background:**
-- **URL:** [https://www.nasa.gov/sites/default/files/images/712130main_8246931247_67639dbcb8_o.jpg](https://www.nasa.gov/sites/default/files/images/712130main_8246931247_67639dbcb8_o.jpg)
-- **Action:** Download and save as `earth-bg.jpg` in `public/images/`.
+## Also served from this repo
 
-**2. Nebula Background:**
-- **URL:** [https://www.esahubble.org/media/archives/images/large/heic0702a.jpg](https://www.esahubble.org/media/archives/images/large/heic0702a.jpg)
-- **Action:** Download and save as `nebula-bg.jpg` in `public/images/`.
-
-**3. Rocket SVG:**
-- **URL:** [https://www.svgrepo.com/show/506458/rocket.svg](https://www.svgrepo.com/show/506458/rocket.svg)
-- **Action:** Download and save as `sleek-rocket.svg` in `public/images/`.
-
-**4. Project Images:**
-- **Project 1 URL:** [https://images.unsplash.com/photo-1550745165-9bc0b252726a](https://images.unsplash.com/photo-1550745165-9bc0b252726a)
-  - **Action:** Download and save as `project1.jpg` in `public/images/`.
-- **Project 2 URL:** [https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2](https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2)
-  - **Action:** Download and save as `project2.jpg` in `public/images/`.
-- **Project 3 URL:** [https://images.unsplash.com/photo-1605647540924-852290f6b0d5](https://images.unsplash.com/photo-1605647540924-852290f6b0d5)
-  - **Action:** Download and save as `project3.jpg` in `public/images/`.
+- `api/rmm-clip.js`: a small video proxy for the Retro Many Money social accounts
+- `public/retromanymoney/`: that project's privacy and terms pages, plus platform verification files
+- `public/robots.txt` and `public/sitemap.xml`, maintained by hand

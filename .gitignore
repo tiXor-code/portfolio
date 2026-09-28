@@ -26,3 +26,6 @@ dist-ssr
 # Temp files
 website-files.zip
 .vercel
+
+# Local UI verification artifacts
+.claude/artifacts/
