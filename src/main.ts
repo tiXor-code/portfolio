@@ -32,10 +32,10 @@ const tiles = Array.from(board.querySelectorAll<HTMLElement>('.tile'))
 const tidyBtn = $<HTMLButtonElement>('tidy')
 let tidy = false
 let zTop = 20
-const MESSY: Array<[number, number, number]> = [
-  [0, 0.06, -6], [0.24, 0, 4], [0.48, 0.1, -3], [0.72, 0.02, 5], [0.99, 0.12, -4],
-  [0.02, 0.92, 5], [0.26, 0.78, -5], [0.5, 0.97, 3], [0.75, 0.8, -6], [1, 0.94, 4],
-]
+// Room a messy card needs beside and below it: its tilt, the taped sticky note
+// hanging off its corner, and the tape strip on top.
+const MESSY_GAP_X = 40
+const MESSY_GAP_Y = 58
 
 function place(t: HTMLElement, x: number, y: number, r: number): void {
   t.style.left = `${Math.round(x)}px`
@@ -67,17 +67,26 @@ function layoutBoard(): void {
       const r = Math.floor(i / 2)
       const jx = ((i * 37) % 9) - 4
       const jy = ((i * 53) % 11) - 5
-      const rot = ((i * 29) % 11) - 5
+      const rot = ((i * 29) % 7) - 3
       place(t, c ? W - tw - Math.abs(jx) : Math.abs(jx), r * rowH + (c ? th * 0.5 : 0) + jy, rot)
     })
     H = Math.ceil(tiles.length / 2) * rowH + th * 0.5 + 30
   } else {
-    const mh = 640
+    // Messy, but never overlapping: one card per cell, jittered and tilted inside it.
+    const cols = Math.max(2, Math.floor((W + MESSY_GAP_X) / (tw + MESSY_GAP_X)))
+    const cellW = W / cols
+    const cellH = th + MESSY_GAP_Y
+    const free = Math.max(0, cellW - tw - MESSY_GAP_X)
+    const drop = cellH * 0.12
     tiles.forEach((t, i) => {
-      const [mx, my, mr] = MESSY[i % MESSY.length]
-      place(t, mx * (W - tw), my * (mh - th), mr)
+      const c = i % cols
+      const r = Math.floor(i / cols)
+      const jx = free * (((i * 37) % 10) / 10)
+      const jy = ((i * 53) % 13) - 6 + (c % 2 ? drop : 0)
+      const rot = ((i * 29) % 11) - 5
+      place(t, c * cellW + jx + MESSY_GAP_X / 2, r * cellH + jy + 14, rot)
     })
-    H = mh + 26
+    H = Math.ceil(tiles.length / cols) * cellH + drop + 24
   }
   board.style.height = `${Math.round(H)}px`
 }
@@ -171,6 +180,21 @@ if ('IntersectionObserver' in window && !reduce) {
   }, { threshold: 0.55 })
   document.querySelectorAll<HTMLElement>('[data-to]').forEach((b) => io.observe(b))
   io.observe(stamp)
+}
+
+/* Hand-drawn circles start drawing only once they are on screen */
+const doodles = document.querySelectorAll<HTMLElement>('.circ, .ringwrap')
+if ('IntersectionObserver' in window && !reduce) {
+  const seen = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return
+      en.target.classList.add('inview')
+      seen.unobserve(en.target)
+    })
+  }, { threshold: 0.6 })
+  doodles.forEach((d) => seen.observe(d))
+} else {
+  doodles.forEach((d) => d.classList.add('inview'))
 }
 
 /* Story: a marker line that draws itself through the pins as you scroll */
